@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.openarchitectureware.var.pv.dotvrelbuilder
+Bundle-SymbolicName: org.openarchitectureware.var.pv.dotvrelbuilder;singleton:=true
+Bundle-Version: 1.0.0
+Require-Bundle: org.openarchitectureware.dependencies,
+ com.ps.consul.eclipse.ecore,
+ com.ps.consul.eclipse.ui,
+ org.eclipse.ui.editors,
+ org.eclipse.ui.ide,
+ com.ps.consul.eclipse.ecore.doc,
+ org.openarchitectureware.var.featureaccess,
+ com.ps.consul.eclipse.core,
+ org.eclipse.jface,
+ org.openarchitectureware.var.dotvbuilder,
+ org.eclipse.ui
