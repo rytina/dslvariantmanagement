@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.openarchitectureware.var.dotvbuilder
+Bundle-SymbolicName: org.openarchitectureware.var.dotvbuilder;singleton:=true
+Bundle-Version: 1.0.0
+Require-Bundle: org.openarchitectureware.dependencies,
+ org.eclipse.ui.editors,
+ org.eclipse.ui.ide,
+ org.openarchitectureware.var.featureaccess,
+ org.eclipse.jface,
+ org.eclipse.ui
+Export-Package: org.openarchitectureware.var.dotvbuilder,
+ org.openarchitectureware.var.dotvbuilder.preferences,
+ org.openarchitectureware.var.dotvbuilder.properties
+Bundle-Activator: org.openarchitectureware.var.dotvbuilder.Activator
