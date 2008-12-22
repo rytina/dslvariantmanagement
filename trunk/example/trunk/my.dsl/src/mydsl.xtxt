@@ -1,0 +1,19 @@
+System:
+	(featureModel=FeatureModelImport)?
+	(entities+=Entity)*;
+	
+Entity:
+	"entity" name=ID "{"
+		(attributes+=Attribute)*
+	"}";
+	
+Attribute:
+	name=ID ":" type=ID (featureClause=FeatureClause)?;
+	
+FeatureClause:
+	"feature" feature=ID;
+	
+FeatureModelImport:
+	"featuremodel" uri=STRING;
+
+	
