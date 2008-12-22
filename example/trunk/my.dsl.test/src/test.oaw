@@ -1,0 +1,8 @@
+<workflow>
+	
+	<component file="org/example/dsl/generator.oaw" 
+		modelFile="test.dsl" 
+		configModelUri="platform:/resource/my.dsl.pv/cfg/cfg.vdm.xmi"
+		/>
+
+</workflow>
