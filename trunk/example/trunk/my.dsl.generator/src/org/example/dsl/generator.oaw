@@ -1,0 +1,28 @@
+<workflow abstract="true">
+  
+	<property name='modelFile' />
+	<property name='configModelUri' />
+	<property name='targetDir' value='src-gen/'/>
+  
+	<bean class="org.eclipse.mwe.emf.StandaloneSetup">
+		<platformUri value=".."/>
+		<registerGeneratedEPackage value="com.ps.consul.eclipse.ecore.pvmodel.PvmodelPackage" />
+	</bean>
+
+	<component file="org/openarchitectureware/var/tailor/model/tailorPV.oaw"
+		architectureModelFile="${modelFile}"
+		configurationModelUri="${configModelUri}"
+		dslPackage="platform:/resource/my.dsl/src-gen/org/example/dsl/mydsl.ecore"
+		parserCartridge="org/example/dsl/parser/Parser.oaw"
+		constraintFile="org::example::dsl::Checks" />
+		/>
+  
+  	<component class='oaw.workflow.common.DirectoryCleaner' directory='${targetDir}'/>
+  
+  	<component class='oaw.xpand2.Generator'>
+     	<metaModel id='mm' class='org.eclipse.m2t.type.emf.EmfRegistryMetaModel'/>
+     	<expand value='org::example::dsl::Main::main FOR theModel'/>
+     	<genPath value='${targetDir}'/>
+  	</component>
+
+</workflow>
