@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cm:consulmodel xmlns:cm="http://www.pure-systems.com/consul/model" cm:id="iTGXb0M_flHBWK87r" cm:version="1.5" cm:type="ps:ccfm">
+  <cm:head>
+    <cm:properties>
+      <cm:property cm:id="iakNtRYarZJ7ZjZLj" cm:type="ps:string" cm:invisible="true" cm:name="ps:name">
+        <cm:constant cm:id="iIvCW5GSPa8TUtAL0" cm:type="ps:string">mydslpvFamily</cm:constant>
+      </cm:property>
+      <cm:property cm:id="ibkJRXJsnrDnhNMy8" cm:type="ps:string" cm:invisible="true" cm:name="ps:author">
+        <cm:constant cm:id="i9c4mloAxRrU6V6sq" cm:type="ps:string">MarkusVoelter</cm:constant>
+      </cm:property>
+      <cm:property cm:id="i_sAejpCP979WMCI8" cm:type="ps:string" cm:invisible="true" cm:name="ps:version">
+        <cm:constant cm:id="il0wCS7W0l4-LjiQ9" cm:type="ps:string">1.0</cm:constant>
+      </cm:property>
+      <cm:property cm:id="iFCSBqK93M900jv_D" cm:type="ps:datetime" cm:invisible="true" cm:name="ps:created">
+        <cm:constant cm:id="iX02u4lC7uFaSJKXQ" cm:type="ps:datetime">2008-12-22T17:21:06.765Z</cm:constant>
+      </cm:property>
+    </cm:properties>
+  </cm:head>
+  <cm:elements cm:rootid="iAk6ra107JnxjE-tX">
+    <cm:element cm:id="iAk6ra107JnxjE-tX" cm:name="mydslpvFamily" cm:type="ps:family" cm:class="ps:family" cm:default="on">
+      <cm:properties>
+        <cm:property cm:id="iwkjZoLcXpLfh8ems" cm:type="ps:string" cm:fixed="true" cm:readonly="true" cm:name="ps:Source">
+          <cm:constant cm:id="iEqxFOKjBJUAf3Zm4" cm:type="ps:string">MarkusVoelter</cm:constant>
+        </cm:property>
+        <cm:property cm:id="iaAEygFkpRSurnq7R" cm:type="ps:datetime" cm:fixed="true" cm:readonly="true" cm:name="ps:Created">
+          <cm:constant cm:id="iAar60zfCjIDmC9sG" cm:type="ps:datetime">2008-12-22T17:21:06.765Z</cm:constant>
+        </cm:property>
+        <cm:property cm:id="iBcsizhy5vjLhToQ7" cm:type="ps:string" cm:fixed="true" cm:readonly="true" cm:name="ps:ChangedBy">
+          <cm:constant cm:id="iVODCSf2uZ0nkXUqV" cm:type="ps:string">MarkusVoelter</cm:constant>
+        </cm:property>
+        <cm:property cm:id="iQatp5BQOXAQG-bGD" cm:type="ps:datetime" cm:fixed="true" cm:readonly="true" cm:name="ps:Changed">
+          <cm:constant cm:id="igKTlzfTj_JGwEcrN" cm:type="ps:datetime">2008-12-22T17:21:06.765Z</cm:constant>
+        </cm:property>
+      </cm:properties>
+      <cm:vname>
+        <cm:mimedesc cm:id="if4CJDSn4LA9CwPux" cm:mimetype="text/plain" cm:encoding="utf-8">mydslpvFamily</cm:mimedesc>
+      </cm:vname>
+    </cm:element>
+  </cm:elements>
+</cm:consulmodel>

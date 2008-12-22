@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cm:consulmodel xmlns:cm="http://www.pure-systems.com/consul/model" cm:id="iUIuOH2UBdfyxE33t" cm:version="1.5" cm:type="ps:vdm">
+  <cm:head>
+    <cm:properties>
+      <cm:property cm:id="i18za3SzxTfV1eP3i" cm:type="ps:string" cm:invisible="true" cm:name="ps:name">
+        <cm:constant cm:id="i9Ql-83pDTlyCkLzW" cm:type="ps:string">mydslpvVariant</cm:constant>
+      </cm:property>
+      <cm:property cm:id="ivZCjnaLOOhMG7259" cm:type="ps:string" cm:invisible="true" cm:name="ps:author">
+        <cm:constant cm:id="iPVEHI1tS5GFcD5Q3" cm:type="ps:string">MarkusVoelter</cm:constant>
+      </cm:property>
+      <cm:property cm:id="i55hlBQuSd9FWiHf_" cm:type="ps:string" cm:invisible="true" cm:name="ps:version">
+        <cm:constant cm:id="il3h57lBQtoHcZYS1" cm:type="ps:string">1.0</cm:constant>
+      </cm:property>
+      <cm:property cm:id="irTF0VaIJjGjfygpC" cm:type="ps:datetime" cm:invisible="true" cm:name="ps:created">
+        <cm:constant cm:id="iGTpHkF6rrXeqiLpk" cm:type="ps:datetime">2008-12-22T17:21:06.984Z</cm:constant>
+      </cm:property>
+    </cm:properties>
+  </cm:head>
+</cm:consulmodel>

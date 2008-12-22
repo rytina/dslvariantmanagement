@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cm:consulmodel xmlns:cm="http://www.pure-systems.com/consul/model" cm:id="i3NVFX0Khe_sm-ew5" cm:version="1.1" cm:type="ps:configspace"><cm:head></cm:head>
+<cm:elements cm:rootid="iGsUPB2lwurO0G7za"><cm:element cm:id="iGsUPB2lwurO0G7za" cm:class="ps:lookup"><cm:relations cm:id="i6gdYZqGyDU3TCL9Z" cm:class="ps:models"><cm:relation cm:id="iXlcwdACFVjTeELbr" cm:type="ps:used"><cm:target cm:id="iT6EmGIr8me60-cYb">./iwCaGIB1_cdjE52iU</cm:target>
+<cm:target cm:id="idO3bvcQMZD3Q4VfM">./iw7UBE_nAFgCNkgNd</cm:target>
+</cm:relation>
+</cm:relations>
+<cm:properties><cm:property cm:id="iXmO5CMBqUNwLuIzA" cm:type="ps:path" cm:name="module_base"><cm:constant cm:id="iTJq73D-S3xtdrSN8" cm:type="ps:path">$(WORKSPACE)</cm:constant>
+</cm:property>
+<cm:property cm:id="ioGJFk8aNf-foVdwa" cm:type="ps:path" cm:name="transform_module"><cm:constant cm:id="ibA-teXzliAa6X-Hx" cm:type="ps:path">$(PROJECT)/my.dsl.pv/moduleconfig.xml</cm:constant>
+</cm:property>
+</cm:properties>
+</cm:element>
+<cm:element cm:id="iwCaGIB1_cdjE52iU" cm:name="ipwtOhPyg2TteBgO6" cm:type="ps:used" cm:class="ps:model"><cm:properties><cm:property cm:id="ib3qDj-7obbqCGXSY" cm:type="ps:string" cm:name="model_type"><cm:constant cm:id="i_N41lAJC2NoOWvCy" cm:type="ps:string">ps:fm</cm:constant>
+</cm:property>
+<cm:property cm:id="i2Iz2usd5g5mIUw1U" cm:type="ps:path" cm:name="model_path"><cm:constant cm:id="iC1FvivE1jaAAMQ9k" cm:type="ps:path">$(PROJECT)/my.dsl.pv.xfm</cm:constant>
+</cm:property>
+</cm:properties>
+</cm:element>
+<cm:element cm:id="iw7UBE_nAFgCNkgNd" cm:name="iTGXb0M_flHBWK87r" cm:type="ps:used" cm:class="ps:model"><cm:properties><cm:property cm:id="iMziPkjAPOA7uY_9E" cm:type="ps:string" cm:name="model_type"><cm:constant cm:id="iqlDMvkqVtQS6_X8g" cm:type="ps:string">ps:ccfm</cm:constant>
+</cm:property>
+<cm:property cm:id="iDEcDgfU8MpX1KeBd" cm:type="ps:path" cm:name="model_path"><cm:constant cm:id="iIB3Uvg5jF97jAERf" cm:type="ps:path">$(PROJECT)/my.dsl.pv.ccfm</cm:constant>
+</cm:property>
+</cm:properties>
+</cm:element>
+</cm:elements>
+</cm:consulmodel>
