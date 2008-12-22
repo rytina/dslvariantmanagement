@@ -1,0 +1,9 @@
+import mydsl;
+
+extension org::example::dsl::GenExtensions reexport;
+
+extension org::openarchitectureware::var::featureaccess::ext::utils reexport; 
+
+String featureModelUri(emf::EObject this):
+	((System)eRootContainer).featureModel.uri;	 	
+
