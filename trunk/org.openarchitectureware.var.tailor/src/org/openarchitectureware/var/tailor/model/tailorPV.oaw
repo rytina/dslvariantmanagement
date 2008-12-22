@@ -13,7 +13,7 @@
 
     <component file="${parserCartridge}">
         <modelFile value="${architectureModelFile}"/>
-        <outputSlot value="architectureModel"/>
+        <outputSlot value="theModel"/>
     </component>
      
 	<component id="read" class="org.eclipse.mwe.emf.Reader">
@@ -23,7 +23,7 @@
 	</component>
 
     <component class="org.openarchitectureware.var.tailor.model.remover.RemoverComponent">
-    	<architectureModelSlot value="architectureModel"/>
+    	<architectureModelSlot value="theModel"/>
     	<configurationModelSlot value="configurationModel"/>
         <configurationModelWrapperClass value="org.openarchitectureware.var.featureaccess.pv.PVConfigurationModelWrapper"/>
     </component>
@@ -32,18 +32,18 @@
 		<metaModel id="mm" class="org.eclipse.m2t.type.emf.EmfRegistryMetaModel" 
 			useSingleGlobalResourceSet="true"/>
 		<checkFile value="${constraintFile}"/>
-		<emfAllChildrenSlot value="architectureModel"/>
+		<emfAllChildrenSlot value="theModel"/>
 	</component>
 	
 	<component class="org.openarchitectureware.var.tailor.model.weaver.WeaverComponent">
-    	<architectureModelSlot value="architectureModel"/>
+    	<architectureModelSlot value="theModel"/>
 	</component>
 
 	<component id="checksAfterWeaving" class="oaw.check.CheckComponent">
 		<metaModel id="mm" class="org.eclipse.m2t.type.emf.EmfRegistryMetaModel" 
 			useSingleGlobalResourceSet="true"/>
 		<checkFile value="${constraintFile}"/>
-		<emfAllChildrenSlot value="architectureModel"/>
+		<emfAllChildrenSlot value="theModel"/>
 	</component>
 	
 </workflow>
