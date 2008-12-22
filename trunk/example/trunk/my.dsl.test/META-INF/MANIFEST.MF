@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test Plug-in
+Bundle-SymbolicName: my.dsl.test
+Bundle-Version: 1.0.0
+Bundle-Activator: my.dsl.test.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ my.dsl.generator;bundle-version="1.0.0",
+ org.openarchitectureware.dependencies;bundle-version="4.3.1"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
