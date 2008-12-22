@@ -1,0 +1,15 @@
+import mydsl;
+import codeassist;
+
+extension org::example::dsl::Extensions;
+extension org::example::dsl::GenContentAssist reexport;
+
+extension org::openarchitectureware::var::featureaccess::ext::utils; 
+
+completeFeatureClause_feature(emf::EObject ctx, String prefix) :
+	proposeFeatures(ctx, prefix);
+
+proposeFeatures(emf::EObject ctx, String prefix) :
+	let features = getAllFeatures(ctx.featureModelUri()): 
+		let filteredFeatures = (prefix != null ? features.select(f|f.startsWith(prefix)) : features) : 
+			filteredFeatures.collect(ff|newProposal( ff, ff, "featureclause.gif") );
