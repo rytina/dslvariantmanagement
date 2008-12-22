@@ -1,0 +1,13 @@
+«IMPORT mydsl»
+
+«DEFINE main FOR System»
+	«FILE "output.txt"»
+		«FOREACH entities AS e»
+			entity «e.name»  {
+				«FOREACH e.attributes AS a»
+					«a.name» : «a.type»
+				«ENDFOREACH»
+			}
+		«ENDFOREACH»
+	«ENDFILE»
+«ENDDEFINE»
