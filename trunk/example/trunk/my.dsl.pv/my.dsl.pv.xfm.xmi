@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pvmodel:ConsulModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pvmodel="http://pure-variants.com/pvmodel" iD="ipwtOhPyg2TteBgO6" version="1.5" type="ps:fm" rootID="ikt1iGQfGuflf32UX">
+  <element iD="ikt1iGQfGuflf32UX" name="mydslpvFeatures" type="ps:feature" class="ps:feature" default="on">
+    <relations iD="iyFlvpp4Ms1OfKkjQ" class="ps:children">
+      <relation iD="iYkkAIT-EoZUmSav5" restrictionID="" name="" type="ps:optional" range="">
+        <target iD="igWBQsyexxfiwghXj" restrictionID="" content="./ie42HGN3GiSBkS6FU"/>
+        <target iD="iyMMr_7ZekX5Kun9g" restrictionID="" content="./iI4FYQkP_hmAa4hY5"/>
+        <target iD="iSnkpTziFIETdBj3t" restrictionID="" content="./iWuSYTdBD_kf3DgzI"/>
+      </relation>
+    </relations>
+    <properties iD="ihMe9_-uDUnz83sFw" restrictionID="" name="ps:Source" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="is_IVd_q_sK95kar4" restrictionID="" type="ps:string" content="MarkusVoelter"/>
+    </properties>
+    <properties iD="iTOEtCCKlzZeWVUCk" restrictionID="" name="ps:Created" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="iNf9Wj6DbBI6vhBUQ" restrictionID="" type="ps:datetime" content="2008-12-22T17:21:06.734Z"/>
+    </properties>
+    <properties iD="iBDL1diYnsAvPkWSb" restrictionID="" name="ps:ChangedBy" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="i2aljh9BLeI8u9-0T" restrictionID="" type="ps:string" content="MarkusVoelter"/>
+    </properties>
+    <properties iD="iatrxCwV_Nqdpsf7m" restrictionID="" name="ps:Changed" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="iinEftK3ABIkRZbaY" restrictionID="" type="ps:datetime" content="2008-12-22T19:40:05.640Z"/>
+    </properties>
+    <vName iD="irnJ5-WsS-uxHzVn8" restrictionID="" mimeType="text/plain" lang="" encoding="utf-8" content="mydslpvFeatures"/>
+  </element>
+  <element iD="ie42HGN3GiSBkS6FU" name="f1" type="ps:feature" class="ps:feature" default="">
+    <relations iD="iEWR1zLtAQK0c5KoY" class="ps:parents">
+      <relation iD="iOfKR0_Tj_RwiVaXP" restrictionID="" name="" type="ps:parent" range="">
+        <target iD="iJhQovOiMXEudXTHf" restrictionID="" content="./ikt1iGQfGuflf32UX"/>
+      </relation>
+    </relations>
+    <properties iD="i45icWLftrQiCLUNv" restrictionID="" name="ps:Source" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="immUHGX-b7U2JUE8q" restrictionID="" type="ps:string" content="MarkusVoelter"/>
+    </properties>
+    <properties iD="iVCDkIwGCaa2H9PTy" restrictionID="" name="ps:Created" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="i2HijQAVGcwYLxGID" restrictionID="" type="ps:datetime" content="2008-12-22T17:21:38.359Z"/>
+    </properties>
+    <properties iD="imLbJ2aQX4uq0dMWE" restrictionID="" name="ps:ChangedBy" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="impxeKjVTdL7WZGEl" restrictionID="" type="ps:string" content="MarkusVoelter"/>
+    </properties>
+    <properties iD="ixIvlAChX_eMLnFXq" restrictionID="" name="ps:Changed" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="ipZ7d56TZNqhQYDYN" restrictionID="" type="ps:datetime" content="2008-12-22T19:39:59.765Z"/>
+    </properties>
+  </element>
+  <element iD="iWuSYTdBD_kf3DgzI" name="f2" type="ps:feature" class="ps:feature" default="">
+    <relations iD="iG996YknsScrje19S" class="ps:parents">
+      <relation iD="i7_Q4nUFBSZ74P2St" restrictionID="" name="" type="ps:parent" range="">
+        <target iD="iDnTefQZPY7AlPyVf" restrictionID="" content="./ikt1iGQfGuflf32UX"/>
+      </relation>
+    </relations>
+    <properties iD="iBaemAi--n3vix5eL" restrictionID="" name="ps:Source" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="iMnxpGUcHOAyS8JNS" restrictionID="" type="ps:string" content="MarkusVoelter"/>
+    </properties>
+    <properties iD="iFpcPj9zUvr3lytD3" restrictionID="" name="ps:Created" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="i-ijtetXR64KLW0NF" restrictionID="" type="ps:datetime" content="2008-12-22T17:21:42.968Z"/>
+    </properties>
+    <properties iD="iNiUsjeRIvNtXjPws" restrictionID="" name="ps:ChangedBy" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="id-5vUri9MzUJ8gZo" restrictionID="" type="ps:string" content="MarkusVoelter"/>
+    </properties>
+    <properties iD="izZ-EGGFKGIqJagpB" restrictionID="" name="ps:Changed" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="i3YcmSQJHZPU26_vt" restrictionID="" type="ps:datetime" content="2008-12-22T19:40:05.640Z"/>
+    </properties>
+  </element>
+  <element iD="iI4FYQkP_hmAa4hY5" name="f3" type="ps:feature" class="ps:feature" default="">
+    <relations iD="iQe5FyyF6zxt906PU" class="ps:parents">
+      <relation iD="iaft5xACK86ark0nc" restrictionID="" name="" type="ps:parent" range="">
+        <target iD="i-AnYmuDIT3H74ai7" restrictionID="" content="./ikt1iGQfGuflf32UX"/>
+      </relation>
+    </relations>
+    <properties iD="iM-oxpZMR59vv1fHe" restrictionID="" name="ps:Source" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="iP2nL6fGIm10hRQt3" restrictionID="" type="ps:string" content="MarkusVoelter"/>
+    </properties>
+    <properties iD="iIs-neEvyV3vkNb8a" restrictionID="" name="ps:Created" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="iqL6DMf2fpSHZ3QSb" restrictionID="" type="ps:datetime" content="2008-12-22T18:03:51.234Z"/>
+    </properties>
+    <properties iD="ig2SC0uJbwwmPyKDZ" restrictionID="" name="ps:ChangedBy" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="itoA3nBrzsa8rwycP" restrictionID="" type="ps:string" content="MarkusVoelter"/>
+    </properties>
+    <properties iD="irhgB3l7T1RmYwCId" restrictionID="" name="ps:Changed" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="iZHMwMPvnZ206p07b" restrictionID="" type="ps:datetime" content="2008-12-22T19:40:02.062Z"/>
+    </properties>
+  </element>
+  <properties iD="i0cDqTKdxWeCAyIwo" restrictionID="" name="ps:name" type="ps:string" invisible="true" container="" range="">
+    <value xsi:type="pvmodel:Constant" iD="iQsbERTjQw9bTqhJR" restrictionID="" type="ps:string" content="mydslpvFeatures"/>
+  </properties>
+  <properties iD="icfW2TJZm8sGg4LNW" restrictionID="" name="ps:author" type="ps:string" invisible="true" container="" range="">
+    <value xsi:type="pvmodel:Constant" iD="ibCRRKtqVatly2u_D" restrictionID="" type="ps:string" content="MarkusVoelter"/>
+  </properties>
+  <properties iD="ixq8Z6-VYsLDOJ49J" restrictionID="" name="ps:version" type="ps:string" invisible="true" container="" range="">
+    <value xsi:type="pvmodel:Constant" iD="ivONzUt_46Md8o5Rg" restrictionID="" type="ps:string" content="1.0"/>
+  </properties>
+  <properties iD="i6KOjb_7oGB8mqF3g" restrictionID="" name="ps:created" type="ps:datetime" invisible="true" container="" range="">
+    <value xsi:type="pvmodel:Constant" iD="ijPSDH3RH-UvJuvGI" restrictionID="" type="ps:datetime" content="2008-12-22T17:21:06.734Z"/>
+  </properties>
+</pvmodel:ConsulModel>

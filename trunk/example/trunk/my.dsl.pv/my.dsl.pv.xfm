@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cm:consulmodel xmlns:cm="http://www.pure-systems.com/consul/model" cm:id="ipwtOhPyg2TteBgO6" cm:version="1.5" cm:type="ps:fm">
+  <cm:head>
+    <cm:properties>
+      <cm:property cm:id="i0cDqTKdxWeCAyIwo" cm:type="ps:string" cm:invisible="true" cm:name="ps:name">
+        <cm:constant cm:id="iQsbERTjQw9bTqhJR" cm:type="ps:string">mydslpvFeatures</cm:constant>
+      </cm:property>
+      <cm:property cm:id="icfW2TJZm8sGg4LNW" cm:type="ps:string" cm:invisible="true" cm:name="ps:author">
+        <cm:constant cm:id="ibCRRKtqVatly2u_D" cm:type="ps:string">MarkusVoelter</cm:constant>
+      </cm:property>
+      <cm:property cm:id="ixq8Z6-VYsLDOJ49J" cm:type="ps:string" cm:invisible="true" cm:name="ps:version">
+        <cm:constant cm:id="ivONzUt_46Md8o5Rg" cm:type="ps:string">1.0</cm:constant>
+      </cm:property>
+      <cm:property cm:id="i6KOjb_7oGB8mqF3g" cm:type="ps:datetime" cm:invisible="true" cm:name="ps:created">
+        <cm:constant cm:id="ijPSDH3RH-UvJuvGI" cm:type="ps:datetime">2008-12-22T17:21:06.734Z</cm:constant>
+      </cm:property>
+    </cm:properties>
+  </cm:head>
+  <cm:elements cm:rootid="ikt1iGQfGuflf32UX">
+    <cm:element cm:id="ikt1iGQfGuflf32UX" cm:name="mydslpvFeatures" cm:type="ps:feature" cm:class="ps:feature" cm:default="on">
+      <cm:relations cm:id="iyFlvpp4Ms1OfKkjQ" cm:class="ps:children">
+        <cm:relation cm:id="iYkkAIT-EoZUmSav5" cm:type="ps:optional">
+          <cm:target cm:id="igWBQsyexxfiwghXj">./ie42HGN3GiSBkS6FU</cm:target>
+          <cm:target cm:id="iyMMr_7ZekX5Kun9g">./iI4FYQkP_hmAa4hY5</cm:target>
+          <cm:target cm:id="iSnkpTziFIETdBj3t">./iWuSYTdBD_kf3DgzI</cm:target>
+        </cm:relation>
+      </cm:relations>
+      <cm:properties>
+        <cm:property cm:id="ihMe9_-uDUnz83sFw" cm:type="ps:string" cm:fixed="true" cm:readonly="true" cm:name="ps:Source">
+          <cm:constant cm:id="is_IVd_q_sK95kar4" cm:type="ps:string">MarkusVoelter</cm:constant>
+        </cm:property>
+        <cm:property cm:id="iTOEtCCKlzZeWVUCk" cm:type="ps:datetime" cm:fixed="true" cm:readonly="true" cm:name="ps:Created">
+          <cm:constant cm:id="iNf9Wj6DbBI6vhBUQ" cm:type="ps:datetime">2008-12-22T17:21:06.734Z</cm:constant>
+        </cm:property>
+        <cm:property cm:id="iBDL1diYnsAvPkWSb" cm:type="ps:string" cm:fixed="true" cm:readonly="true" cm:name="ps:ChangedBy">
+          <cm:constant cm:id="i2aljh9BLeI8u9-0T" cm:type="ps:string">MarkusVoelter</cm:constant>
+        </cm:property>
+        <cm:property cm:id="iatrxCwV_Nqdpsf7m" cm:type="ps:datetime" cm:fixed="true" cm:readonly="true" cm:name="ps:Changed">
+          <cm:constant cm:id="iinEftK3ABIkRZbaY" cm:type="ps:datetime">2008-12-22T19:40:05.640Z</cm:constant>
+        </cm:property>
+      </cm:properties>
+      <cm:vname>
+        <cm:mimedesc cm:id="irnJ5-WsS-uxHzVn8" cm:mimetype="text/plain" cm:encoding="utf-8">mydslpvFeatures</cm:mimedesc>
+      </cm:vname>
+    </cm:element>
+    <cm:element cm:id="ie42HGN3GiSBkS6FU" cm:name="f1" cm:type="ps:feature" cm:class="ps:feature">
+      <cm:relations cm:id="iEWR1zLtAQK0c5KoY" cm:class="ps:parents">
+        <cm:relation cm:id="iOfKR0_Tj_RwiVaXP" cm:type="ps:parent">
+          <cm:target cm:id="iJhQovOiMXEudXTHf">./ikt1iGQfGuflf32UX</cm:target>
+        </cm:relation>
+      </cm:relations>
+      <cm:properties>
+        <cm:property cm:id="i45icWLftrQiCLUNv" cm:type="ps:string" cm:fixed="true" cm:readonly="true" cm:name="ps:Source">
+          <cm:constant cm:id="immUHGX-b7U2JUE8q" cm:type="ps:string">MarkusVoelter</cm:constant>
+        </cm:property>
+        <cm:property cm:id="iVCDkIwGCaa2H9PTy" cm:type="ps:datetime" cm:fixed="true" cm:readonly="true" cm:name="ps:Created">
+          <cm:constant cm:id="i2HijQAVGcwYLxGID" cm:type="ps:datetime">2008-12-22T17:21:38.359Z</cm:constant>
+        </cm:property>
+        <cm:property cm:id="imLbJ2aQX4uq0dMWE" cm:type="ps:string" cm:fixed="true" cm:readonly="true" cm:name="ps:ChangedBy">
+          <cm:constant cm:id="impxeKjVTdL7WZGEl" cm:type="ps:string">MarkusVoelter</cm:constant>
+        </cm:property>
+        <cm:property cm:id="ixIvlAChX_eMLnFXq" cm:type="ps:datetime" cm:fixed="true" cm:readonly="true" cm:name="ps:Changed">
+          <cm:constant cm:id="ipZ7d56TZNqhQYDYN" cm:type="ps:datetime">2008-12-22T19:39:59.765Z</cm:constant>
+        </cm:property>
+      </cm:properties>
+    </cm:element>
+    <cm:element cm:id="iWuSYTdBD_kf3DgzI" cm:name="f2" cm:type="ps:feature" cm:class="ps:feature">
+      <cm:relations cm:id="iG996YknsScrje19S" cm:class="ps:parents">
+        <cm:relation cm:id="i7_Q4nUFBSZ74P2St" cm:type="ps:parent">
+          <cm:target cm:id="iDnTefQZPY7AlPyVf">./ikt1iGQfGuflf32UX</cm:target>
+        </cm:relation>
+      </cm:relations>
+      <cm:properties>
+        <cm:property cm:id="iBaemAi--n3vix5eL" cm:type="ps:string" cm:fixed="true" cm:readonly="true" cm:name="ps:Source">
+          <cm:constant cm:id="iMnxpGUcHOAyS8JNS" cm:type="ps:string">MarkusVoelter</cm:constant>
+        </cm:property>
+        <cm:property cm:id="iFpcPj9zUvr3lytD3" cm:type="ps:datetime" cm:fixed="true" cm:readonly="true" cm:name="ps:Created">
+          <cm:constant cm:id="i-ijtetXR64KLW0NF" cm:type="ps:datetime">2008-12-22T17:21:42.968Z</cm:constant>
+        </cm:property>
+        <cm:property cm:id="iNiUsjeRIvNtXjPws" cm:type="ps:string" cm:fixed="true" cm:readonly="true" cm:name="ps:ChangedBy">
+          <cm:constant cm:id="id-5vUri9MzUJ8gZo" cm:type="ps:string">MarkusVoelter</cm:constant>
+        </cm:property>
+        <cm:property cm:id="izZ-EGGFKGIqJagpB" cm:type="ps:datetime" cm:fixed="true" cm:readonly="true" cm:name="ps:Changed">
+          <cm:constant cm:id="i3YcmSQJHZPU26_vt" cm:type="ps:datetime">2008-12-22T19:40:05.640Z</cm:constant>
+        </cm:property>
+      </cm:properties>
+    </cm:element>
+    <cm:element cm:id="iI4FYQkP_hmAa4hY5" cm:name="f3" cm:type="ps:feature" cm:class="ps:feature">
+      <cm:relations cm:id="iQe5FyyF6zxt906PU" cm:class="ps:parents">
+        <cm:relation cm:id="iaft5xACK86ark0nc" cm:type="ps:parent">
+          <cm:target cm:id="i-AnYmuDIT3H74ai7">./ikt1iGQfGuflf32UX</cm:target>
+        </cm:relation>
+      </cm:relations>
+      <cm:properties>
+        <cm:property cm:id="iM-oxpZMR59vv1fHe" cm:type="ps:string" cm:fixed="true" cm:readonly="true" cm:name="ps:Source">
+          <cm:constant cm:id="iP2nL6fGIm10hRQt3" cm:type="ps:string">MarkusVoelter</cm:constant>
+        </cm:property>
+        <cm:property cm:id="iIs-neEvyV3vkNb8a" cm:type="ps:datetime" cm:fixed="true" cm:readonly="true" cm:name="ps:Created">
+          <cm:constant cm:id="iqL6DMf2fpSHZ3QSb" cm:type="ps:datetime">2008-12-22T18:03:51.234Z</cm:constant>
+        </cm:property>
+        <cm:property cm:id="ig2SC0uJbwwmPyKDZ" cm:type="ps:string" cm:fixed="true" cm:readonly="true" cm:name="ps:ChangedBy">
+          <cm:constant cm:id="itoA3nBrzsa8rwycP" cm:type="ps:string">MarkusVoelter</cm:constant>
+        </cm:property>
+        <cm:property cm:id="irhgB3l7T1RmYwCId" cm:type="ps:datetime" cm:fixed="true" cm:readonly="true" cm:name="ps:Changed">
+          <cm:constant cm:id="iZHMwMPvnZ206p07b" cm:type="ps:datetime">2008-12-22T19:40:02.062Z</cm:constant>
+        </cm:property>
+      </cm:properties>
+    </cm:element>
+  </cm:elements>
+</cm:consulmodel>
