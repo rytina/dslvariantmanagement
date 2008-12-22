@@ -1,0 +1,5 @@
+
+
+Collection[String] getAllFeatures(String uri):
+	JAVA org.openarchitectureware.var.featureaccess.ext.FeatureSupport.getAllFeatures(java.lang.String);
+
