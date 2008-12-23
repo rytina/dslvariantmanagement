@@ -5,6 +5,8 @@ extension org::example::dsl::Extensions;
  * This check file is used by the parser
  * and by the editor. Add your constraints here!
  */
+ 
+extension org::openarchitectureware::util::stdlib::io;
 
 context FeatureClause ERROR "feature '"+feature+"' does not exist in feature model":
 	getAllFeatures(featureModelUri()).contains( feature );

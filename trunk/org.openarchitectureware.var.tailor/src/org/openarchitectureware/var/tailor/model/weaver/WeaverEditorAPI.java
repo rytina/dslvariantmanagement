@@ -8,7 +8,7 @@ import org.eclipse.emf.ecore.EObject;
 public class WeaverEditorAPI {
 
 	public static Collection<EObject> findPointcutTargets( Collection<EObject> allElements, EObject pointcut, EObject aspectElement ) {
-		return new Weaver().resolveTargets(allElements, pointcut, aspectElement);
+		return new Weaver().resolveTargets(allElements, pointcut, aspectElement, null);
 	}
 	
 }

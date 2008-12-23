@@ -7,7 +7,7 @@
           <target name="f1" selected="true"/>
         </childRelationships>
         <childRelationships>
-          <target name="f3"/>
+          <target name="f3" selected="true"/>
         </childRelationships>
         <childRelationships>
           <target name="f2"/>
