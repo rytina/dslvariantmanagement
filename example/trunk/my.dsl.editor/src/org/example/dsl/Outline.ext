@@ -8,11 +8,13 @@ extension org::openarchitectureware::util::stdlib::io;
 	
 viewpoints(): {
 	"Features"
+	,"Aspects"
 	};
-
+ 
 viewpointIcon(String vpName) : 
 	switch (vpName) {
 		case "Features": "vp_feature.gif"
+		case "Aspects": "vp_aspect.gif"
 		default: "vp_default.gif"
 	};
 	
@@ -40,4 +42,37 @@ create UIContentNode createRefNode( emf::EObject obj ):
 	setLabel(obj.label()) ->
 	setImage(obj.image()) ->
 	setContext(obj);
+	
+	
+	
+// -------------------------------------------------------------------------
+// Aspects
+
+create UIContentNode outlineTree_Aspects(emf::EObject model) :
+	let aspectElements = model.allLocalElements().select( e | e.eContents.exists(e|Pointcut.isInstance(e)) ):
+		setLabel(model.label()) ->
+		setImage(model.image()) ->
+		setContext(model)->
+		children.addAll( aspectElements.createAspectNode(model) );
+
+create UIContentNode createAspectNode( emf::EObject aspectElement, emf::EObject model ):
+	setLabel(aspectElement.label()) ->
+	setImage(aspectElement.image()) ->
+	setContext(aspectElement)->
+	children.addAll( pointcutTargets(model.allLocalElements(), aspectElement.pointcut(), aspectElement ).createTargetNode() );
+	
+pointcut( emf::EObject aspectElement ): 
+	aspectElement.eContents.selectFirst(e|Pointcut.isInstance(e));	
+	
+create UIContentNode createTargetNode( emf::EObject target ):
+	setLabel(target.label()) ->
+	setImage(target.image()) ->
+	setContext(target);
+
+
+ 
+Collection[emf::EObject] pointcutTargets( Collection[emf::EObject] all, emf::EObject pointcut, emf::EObject aspectElement ):
+	JAVA org.openarchitectureware.var.tailor.model.weaver.WeaverEditorAPI.findPointcutTargets(java.util.Collection, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject );
+	
+	
 	
