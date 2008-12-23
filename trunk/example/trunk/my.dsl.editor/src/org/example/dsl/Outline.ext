@@ -4,15 +4,40 @@ import tree;
 extension org::example::dsl::EditorExtensions;
 extension org::example::dsl::GenOutline reexport;
 
-/*
- * overwrite the extension
- * ''create UIContentNode outlineTree(emf::EObject model)''
- * from org::example::dsl::GenOutline.ext in order to control the construction of the default outline tree
- *
- * overwrite the extension
- * 'List[String] viewpoints()'
- * from org::example::dsl::GenOutline.ext in order to add other viewPoints to your Outline. 
- * For each given name there must be a 'outlineTree_NAME(emf::EObject model)' which is called then.
- * Whitespaces in the name are replaced by '_'
- */
+extension org::openarchitectureware::util::stdlib::io;
+	
+viewpoints(): {
+	"Features"
+	};
 
+viewpointIcon(String vpName) : 
+	switch (vpName) {
+		case "Features": "vp_feature.gif"
+		default: "vp_default.gif"
+	};
+	
+
+// -------------------------------------------------------------------------
+// Features
+
+create UIContentNode outlineTree_Features(emf::EObject model) :
+	let features = model.allLocalElements().typeSelect(FeatureClause).collect(fc|fc.feature).toSet():
+		setLabel(model.label()) ->
+		setImage(model.image()) ->
+		setContext(model)->
+		children.addAll( features.createFeatureNode(model) );
+
+create UIContentNode createFeatureNode( String feature, emf::EObject model ):
+	setLabel(feature) ->
+	setImage("feature.gif") ->
+	setContext(null)->
+	children.addAll( feature.createRefNodes(model) );
+	
+createRefNodes( String feature, emf::EObject model ):
+	model.allLocalElements().typeSelect(FeatureClause).select(fc|fc.feature == feature).collect(fc|fc.eContainer).createRefNode();
+	
+create UIContentNode createRefNode( emf::EObject obj ):
+	setLabel(obj.label()) ->
+	setImage(obj.image()) ->
+	setContext(obj);
+	

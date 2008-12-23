@@ -3,17 +3,55 @@ System:
 	(entities+=Entity)*;
 	
 Entity:
-	"entity" name=ID "{"
+	(pointcut=Pointcut)?
+	"entity" name=ID 
+	(tags=TagsClause)? 
+	(featureClause=FeatureClause)? "{"
 		(attributes+=Attribute)*
 	"}";
 	
 Attribute:
 	name=ID ":" type=ID (featureClause=FeatureClause)?;
+
+// --------------------------------
+// Feature Stuff
 	
 FeatureClause:
 	"feature" feature=ID;
 	
 FeatureModelImport:
 	"featuremodel" uri=STRING;
+
+
+// --------------------------------
+// AO Stuff
+
+TagsClause:
+	"tags" "(" (tags+=Tag)* ")";
+	
+Tag:
+	name=ID;	
+	
+
+Pointcut:
+	"aspect" "{" (matches+=Match)* "}";
+	
+Match:
+	AllMatch | ExactNameMatch | StartsWithNameMatch | EndsWithNameMatch | TagMatch;	
+	
+AllMatch:
+	"*";
+	
+ExactNameMatch:
+	"name" "=" name=ID;
+	
+StartsWithNameMatch:
+	"name" "=" name=ID "*";
+	
+EndsWithNameMatch:
+	"name" "="  "*" name=ID;
+	
+TagMatch:
+	"tag" "=" name=ID;
 
 	
