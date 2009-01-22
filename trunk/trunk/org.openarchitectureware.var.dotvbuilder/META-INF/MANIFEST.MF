@@ -13,3 +13,4 @@ Export-Package: org.openarchitectureware.var.dotvbuilder,
  org.openarchitectureware.var.dotvbuilder.preferences,
  org.openarchitectureware.var.dotvbuilder.properties
 Bundle-Activator: org.openarchitectureware.var.dotvbuilder.Activator
+Bundle-ActivationPolicy: lazy

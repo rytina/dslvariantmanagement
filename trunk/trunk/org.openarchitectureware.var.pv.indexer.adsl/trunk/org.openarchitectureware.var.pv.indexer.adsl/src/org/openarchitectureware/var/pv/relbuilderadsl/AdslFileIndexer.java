@@ -41,9 +41,6 @@ public class AdslFileIndexer implements IIndexer {
 			} catch (IOException ignore) {
 			}
 		}
-		
-		
-		
 	}
 
 	private void parseLine(String l, int lineNo, IFile file, ITargetCache cache) {
