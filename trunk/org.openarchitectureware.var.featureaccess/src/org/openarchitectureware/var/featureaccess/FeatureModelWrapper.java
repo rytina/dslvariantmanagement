@@ -20,7 +20,9 @@ public abstract class FeatureModelWrapper {
 	}
 
 	public boolean isFeatureDefined(String feature) {
-		return findAllFeatureNames().contains(feature);
+		List<String> allFeatures = findAllFeatureNames();
+		if ( allFeatures == null ) return false;
+		return allFeatures.contains(feature);
 	}
 	
 }

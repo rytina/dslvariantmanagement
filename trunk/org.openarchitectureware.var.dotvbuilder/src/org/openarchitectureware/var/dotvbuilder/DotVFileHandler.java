@@ -90,7 +90,7 @@ public class DotVFileHandler {
 	private void addMarkerIfNotDefined(String featureName, IFile file, int line) {
 		if ( featureName != null ) {
 			if ( !isFeatureDefined(file, featureName ) ) {
-				builder.addMarker( file, "Feature '"+featureName+"' referenced in file does not exist in "+featureModelUri, line, IMarker.SEVERITY_ERROR);
+				builder.addMarker( file, "Feature '"+featureName+"' referenced in file does not exist in feature model.", line, IMarker.SEVERITY_ERROR);
 			}
 		}
 	}
@@ -155,7 +155,7 @@ public class DotVFileHandler {
 		if ( p >= 0) {
 			String featureName = fileName.substring(p+1, fileName.indexOf('.',p));
 			if ( !isFeatureDefined(file, featureName) ) {
-				builder.addMarker( file, "Feature '"+featureName+"' referenced in file name does not exist in "+featureModelUri, 0, IMarker.SEVERITY_ERROR);
+				builder.addMarker( file, "Feature '"+featureName+"' referenced in file name does not exist in in feature model.", 0, IMarker.SEVERITY_ERROR);
 			}
 		}
 	}

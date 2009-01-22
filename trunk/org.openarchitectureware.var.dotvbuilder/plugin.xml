@@ -29,18 +29,6 @@
       <import plugin="org.openarchitectureware.var.featureaccess"/>
    </requires>
    <extension
-         point="org.eclipse.ui.startup">
-      <startup
-            class="org.openarchitectureware.var.pv.dotvrelbuilder.Startup">
-      </startup>
-   </extension>
-   <extension
-         point="com.ps.consul.eclipse.core.RelationsAcquires">
-      <acquire
-            class="org.openarchitectureware.var.pv.dotvrelbuilder.acquire.TextfileAcquire">
-      </acquire>
-   </extension>
-   <extension
          id="dotVBuilder"
          name="DotVBuilder Project Builder"
          point="org.eclipse.core.resources.builders">
@@ -68,7 +56,7 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="true"
-            id="org.openarchitectureware.var.pv.dotvrelbuilder.contribution1"
+            id="org.openarchitectureware.var.pv.dotvbuilder.contribution1"
             nameFilter="*"
             objectClass="org.eclipse.core.resources.IProject">
          <action
@@ -108,7 +96,7 @@
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            class="org.openarchitectureware.var.dotvbuilder..properties.DotVPropertyPage"
+            class="org.openarchitectureware.var.dotvbuilder.properties.DotVPropertyPage"
             id="org.openarchitectureware.var.dotvbuilder..properties.samplePropertyPage"
             name="DotV">
          <enabledWhen>
