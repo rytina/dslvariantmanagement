@@ -22,6 +22,8 @@ import org.openarchitectureware.var.dotvbuilder.properties.PropertyConstants;
 
 public class DotVBuilder extends IncrementalProjectBuilder {
 
+	private static final String PLATFORM_RESOURCE = "platform:/resource";
+
 	private DotVFileHandler handler = new DotVFileHandler(this);
 	
 	class DotVResoucreDeltaVisitor implements IResourceDeltaVisitor {
@@ -123,6 +125,9 @@ public class DotVBuilder extends IncrementalProjectBuilder {
 			throws CoreException {
 		try {
 			String featureDataUri = getValue(getProject(), PreferenceConstants.FEATURE_MODEL_URI);
+			if ( featureDataUri.toLowerCase().startsWith(PLATFORM_RESOURCE) ) {
+				featureDataUri = featureDataUri.substring(PLATFORM_RESOURCE.length());
+			}
 			IFile featureDataFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(featureDataUri));
 			handler.refreshFeatureModel(getProject());
 			getProject().accept(new DotVResourceVisitor());
