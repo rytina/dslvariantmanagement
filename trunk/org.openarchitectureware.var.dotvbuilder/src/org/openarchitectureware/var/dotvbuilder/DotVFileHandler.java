@@ -19,6 +19,8 @@ import org.openarchitectureware.var.featureaccess.FeatureModelWrapper;
 
 public class DotVFileHandler {
 
+	public static final String PLATFORM_RESOURCE = "platform:/resource";
+	
 	private DotVBuilder builder;
 	private List<String> featureNames = null;
 	private String featureModelUri;
@@ -45,13 +47,16 @@ public class DotVFileHandler {
 
 	private String getFeatureModelUri(IProject p) {
 		String uri = DotVBuilder.getValue(p, PreferenceConstants.FEATURE_MODEL_URI);
+		if ( uri.toLowerCase().startsWith(PLATFORM_RESOURCE) ) {
+			uri = uri.substring(PLATFORM_RESOURCE.length());
+		}
 		return uri;
 	}
 
 	private FeatureModelWrapper getFeatureModelWrapper(IProject project) {
 		FeatureModelWrapper w = wrappers.get(project);
 		if ( w == null ) {
-			String uri = DotVBuilder.getValue(project, PreferenceConstants.FEATURE_MODEL_URI);
+			String uri = getFeatureModelUri(project);
 			try {
 				w = FeatureAccessFactory.getFeatureModelWrapper(uri);
 				wrappers.put(project, w);
