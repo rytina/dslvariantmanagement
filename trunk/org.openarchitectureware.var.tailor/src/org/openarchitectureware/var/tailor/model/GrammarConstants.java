@@ -2,7 +2,7 @@ package org.openarchitectureware.var.tailor.model;
 
 public class GrammarConstants {
 
-	public static final String FEATURECLAUSE_CLASSNAME = "FeatureClause";
+	public static final String FEATURECLAUSE_CLASSNAME = "Feature";
 	public static final String FEATUREANDLIST_CLASSNAME = "FeatureAndList";
 	public static final String FEATUREORLIST_CLASSNAME = "FeatureOrList";	
 	
