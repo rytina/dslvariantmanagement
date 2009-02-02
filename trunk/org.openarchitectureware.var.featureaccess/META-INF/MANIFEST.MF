@@ -5,6 +5,7 @@ Bundle-SymbolicName: org.openarchitectureware.var.featureaccess;singleton:=true
 Bundle-Version: 1.0.0
 Require-Bundle:  org.openarchitectureware.dependencies
 Export-Package: org.openarchitectureware.var.featureaccess,
+ org.openarchitectureware.var.featureaccess.chk,
  org.openarchitectureware.var.featureaccess.dummy,
  org.openarchitectureware.var.featureaccess.ext,
  org.openarchitectureware.var.featureaccess.pv

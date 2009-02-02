@@ -45,7 +45,6 @@ public class CoderComponent extends BaseComponent {
 		List<File> files = new ArrayList<File>();
 		collect( srcDir, files);
 		Collections.sort(files, new Comparator<File>() {
-			@Override
 			public int compare(File f1, File f2) {
 				String n1 = stripExtension(f1.getName());
 				String n2 = stripExtension(f2.getName());

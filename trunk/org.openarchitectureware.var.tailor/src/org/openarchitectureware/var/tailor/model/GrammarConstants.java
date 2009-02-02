@@ -3,8 +3,10 @@ package org.openarchitectureware.var.tailor.model;
 public class GrammarConstants {
 
 	public static final String FEATURECLAUSE_CLASSNAME = "FeatureClause";
-	public static final String FEATURECLAUSE_FEATUREPROPERTY = "feature";
+	public static final String FEATUREANDLIST_CLASSNAME = "FeatureAndList";
+	public static final String FEATUREORLIST_CLASSNAME = "FeatureOrList";	
 	
+	public static final String FEATURECLAUSE_FEATUREPROPERTY = "feature";
 	
 	public static final String POINTCUT_CLASSNAME = "Pointcut";
 	public static final String MATCH_TAG = "TagMatch";
