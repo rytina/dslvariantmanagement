@@ -4,7 +4,8 @@ public class GrammarConstants {
 
 	public static final String FEATURECLAUSE_CLASSNAME = "Feature";
 	public static final String FEATUREANDLIST_CLASSNAME = "FeatureAndList";
-	public static final String FEATUREORLIST_CLASSNAME = "FeatureOrList";	
+	public static final String FEATUREORLIST_CLASSNAME = "FeatureOrList";
+	public static final String FEATUREEXPRESSION_CLASSNAME = "FeatureExpression";
 	
 	public static final String FEATURECLAUSE_FEATUREPROPERTY = "feature";
 	
