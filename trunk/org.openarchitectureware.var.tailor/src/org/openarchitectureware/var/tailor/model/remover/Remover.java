@@ -24,6 +24,7 @@ public class Remover {
 			EObject featureClause = (EObject)iterator.next();
 
 			//single feature in feature-clause
+			//just a commit test
 			if ( featureClause.eClass().getName().equals(GrammarConstants.FEATURECLAUSE_CLASSNAME) )
 			{
 				String featureName = h.sget( featureClause , GrammarConstants.FEATURECLAUSE_FEATUREPROPERTY );
