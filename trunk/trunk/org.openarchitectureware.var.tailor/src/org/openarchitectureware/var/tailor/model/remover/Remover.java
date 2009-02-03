@@ -14,6 +14,8 @@ import org.openarchitectureware.var.featureaccess.ElementRemovalHelper;
 import org.openarchitectureware.var.tailor.model.GrammarConstants;
 import org.openarchitectureware.xtext.registry.CachingModelLoad;
 
+import adsl.OrExpression;
+
 public class Remover {
 
 	public void remove( EObject architectureModel, ConfigurationModelWrapper fm ) {
@@ -60,6 +62,16 @@ public class Remover {
 					ElementRemovalHelper.removeElementFromBase( owner , architectureModel );
 				}			  
 			}
+			//feature expression 
+      if ( featureClause.eClass().getName().equals(GrammarConstants.FEATUREEXPRESSION_CLASSNAME) ){
+        EStructuralFeature structFeat = featureClause.eClass().getEStructuralFeature("expression");
+        OrExpression orExp = (OrExpression) featureClause.eGet(structFeat);
+        //evaluate expression
+        if( !orExp.evaluate(selectedFeatureNames) ){
+          EObject owner = (EObject)allFeatureClauses.get(featureClause);
+          ElementRemovalHelper.removeElementFromBase( owner , architectureModel );
+        }
+      }
 		}
 	}
 
@@ -76,7 +88,8 @@ public class Remover {
 
 			if (o.eClass().getName().equals(GrammarConstants.FEATUREANDLIST_CLASSNAME)
 					|| o.eClass().getName().equals(GrammarConstants.FEATUREORLIST_CLASSNAME)
-					|| o.eClass().getName().equals(GrammarConstants.FEATURECLAUSE_CLASSNAME)){
+					|| o.eClass().getName().equals(GrammarConstants.FEATURECLAUSE_CLASSNAME)
+					|| o.eClass().getName().equals(GrammarConstants.FEATUREEXPRESSION_CLASSNAME)){
 				result.put( o, o.eContainer() );
 			}
 
