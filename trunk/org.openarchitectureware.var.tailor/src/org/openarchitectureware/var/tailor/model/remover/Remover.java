@@ -1,10 +1,12 @@
 package org.openarchitectureware.var.tailor.model.remover;
 
+import java.security.InvalidParameterException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -14,7 +16,6 @@ import org.openarchitectureware.var.featureaccess.ElementRemovalHelper;
 import org.openarchitectureware.var.tailor.model.GrammarConstants;
 import org.openarchitectureware.xtext.registry.CachingModelLoad;
 
-import adsl.OrExpression;
 
 public class Remover {
 
@@ -65,15 +66,54 @@ public class Remover {
 			//feature expression 
       if ( featureClause.eClass().getName().equals(GrammarConstants.FEATUREEXPRESSION_CLASSNAME) ){
         EStructuralFeature structFeat = featureClause.eClass().getEStructuralFeature("expression");
-        OrExpression orExp = (OrExpression) featureClause.eGet(structFeat);
+
         //evaluate expression
-        if( !orExp.evaluate(selectedFeatureNames) ){
+        if( !this.evaluate((EObject) featureClause.eGet(structFeat), selectedFeatureNames) ){
           EObject owner = (EObject)allFeatureClauses.get(featureClause);
           ElementRemovalHelper.removeElementFromBase( owner , architectureModel );
         }
       }
 		}
 	}
+	
+	private boolean evaluate(EObject exp, List<String> selectedFeatureNames){
+    boolean evalResult;
+    if ( exp.eClass().getName().equals(GrammarConstants.OREXPRESSION_CLASSNAME) ){
+      EList<EObject> andExprList =  exp.eContents();
+      evalResult = false;
+      for (EObject andOperand : andExprList) {
+        evalResult |= evaluate(andOperand, selectedFeatureNames);
+      }
+      return evalResult;
+    }
+    if ( exp.eClass().getName().equals(GrammarConstants.ANDEXPRESSION_CLASSNAME) ){
+      EList<EObject> operandList = exp.eContents();
+      evalResult = true;
+      for (EObject operand : operandList) {
+        evalResult &= evaluate(operand, selectedFeatureNames);
+      }
+      return evalResult;      
+    }
+    if ( exp.eClass().getName().equals(GrammarConstants.OPERANDEXPRESSION_CLASSNAME) ){
+      evalResult = evaluate(exp.eContents().get(0), selectedFeatureNames);
+      
+      Boolean isNot = (Boolean) exp.eGet( exp.eClass().getEStructuralFeature("isNot") );
+      if( isNot ) return !evalResult; 
+      else return evalResult;      
+    }
+    if ( exp.eClass().getName().equals(GrammarConstants.ATOMEXPRESSION_CLASSNAME) ){
+      if( exp.eContents().size() > 0 ){ // node has or-expression, and is therefore not really atomic
+        evalResult = evaluate(exp.eContents().get(0), selectedFeatureNames);
+      } else { // node is really atomic
+        String featureName = (String) exp.eGet( exp.eClass().getEStructuralFeature("feature") );
+        evalResult = selectedFeatureNames.contains(featureName);
+      }
+      return evalResult;
+    }
+    throw new InvalidParameterException("no adequate rule found for EObject '" 
+      +exp.eClass().getName()+ "'");
+	}
+	
 
 	private Map<EObject, EObject> findAllFeatureClausesAndTheirOwners(EObject architectureModel) {
 		DynamicEcoreHelper h = new DynamicEcoreHelper(architectureModel.eClass().getEPackage());
