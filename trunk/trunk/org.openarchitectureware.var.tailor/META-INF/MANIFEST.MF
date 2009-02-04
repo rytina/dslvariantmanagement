@@ -11,7 +11,4 @@ Require-Bundle: org.openarchitectureware.dependencies,
 Export-Package: org.openarchitectureware.var.tailor.code,
  org.openarchitectureware.var.tailor.model,
  org.openarchitectureware.var.tailor.model.remover,
- org.openarchitectureware.var.tailor.model.weaver,
- adsl,
- adsl.impl,
- adsl.util
+ org.openarchitectureware.var.tailor.model.weaver
