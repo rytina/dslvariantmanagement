@@ -7,7 +7,6 @@
 	<bean class="org.eclipse.mwe.emf.StandaloneSetup">
 		<platformUri value=".."/>
 		<registerEcoreFile value="${dslPackage}"/>
-		<registerGeneratedEPackage value="adsl.AdslPackage"/>
 		<registerGeneratedEPackage value="com.ps.consul.eclipse.ecore.pvmodel.PvmodelPackage" />
 		<registerGeneratedEPackage value="com.ps.consul.eclipse.ecore.pvmeta.PvmetaPackage" />
 	</bean>
