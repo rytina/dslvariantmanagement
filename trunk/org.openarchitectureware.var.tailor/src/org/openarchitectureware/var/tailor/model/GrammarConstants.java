@@ -6,6 +6,11 @@ public class GrammarConstants {
 	public static final String FEATUREANDLIST_CLASSNAME = "FeatureAndList";
 	public static final String FEATUREORLIST_CLASSNAME = "FeatureOrList";
 	public static final String FEATUREEXPRESSION_CLASSNAME = "FeatureExpression";
+
+	public static final String OREXPRESSION_CLASSNAME = "OrExpression";
+	public static final String ANDEXPRESSION_CLASSNAME = "AndExpression";
+	public static final String OPERANDEXPRESSION_CLASSNAME = "Operand";
+	public static final String ATOMEXPRESSION_CLASSNAME = "Atom";
 	
 	public static final String FEATURECLAUSE_FEATUREPROPERTY = "feature";
 	
