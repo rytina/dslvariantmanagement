@@ -10,8 +10,6 @@ public abstract class ConfigurationModelWrapper {
 		configuration = data;
 	}
 	
-	
-	
 	public abstract List<String> findSelectedFeatureNames();
 	
 }
