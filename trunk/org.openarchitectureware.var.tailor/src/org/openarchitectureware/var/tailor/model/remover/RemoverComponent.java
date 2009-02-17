@@ -5,6 +5,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.openarchitectureware.var.featureaccess.ConfigurationModelWrapper;
 import org.openarchitectureware.var.featureaccess.FeatureDependentComponent;
 import org.openarchitectureware.var.featureaccess.FeatureModelWrapper;
+import org.openarchitectureware.var.featureaccess.ext.FeatureSupport;
 import org.openarchitectureware.workflow.WorkflowContext;
 import org.openarchitectureware.workflow.issues.Issues;
 import org.openarchitectureware.workflow.monitor.ProgressMonitor;
@@ -36,6 +37,7 @@ public class RemoverComponent extends FeatureDependentComponent {
 			return;
 		}
 		ConfigurationModelWrapper configurationWrapper = getConfigurationModel(ctx, issues);
+		FeatureSupport.setConfigurationModelWrapper(configurationWrapper);
 		if ( configurationWrapper == null )  {
 			return;
 		}
