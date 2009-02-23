@@ -22,11 +22,7 @@ public class FeatureSupport {
 	private static final String PLATFORM_RESOURCE = "platform:/resource/";
 	private static FeatureModelWrapper featureModelWrapper;
 	private static ConfigurationModelWrapper configModelWrapper;
-	private static DynamicEcoreHelper dynEHelper;
 	
-	public static void setDynamicEcoreHelper( DynamicEcoreHelper h ) {
-		dynEHelper = h;
-	}
 
 	public static List getAllFeatures(String featureModelUri) {
 		if ( featureModelUri.toLowerCase().startsWith(PLATFORM_RESOURCE)) {
@@ -47,12 +43,12 @@ public class FeatureSupport {
 	}
 	
 	public static boolean isFeatureSelected( String featureName ) {
-		if ( configModelWrapper == null ) throw new WorkflowInterruptedException("no configurationModelSlot for the RemoverComponent defined!");
+		if ( configModelWrapper == null ) throw new WorkflowInterruptedException("no configModelWrapper defined!");
 		return configModelWrapper.findSelectedFeatureNames().contains(featureName);
 	}
 	
 	public static boolean isFeatureClauseTrue(EObject featureClause){
-
+		DynamicEcoreHelper dynEHelper  = new DynamicEcoreHelper(featureClause);
 		//single feature in feature-clause
 		if ( featureClause.eClass().getName().equals(GrammarConstants.FEATURECLAUSE_CLASSNAME) )
 		{	
