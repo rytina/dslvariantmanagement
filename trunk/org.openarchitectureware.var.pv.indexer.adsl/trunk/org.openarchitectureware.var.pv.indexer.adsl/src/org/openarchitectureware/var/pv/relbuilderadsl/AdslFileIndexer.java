@@ -16,9 +16,11 @@ import com.ps.consul.eclipse.relationsbuilder.ITargetCache;
 
 public class AdslFileIndexer implements IIndexer {
  
-	public static final String FEATURECONSTANT = "feature";
-	
-	@Override
+	public static final String FEATURECONSTANT_SINGLE =	 "feature";
+	public static final String FEATURECONSTANT_ANDLIST = "featureAndList";
+	public static final String FEATURECONSTANT_ORLIST =	 "featureOrList";
+	public static final String FEATURECONSTANT_EXPR =    "featureExp";
+
 	public void scan(IFile file, ITargetCache cache) throws CoreException {
 		InputStream i = null;
 		try {
@@ -44,17 +46,24 @@ public class AdslFileIndexer implements IIndexer {
 	}
 
 	private void parseLine(String l, int lineNo, IFile file, ITargetCache cache) {
-		StringTokenizer st = new StringTokenizer(l, " \t;");
+		StringTokenizer st = new StringTokenizer( cutExprKeywords(l), " \t;(),");
 		while (st.hasMoreElements()) {
 			String token = (String) st.nextToken();
-			if ( token.equals(FEATURECONSTANT)) {
-				if ( st.hasMoreTokens() ) {
+			if ( token.equals(FEATURECONSTANT_SINGLE) || token.equals(FEATURECONSTANT_ANDLIST) 
+				 || token.equals(FEATURECONSTANT_ORLIST) || token.equals(FEATURECONSTANT_EXPR) ) 
+			{
+				while ( st.hasMoreTokens() ) {
 					String featureName = st.nextToken();
 					cache.add(featureName, file, lineNo);
 				}
 			}
 		}
 		
+	}
+
+	private String cutExprKeywords(String l) {
+		return l.replaceAll(" and ", " ").replaceAll(" or ", " ").replaceAll(" not ", " ")
+		.replaceAll(" retain ", " ");
 	}
 
 	
