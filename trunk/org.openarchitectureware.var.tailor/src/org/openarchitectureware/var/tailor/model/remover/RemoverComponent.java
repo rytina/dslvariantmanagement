@@ -43,8 +43,6 @@ public class RemoverComponent extends FeatureDependentComponent {
 		ConfigurationModelWrapper configurationWrapper = getConfigurationModel(ctx, issues);
 		if ( configurationWrapper == null ) throw new WorkflowInterruptedException("no configurationWrapper defined!");
 		FeatureSupport.setConfigurationModelWrapper(configurationWrapper);
-		DynamicEcoreHelper h = new DynamicEcoreHelper(architectureModel.eClass().getEPackage());
-		FeatureSupport.setDynamicEcoreHelper(h);
 
 		Remover r = new Remover();
 		r.remove( architectureModel, configurationWrapper );
