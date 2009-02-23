@@ -8,11 +8,11 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.openarchitectureware.util.stdlib.DynamicEcoreHelper;
 import org.openarchitectureware.var.featureaccess.ConfigurationModelWrapper;
 import org.openarchitectureware.var.featureaccess.ElementRemovalHelper;
+import org.openarchitectureware.var.featureaccess.ext.FeatureSupport;
 import org.openarchitectureware.var.tailor.model.GrammarConstants;
 import org.openarchitectureware.xtext.registry.CachingModelLoad;
 
@@ -25,64 +25,24 @@ public class Remover {
 		Map<EObject, EObject> allFeatureClauses = findAllFeatureClausesAndTheirOwners(architectureModel);
 		for (Iterator iterator  = allFeatureClauses.keySet().iterator(); iterator.hasNext();) {
 			EObject featureClause = (EObject)iterator.next();
-
-			//single feature in feature-clause
-			if ( featureClause.eClass().getName().equals(GrammarConstants.FEATURECLAUSE_CLASSNAME) )
+			//don't remove retained features
+			if( (Boolean) h.get( featureClause , "retained" ) ) continue;
+			//remove owner of FeatureClause, if it evaluates to false
+			if ( ! FeatureSupport.isFeatureClauseTrue( featureClause ) )
 			{
-				String featureName = h.sget( featureClause , GrammarConstants.FEATURECLAUSE_FEATUREPROPERTY );
-				if ( !selectedFeatureNames.contains(featureName) ) {
-					EObject owner = (EObject)allFeatureClauses.get(featureClause);
-					ElementRemovalHelper.removeElementFromBase( owner , architectureModel );
-				}
+				EObject owner = (EObject)allFeatureClauses.get(featureClause);
+				ElementRemovalHelper.removeElementFromBase( owner , architectureModel );	
 			}
-
-			//and-list in feature clause
-			if ( featureClause.eClass().getName().equals(GrammarConstants.FEATUREANDLIST_CLASSNAME) ){
-				EStructuralFeature structFeat = featureClause.eClass().getEStructuralFeature("featureList");
-				List<String> andList = (List<String>) featureClause.eGet(structFeat);
-				//check if all features in list are selected
-				if( !selectedFeatureNames.containsAll(andList) ){
-					EObject owner = (EObject)allFeatureClauses.get(featureClause);
-					ElementRemovalHelper.removeElementFromBase( owner , architectureModel );
-				}
-			}
-			//or-list in feature clause
-			if( featureClause.eClass().getName().equals(GrammarConstants.FEATUREORLIST_CLASSNAME) ){
-				EStructuralFeature structFeat = featureClause.eClass().getEStructuralFeature("featureList");
-				List<String> orList = (List<String>) featureClause.eGet(structFeat);
-				boolean oneSelected = false;
-				//check if one feature in or-list is selected
-				for (String featureName : orList) {
-					if(selectedFeatureNames.contains(featureName)){
-						oneSelected = true;
-						break;
-					}
-				}
-				if( !oneSelected ){
-					EObject owner = (EObject)allFeatureClauses.get(featureClause);
-					ElementRemovalHelper.removeElementFromBase( owner , architectureModel );
-				}			  
-			}
-			//feature expression 
-      if ( featureClause.eClass().getName().equals(GrammarConstants.FEATUREEXPRESSION_CLASSNAME) ){
-        EStructuralFeature structFeat = featureClause.eClass().getEStructuralFeature("expression");
-
-        //evaluate expression
-        if( !this.evaluate((EObject) featureClause.eGet(structFeat), selectedFeatureNames) ){
-          EObject owner = (EObject)allFeatureClauses.get(featureClause);
-          ElementRemovalHelper.removeElementFromBase( owner , architectureModel );
-        }
-      }
 		}
 	}
 	
-	private boolean evaluate(EObject exp, List<String> selectedFeatureNames){
+	private boolean evaluateExpr(EObject exp, List<String> selectedFeatureNames){
     boolean evalResult;
     if ( exp.eClass().getName().equals(GrammarConstants.OREXPRESSION_CLASSNAME) ){
       EList<EObject> andExprList =  exp.eContents();
       evalResult = false;
       for (EObject andOperand : andExprList) {
-        evalResult |= evaluate(andOperand, selectedFeatureNames);
+        evalResult |= evaluateExpr(andOperand, selectedFeatureNames);
       }
       return evalResult;
     }
@@ -90,12 +50,12 @@ public class Remover {
       EList<EObject> operandList = exp.eContents();
       evalResult = true;
       for (EObject operand : operandList) {
-        evalResult &= evaluate(operand, selectedFeatureNames);
+        evalResult &= evaluateExpr(operand, selectedFeatureNames);
       }
       return evalResult;      
     }
     if ( exp.eClass().getName().equals(GrammarConstants.OPERANDEXPRESSION_CLASSNAME) ){
-      evalResult = evaluate(exp.eContents().get(0), selectedFeatureNames);
+      evalResult = evaluateExpr(exp.eContents().get(0), selectedFeatureNames);
       
       Boolean isNot = (Boolean) exp.eGet( exp.eClass().getEStructuralFeature("isNot") );
       if( isNot ) return !evalResult; 
@@ -103,7 +63,7 @@ public class Remover {
     }
     if ( exp.eClass().getName().equals(GrammarConstants.ATOMEXPRESSION_CLASSNAME) ){
       if( exp.eContents().size() > 0 ){ // node has or-expression, and is therefore not really atomic
-        evalResult = evaluate(exp.eContents().get(0), selectedFeatureNames);
+        evalResult = evaluateExpr(exp.eContents().get(0), selectedFeatureNames);
       } else { // node is really atomic
         String featureName = (String) exp.eGet( exp.eClass().getEStructuralFeature("feature") );
         evalResult = selectedFeatureNames.contains(featureName);
