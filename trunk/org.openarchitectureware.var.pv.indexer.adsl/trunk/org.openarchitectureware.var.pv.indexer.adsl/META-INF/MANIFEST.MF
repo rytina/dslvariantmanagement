@@ -9,4 +9,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources;bundle-version="3.4.0",
  com.ps.consul.eclipse.relationsbuilder;bundle-version="3.0.2"
 Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.5
 Export-Package: org.openarchitectureware.var.pv.relbuilderadsl
