@@ -20,7 +20,6 @@ import com.ps.consul.eclipse.relationsbuilder.ITargetCache;
 
 public class DotVFileIndexer implements IIndexer {
  
-	@Override
 	public void scan(IFile file, ITargetCache cache) throws CoreException {
 		InputStream i = null;
 		try {
