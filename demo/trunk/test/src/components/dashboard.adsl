@@ -1,0 +1,14 @@
+import 'components/lib.adsl'  
+import 'components/aodb.adsl'
+ 
+system demosys { 
+	
+  	system dashboard { 
+  		using demosys.aodb;
+
+  		uicomponent Anzeiger {
+  			requires flightInfo: IFlightInformationServices;
+  		}
+  	}
+
+}

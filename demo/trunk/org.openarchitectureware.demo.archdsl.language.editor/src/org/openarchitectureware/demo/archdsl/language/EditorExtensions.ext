@@ -1,0 +1,45 @@
+import adsl;
+
+extension org::openarchitectureware::demo::archdsl::language::Extensions reexport;
+extension org::openarchitectureware::demo::archdsl::language::GenEditorExtensions reexport;
+
+label( Attribute this ): name+": "+
+	(CollectionTypeRef.isInstance(typeref) ? "collection("+typeref.type.name+")" : typeref.type.name);
+	
+image( emf::EObject this ):
+	metaType.simpleName().toLowerCase()+".gif"; 
+
+simpleName( oaw::Type this ):
+	name.split(":").get(2);
+ 
+label( Using this ): system;
+
+label( DataTypeRef this ): null;
+
+label( Port this ): name+": "+interface.name;
+
+label( MessageParameter this ): name+": "+
+	(CollectionTypeRef.isInstance(typeref) ? "collection("+typeref.type.name+")" : typeref.type.name);
+  
+label( Instance this ): name+": "+type.name; 
+label( Connector this ): source.ipp() + " -> " + target.ipp();
+ipp( InstancePortPair this ): instance.name+":"+port.name; 
+label( InstancePortPair this ): null;
+
+ 
+label( ConfigurationParameter this ): null;
+
+label( ConfigurationParameter this ): null;
+
+label( ConfigurationParameterSetting this ): null;
+	
+label( ComponentConfiguration this ): "config";	
+
+label( InstanceConfiguration this ): "config";
+
+
+
+
+
+	
+	

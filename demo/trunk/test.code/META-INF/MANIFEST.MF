@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Code Plug-in
+Bundle-SymbolicName: test.code
+Bundle-Version: 1.0.0
+Bundle-Activator: net.ample.tests.code.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ net.ample.tests,
+ org.openarchitectureware.dependencies,
+ org.openarchitectureware.demo.archdsl.java.platform,
+ org.openarchitectureware.demo.archdsl.java.apigenerator,
+ org.openarchitectureware.demo.uml;bundle-version="1.0.0"
+Eclipse-LazyStart: true

@@ -1,0 +1,168 @@
+import adsl;
+import codeassist;
+
+extension org::openarchitectureware::util::stdlib::io;
+extension org::openarchitectureware::demo::archdsl::language::Extensions;
+extension org::openarchitectureware::demo::archdsl::language::EditorExtensions;
+extension org::openarchitectureware::demo::archdsl::language::GenContentAssist reexport;
+  
+extension org::openarchitectureware::util::stdlib::io;
+ 
+// candidates are all systems, globally, expect the 
+// one we're in
+List[Proposal] completeUsing_system(emf::EObject ctx, String prefix) : 
+	ctx.allNonEmptySystems().remove(ctx.eContainer).collect(n|newProposal(n.qualifiedName(),n.id(),n.image()));
+	
+// delegate to default completion of typeref 
+List[Proposal] completeAttribute_typeref(emf::EObject ctx, String prefix) :
+	completeTypeRef( ctx, prefix );
+	
+// "new wizard" for the attributes slot
+List[Proposal] completeComplexType_attributes(emf::EObject ctx, String prefix) :
+	{newProposal("attribute","unnamed: Unnamed","attribute.gif")};
+	
+// "new wizard" for the using slot
+List[Proposal] completeSystem_usings(emf::EObject ctx, String prefix) :
+	{newProposal("use another system","using Unnamed","using.gif")};
+
+// "new wizard" for the interfaces slot
+List[Proposal] completeSystem_interfaces(emf::EObject ctx, String prefix) :
+	{newProposal("interface","interface Unnamed {}","interface.gif")};
+
+// "new wizard" for the component slot
+List[Proposal] completeSystem_components(emf::EObject ctx, String prefix) :
+	{
+		newProposal("UI Component","uicomponent Unnamed {}","uicomponent.gif"),
+		newProposal("Persistence Component","persistencecomponent Unnamed {}","persistencecomponent.gif"),
+		newProposal("Logic Component","blcomponent Unnamed {}","blcomponent.gif")
+	};
+		
+
+// "new wizard" for the data type slot
+List[Proposal] completeSystem_datatypes(emf::EObject ctx, String prefix) :
+	{newProposal("primitive type","primitive Unnamed","primitivetype.gif"),
+	 newProposal("complex type","struct Unnamed {}","complextype.gif")};
+	
+// "new wizard" for the subSystems slot
+List[Proposal] completeSystem_subSystems(emf::EObject ctx, String prefix) :
+	{newProposal("system","system Unnamed {}","namespace.gif")};
+	
+// interface candidates are all those that are visible from the Port's owner
+List[Proposal] completeProvidedPort_interface(emf::EObject ctx, String prefix) :
+	visibleInstancesOfType( ctx, Interface, prefix ).defaultProposal();	
+	 
+// interface candidates are all those that are visible from the Port's owner
+List[Proposal] completeRequiredPort_interface(emf::EObject ctx, String prefix) :
+	visibleInstancesOfType( ctx, Interface, prefix ).defaultProposal();	
+
+// "new wizard" for the ports of a component	
+List[Proposal] completeComponent_ports(emf::EObject ctx, String prefix) :
+	{
+	 newProposal("provided port","provides unnamed: IUnknown","providedport.gif"),
+	 newProposal("required port","requires unnamed: IUnknown","requiredport.gif") 
+	 
+	 ,newProposal("provided port (mandatory)","provides mandatory unnamed: IUnknown","providedport.gif")
+	 ,newProposal("required port (mandatory)","requires mandatory unnamed: IUnknown","requiredport.gif") 
+	 
+	 ,newProposal("provided port (to many)","provides toMany unnamed: IUnknown","providedport.gif")
+	 ,newProposal("required port (to many)","requires toMany unnamed: IUnknown","requiredport.gif") 
+	 };
+	
+// whenever a data type is referenced, use all visible instances
+// of DataType as candidates
+List[Proposal] completeDataTypeRef_type(emf::EObject ctx, String prefix) :
+	visibleInstancesOfType( ctx, DataType, prefix ).defaultProposal();	
+
+// whenever a primitive data type is referenced, use all visible instances
+// of PrimitiveDataType as candidates 
+List[Proposal] completePrimitiveTypeRef_type(emf::EObject ctx, String prefix) :
+	visibleInstancesOfType( ctx, PrimitiveType, prefix ).defaultProposal();	
+
+// there's also a "new wizard" for collection types
+List[Proposal] completeTypeRef( emf::EObject ctx, String prefix ):	
+	visibleInstancesOfType(ctx, DataType, prefix).collect(x|newProposal(x.label(),x.id(),x.image())).
+	add( newProposal("collection...","collection ","collection.gif" ) );	
+	
+// "new wizard" for the interactions
+List[Proposal] completeInterface_interactions(emf::EObject ctx, String prefix) :
+	{ newProposal("oneway...","oneway unnamed : ( unnamed : Unnamed )","onewayinteraction.gif") ,
+	  newProposal("request/reply...","rr unnamed : request=( unnamed : Unnamed ) reply=( unnamed : Unnamed )","requestreplyinteraction.gif") 
+	};
+	
+// "new wizard" for the oneway interaction
+List[Proposal] completeOnewayInteraction_message(emf::EObject ctx, String prefix) :
+	{newProposal("message","( x: Unnamed )","message.gif")};
+
+// "new wizard" for the request/reply interaction requests
+List[Proposal] completeRequestReplyInteraction_reply(emf::EObject ctx, String prefix) :
+	{newProposal("message","( x: Unnamed )","message.gif")};
+	
+// "new wizard" for the request/reply interaction replies
+List[Proposal] completeRequestReplyInteraction_request(emf::EObject ctx, String prefix) :
+	{newProposal("message","( x: Unnamed )","message.gif")};
+	
+// delegate the type to the typeref completion proposal
+List[Proposal] completeMessageParameter_typeref(emf::EObject ctx, String prefix) :
+	completeTypeRef( ctx, prefix );	
+
+// use the generic visibleInstancesOfType function to find all
+// the instances of the oaw::Type passed in as the argument
+Collection[emf::EObject] visibleInstancesOfType( emf::EObject ctx, oaw::Type type, String prefix ):
+	prefix != null 
+		? visibleInstancesOfType( ctx, type ).select(e| e.hasName() && e.localName().startsWith(prefix))
+		: visibleInstancesOfType( ctx, type ).select(e| e.hasName());
+	
+// a default proposal uses the local name, 
+// the system and the label() of the element
+Proposal defaultProposal(emf::EObject element):
+	newProposal(element.localName()+" -- "+element.system().qualifiedName(),element.id(),element.image());
+
+// default sorting - ignore
+List[Proposal] sortProposals(List[Proposal] proposalsToSort):
+	 if proposalsToSort.forAll(p|p.isKeywordProposal()) 
+	 then proposalsToSort.sortBy(p|p.label)
+	 else proposalsToSort.reject(p|p.isKeywordProposal()).sortBy(p|p.label);
+
+	
+// --------------------------------------------------------------------
+// Composition
+	
+
+// "new wizard" for compositions	
+List[Proposal] completeFile_compositions(emf::EObject ctx, String prefix) :
+	{newProposal("composition","composition Unnamed {}","composition.gif")};
+
+// "new wizard" for instances	
+List[Proposal] completeComposition_instances(emf::EObject ctx, String prefix) :
+	newProposal("instance","instance Unnamed: UnknownType","instance.gif");
+
+// "new wizard" for connectors	
+List[Proposal] completeComposition_connectors(emf::EObject ctx, String prefix) :
+	newProposal("simple connector","connect","simpledirectconnector.gif");
+	
+// proposals for the instance part of an inszance port pair
+List[Proposal] completeInstancePortPair_instance(emf::EObject ctx, String prefix) :
+	visibleInstancesOfType( ctx, Instance, prefix ).defaultProposal();	
+
+// proposals for the port part of an inszance port pair
+List[Proposal] completeInstancePortPair_port(emf::EObject ctx, String prefix) :
+	((InstancePortPair)ctx).instance.type.ports.defaultProposal();	
+
+
+
+List[Proposal] completeComponent_configuration(emf::EObject ctx, String prefix) :
+	{newProposal("configuration","config {}","componentconfiguration.gif")};
+
+List[Proposal] completeComponentConfiguration_params(emf::EObject ctx, String prefix) :
+	 {}
+	.add( newProposal("instancedef parameter","instancedef unnamed: text","configurationparameter.gif") )
+	.add( newProposal("deployment parameter","deployment unnamed: text","configurationparameter.gif") )
+	.add( newProposal("startup parameter","startup unnamed: text","configurationparameter.gif") );
+	
+List[Proposal] completeInstanceConfiguration_settings(emf::EObject ctx, String prefix) :
+	((Instance)ctx.eContainer).type.configuration.params.select(p|p.valueTime == ValueTimeEnum::INSTANCEDEFINITION).collect(p|newProposal(p.name+": "+p.type.literalString()+" = ",p.name,p.image()));
+
+List[Proposal] completeSimpleInstance_configuration(emf::EObject ctx, String prefix) :
+	{newProposal("configuration","config {}","componentconfiguration.gif")};
+ 
+

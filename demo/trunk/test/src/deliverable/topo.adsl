@@ -1,0 +1,22 @@
+import 'deliverable/tams.adsl'
+
+topology UnserRechenzentrum {
+
+	appserver A1 clustered
+	dbserver DB1
+
+}
+
+deployment D1  
+	deliverablesystem tams
+	topology UnserRechenzentrum 
+{
+
+	map A1 {
+		instance a1
+		instance a2
+	}
+	
+
+
+}

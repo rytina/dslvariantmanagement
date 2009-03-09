@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tests Plug-in
+Bundle-SymbolicName: net.ample.tests
+Bundle-Version: 1.0.0
+Bundle-Activator: net.ample.tests.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.openarchitectureware.dependencies,
+ org.openarchitectureware.demo.archdsl.language;bundle-version="1.0.0",
+ org.openarchitectureware.demo.archdsl.language.editor;bundle-version="1.0.0"
+Eclipse-LazyStart: true
