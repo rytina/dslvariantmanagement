@@ -279,8 +279,6 @@ Enum ValueTimeEnum:
 	;
 
 	
-
-	
 // a tokenizer pattern for dot-separated names
 String qualID: ID ("." ID)*;
 	
