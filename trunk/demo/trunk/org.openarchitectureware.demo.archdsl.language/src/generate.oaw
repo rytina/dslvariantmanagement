@@ -2,16 +2,9 @@
 
 	<property file='generate.properties' />
 
-	<bean class="org.eclipse.mwe.emf.StandaloneSetup">
-		<platformUri value=".." />
-	</bean>
-
 	<component file='org/openarchitectureware/xtext/Generator.oaw'
-		inheritAll='true' />
+		inheritAll='true'  />
 		
-	<cartridge file="visualizeMetamodel.oaw" 	
-		targetDir="dot"
-		modelFile="platform:/resource/org.openarchitectureware.demo.archdsl.language/src-gen/org/openarchitectureware/demo/archdsl/language/adsl.ecore"
-	/>
+
 
 </workflow>
