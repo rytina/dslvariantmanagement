@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pvmeta:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pvmeta="http://pure-variants.com/pvmeta">
+  <root name="Variant: orgopenarchitecturewaredemofmVariant" selected="true">
+    <childRelationships>
+      <target name="orgopenarchitecturewaredemofmFeatures" selected="true">
+        <childRelationships>
+          <target name="DemoFeature" selected="true">
+            <childRelationships>
+              <target name="f1"/>
+            </childRelationships>
+            <childRelationships>
+              <target name="f2" selected="true"/>
+            </childRelationships>
+            <childRelationships>
+              <target name="f3"/>
+            </childRelationships>
+            <childRelationships>
+              <target name="f4"/>
+            </childRelationships>
+          </target>
+        </childRelationships>
+      </target>
+    </childRelationships>
+  </root>
+</pvmeta:Model>

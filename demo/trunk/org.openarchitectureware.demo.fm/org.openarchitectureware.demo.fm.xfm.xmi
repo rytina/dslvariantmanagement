@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="ASCII"?>
+<pvmodel:ConsulModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pvmodel="http://pure-variants.com/pvmodel" iD="ix3_C7ZUoa3l26lya" version="1.5" type="ps:fm" rootID="iCloz8OBP0ICYBDos">
+  <element iD="iCloz8OBP0ICYBDos" name="orgopenarchitecturewaredemofmFeatures" type="ps:feature" class="ps:feature" default="on">
+    <relations iD="iJ2oTG416EfLk9b8p" class="ps:children">
+      <relation iD="iMXxdwILmy8geKJ9w" restrictionID="" name="" type="ps:optional" range="[0,n]">
+        <target iD="iYJZVmQ-JNxmpBy1C" restrictionID="" content="./iq6OAVLL9zWfIf6HQ"/>
+      </relation>
+    </relations>
+    <properties iD="iuGydde41eJhILD4v" restrictionID="" name="ps:Source" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="idGtrRBMzZoL73CvH" restrictionID="" type="ps:string" content="Andy"/>
+    </properties>
+    <properties iD="iye37cj0nmsaQcaF2" restrictionID="" name="ps:Created" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="i_znI5RBSQxSazgwt" restrictionID="" type="ps:datetime" content="2009-03-09T15:24:11.968Z"/>
+    </properties>
+    <properties iD="irA_RiV3MEgQAMpvq" restrictionID="" name="ps:ChangedBy" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="iTg02zpR2Z_G5lmKg" restrictionID="" type="ps:string" content="Andy"/>
+    </properties>
+    <properties iD="i7P8R1KAJ03DlYNRY" restrictionID="" name="ps:Changed" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="i3EWmUm6B99L2ju6-" restrictionID="" type="ps:datetime" content="2009-03-09T15:26:20.078Z"/>
+    </properties>
+  </element>
+  <element iD="iq6OAVLL9zWfIf6HQ" name="DemoFeature" type="ps:feature" class="ps:feature" default="">
+    <relations iD="iDwjlHwHn42tnvdlS" class="ps:parents">
+      <relation iD="iCYAZYinIl9_quSDC" restrictionID="" name="" type="ps:parent" range="">
+        <target iD="i3WkKJYFN-vDJLthT" restrictionID="" content="./iCloz8OBP0ICYBDos"/>
+      </relation>
+    </relations>
+    <relations iD="iFTtrQyQIePkhr2R9" class="ps:children">
+      <relation iD="iaMUWw3rolQ-lTmBe" restrictionID="" name="" type="ps:alternative" range="1">
+        <target iD="i4cBPcthzyUtMaUV9" restrictionID="" content="./ifjsLKMsl3cRkPd2s"/>
+        <target iD="iOej__SFB37J0zfJs" restrictionID="" content="./iGfOjQrJjP-pApV68"/>
+        <target iD="iwbAqNHe91hvO-R2B" restrictionID="" content="./iCRqqoxZfisJX5oXs"/>
+        <target iD="idYh3rAFEk0GB5iDv" restrictionID="" content="./i-KTeAnlaJy4mvulR"/>
+      </relation>
+    </relations>
+    <properties iD="iLb8UpwDPBrESbDFG" restrictionID="" name="ps:Source" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="iJ7jtN73IMq-lw3VF" restrictionID="" type="ps:string" content="Andy"/>
+    </properties>
+    <properties iD="ixwswGVgYqUZUG0LZ" restrictionID="" name="ps:Created" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="iKs0VakPCbB6gfNI6" restrictionID="" type="ps:datetime" content="2009-03-09T15:26:20.062Z"/>
+    </properties>
+    <properties iD="iY_HLVkVqZ3uDjKZY" restrictionID="" name="ps:ChangedBy" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="iHg0ekii9DclwY9Bc" restrictionID="" type="ps:string" content="Andy"/>
+    </properties>
+    <properties iD="infp9JFVTMAdLffsN" restrictionID="" name="ps:Changed" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="i0CvUxcdRyCYPJOxS" restrictionID="" type="ps:datetime" content="2009-03-09T15:27:15.218Z"/>
+    </properties>
+  </element>
+  <element iD="ifjsLKMsl3cRkPd2s" name="f1" type="ps:feature" class="ps:feature" default="">
+    <relations iD="idJWkQ8WkOg02UGTF" class="ps:parents">
+      <relation iD="iVOOMxslM6hfN8ZtP" restrictionID="" name="" type="ps:parent" range="">
+        <target iD="i_wG-FjHUw1XJt8mt" restrictionID="" content="./iq6OAVLL9zWfIf6HQ"/>
+      </relation>
+    </relations>
+    <properties iD="ijUQWgWPwv51dm-Ts" restrictionID="" name="ps:Source" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="i9AhhXlLdWkOYwgta" restrictionID="" type="ps:string" content="Andy"/>
+    </properties>
+    <properties iD="id_5pPR2HJ0SM7wQo" restrictionID="" name="ps:Created" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="ixNOzPOav0MBsm87w" restrictionID="" type="ps:datetime" content="2009-03-09T15:26:46.265Z"/>
+    </properties>
+    <properties iD="iL8U6gScGr_eVHeyh" restrictionID="" name="ps:ChangedBy" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="iu5_5IgIA4JCs6boe" restrictionID="" type="ps:string" content="Andy"/>
+    </properties>
+    <properties iD="ix6QUl9Z69ZqSe49Q" restrictionID="" name="ps:Changed" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="ishqu9OTB1uKuTMPN" restrictionID="" type="ps:datetime" content="2009-03-09T15:26:46.265Z"/>
+    </properties>
+    <vName iD="iABfmPModk9bULc81" restrictionID="" mimeType="text/plain" lang="" encoding="utf-8" content="f1"/>
+  </element>
+  <element iD="iGfOjQrJjP-pApV68" name="f2" type="ps:feature" class="ps:feature" default="off">
+    <relations iD="iI8Mocf7fqogbQqN2" class="ps:parents">
+      <relation iD="iV4GblVIKC2KodQ7v" restrictionID="" name="" type="ps:parent" range="">
+        <target iD="i2z4xGYuUJoVB6tJl" restrictionID="" content="./iq6OAVLL9zWfIf6HQ"/>
+      </relation>
+    </relations>
+    <properties iD="i7oaoPKhLL1r69uiB" restrictionID="" name="ps:Source" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="i8gNM5uw4rR6C5cb8" restrictionID="" type="ps:string" content="Andy"/>
+    </properties>
+    <properties iD="ituf0uamdVunwVZmE" restrictionID="" name="ps:Created" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="iYDA4Pn2Shz3mmbRH" restrictionID="" type="ps:datetime" content="2009-03-09T15:27:03.593Z"/>
+    </properties>
+    <properties iD="igCdu-AyYjNmdZWmk" restrictionID="" name="ps:ChangedBy" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="iKnJyXFpwaDl3-2eV" restrictionID="" type="ps:string" content="Andy"/>
+    </properties>
+    <properties iD="ixOmluHZHS-Uh6xGd" restrictionID="" name="ps:Changed" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="iNmMV5NHApsmVnK98" restrictionID="" type="ps:datetime" content="2009-03-09T15:27:03.593Z"/>
+    </properties>
+    <vName iD="iaYMC3vYhzcfzsHe4" restrictionID="" mimeType="text/plain" lang="" encoding="utf-8" content="f2"/>
+  </element>
+  <element iD="iCRqqoxZfisJX5oXs" name="f3" type="ps:feature" class="ps:feature" default="off">
+    <relations iD="iYu8kDTtCLxy_GXPS" class="ps:parents">
+      <relation iD="i_hXUl4CMZQVkH0dF" restrictionID="" name="" type="ps:parent" range="">
+        <target iD="iIoJRXdlzPKbx2_qA" restrictionID="" content="./iq6OAVLL9zWfIf6HQ"/>
+      </relation>
+    </relations>
+    <properties iD="it0bOw5lO0XQ3xYvu" restrictionID="" name="ps:Source" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="iZUPQF10CtTepWWkv" restrictionID="" type="ps:string" content="Andy"/>
+    </properties>
+    <properties iD="izXK2YZMrzWFr3Pgx" restrictionID="" name="ps:Created" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="iOpvsm4jTW5HvR6oU" restrictionID="" type="ps:datetime" content="2009-03-09T15:27:15.218Z"/>
+    </properties>
+    <properties iD="in0vJJeCCXx7W5e2V" restrictionID="" name="ps:ChangedBy" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="ihHkVuw3PGhikt2kf" restrictionID="" type="ps:string" content="Andy"/>
+    </properties>
+    <properties iD="ikD20qZ1_x9DyWw6d" restrictionID="" name="ps:Changed" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="iO9yf-7LJ1bCa7aiO" restrictionID="" type="ps:datetime" content="2009-03-09T15:29:14.578Z"/>
+    </properties>
+    <vName iD="i4YrbnijVH2U2o4X7" restrictionID="" mimeType="text/plain" lang="" encoding="utf-8" content="f3"/>
+  </element>
+  <element iD="i-KTeAnlaJy4mvulR" name="f4" type="ps:feature" class="ps:feature" default="off">
+    <relations iD="ig5KwqIVIIfZOqflo" class="ps:parents">
+      <relation iD="i6z0m1m04fKW1-khs" restrictionID="" name="" type="ps:parent" range="">
+        <target iD="i3bT_4RB64-KWs-1M" restrictionID="" content="./iq6OAVLL9zWfIf6HQ"/>
+      </relation>
+    </relations>
+    <properties iD="if0G2UP0jopDc8HLG" restrictionID="" name="ps:Source" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="isTxsHKht4Zxd6OIC" restrictionID="" type="ps:string" content="Andy"/>
+    </properties>
+    <properties iD="i6sg_7-RKtyzJIWcf" restrictionID="" name="ps:Created" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="i8Yn0LV71MRH9nADa" restrictionID="" type="ps:datetime" content="2009-03-09T15:29:14.578Z"/>
+    </properties>
+    <properties iD="ixTzNELwCyHikBw0m" restrictionID="" name="ps:ChangedBy" type="ps:string" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="iubV5XrInCUcmpEjL" restrictionID="" type="ps:string" content="Andy"/>
+    </properties>
+    <properties iD="ilRCq5vgr3mgxC9ih" restrictionID="" name="ps:Changed" type="ps:datetime" fixed="true" readonly="true" container="" range="">
+      <value xsi:type="pvmodel:Constant" iD="i5MtqmU8HcUNvM4fl" restrictionID="" type="ps:datetime" content="2009-03-09T15:29:14.578Z"/>
+    </properties>
+    <vName iD="ii1m11yipKddIQk_Y" restrictionID="" mimeType="text/plain" lang="" encoding="utf-8" content="f4"/>
+  </element>
+  <properties iD="iwi1EQyrkQMlACBYv" restrictionID="" name="ps:name" type="ps:string" invisible="true" container="" range="">
+    <value xsi:type="pvmodel:Constant" iD="iTPKXVGoXxak45BMu" restrictionID="" type="ps:string" content="orgopenarchitecturewaredemofmFeatures"/>
+  </properties>
+  <properties iD="i_HT4nIcmrnAyqAAC" restrictionID="" name="ps:author" type="ps:string" invisible="true" container="" range="">
+    <value xsi:type="pvmodel:Constant" iD="iZPUEOwBaQ0N4Kbt9" restrictionID="" type="ps:string" content="Andy"/>
+  </properties>
+  <properties iD="iOoYvDzFN_OIo4yR-" restrictionID="" name="ps:version" type="ps:string" invisible="true" container="" range="">
+    <value xsi:type="pvmodel:Constant" iD="idQd82rJWRobsv08j" restrictionID="" type="ps:string" content="1.0"/>
+  </properties>
+  <properties iD="i3SniuqsABr644LbR" restrictionID="" name="ps:created" type="ps:datetime" invisible="true" container="" range="">
+    <value xsi:type="pvmodel:Constant" iD="iOgLJWiiqPIBCCPwN" restrictionID="" type="ps:datetime" content="2009-03-09T15:24:11.968Z"/>
+  </properties>
+  <properties iD="iKFNb63DgWmKtpWPz" restrictionID="" name="ps:DescriptionType" type="ps:mimetype" invisible="true" container="" range="">
+    <value xsi:type="pvmodel:Constant" iD="iT5yz-iEj14Mj7xiW" restrictionID="" type="ps:mimetype" content="text/html"/>
+  </properties>
+</pvmodel:ConsulModel>
