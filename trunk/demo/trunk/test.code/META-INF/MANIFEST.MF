@@ -9,6 +9,5 @@ Require-Bundle: org.eclipse.ui,
  net.ample.tests,
  org.openarchitectureware.dependencies,
  org.openarchitectureware.demo.archdsl.java.platform,
- org.openarchitectureware.demo.archdsl.java.apigenerator,
- org.openarchitectureware.demo.uml;bundle-version="1.0.0"
+ org.openarchitectureware.demo.archdsl.java.apigenerator
 Eclipse-LazyStart: true
