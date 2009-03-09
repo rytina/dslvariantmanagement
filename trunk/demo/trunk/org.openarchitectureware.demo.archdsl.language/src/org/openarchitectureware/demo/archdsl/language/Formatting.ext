@@ -1,0 +1,5 @@
+import adsl;
+
+extension org::openarchitectureware::demo::archdsl::language::Extensions;
+extension org::openarchitectureware::demo::archdsl::language::GenFormatting;
+

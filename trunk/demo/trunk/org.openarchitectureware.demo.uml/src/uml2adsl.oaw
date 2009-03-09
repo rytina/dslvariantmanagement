@@ -1,0 +1,32 @@
+<workflow abstract="true">
+
+	<property name="umlfile" />
+
+	<bean class="org.eclipse.mwe.emf.StandaloneSetup">
+		<platformUri value=".."/>
+	</bean>
+
+    <bean class="org.openarchitectureware.demo.archdsl.language.MetaModelRegistration"/>
+
+    <bean class="oaw.uml2.Setup" standardUML2Setup="true"/> 
+    
+	<component class="oaw.emf.XmiReader">
+		<modelFile value="${umlfile}"/>
+		<outputSlot value="umlmodel"/>
+	</component>
+	
+	<component class="oaw.xtend.XtendComponent">
+		<metaModel class="org.eclipse.m2t.type.emf.EmfRegistryMetaModel" 
+			useSingleGlobalResourceSet="true"/>
+		<metaModel class="oaw.type.emf.EmfMetaModel" 
+	           metaModelPackage="org.eclipse.emf.ecore.EcorePackage"/>
+		<metaModel class="oaw.uml2.UML2MetaModel"/>
+		<invoke value="uml2adsl::transform(umlmodel)"/>
+		<outputSlot value="model"/>
+	</component>
+
+
+
+
+
+</workflow>

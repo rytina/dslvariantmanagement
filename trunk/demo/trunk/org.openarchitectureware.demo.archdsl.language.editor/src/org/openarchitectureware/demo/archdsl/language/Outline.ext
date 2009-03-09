@@ -1,0 +1,44 @@
+import adsl;
+import tree;
+
+extension org::openarchitectureware::demo::archdsl::language::EditorExtensions;
+extension org::openarchitectureware::demo::archdsl::language::GenOutline reexport;
+
+extension org::openarchitectureware::util::stdlib::io;
+	
+viewpoints(): {
+	"Types"
+	};
+
+viewpointIcon(String vpName) : 
+	switch (vpName) {
+		case "Types": "vp_types.gif"
+		default: "vp_default.gif"
+	};
+	
+
+// -------------------------------------------------------------------------
+// Types
+
+create UIContentNode outlineTree_Types(emf::EObject model) :
+	let types = model.allLocalElements().collect(e|e.metaType).toSet().select(t|t.getProperty("name") != null):
+		setLabel(model.label()) ->
+		setImage(model.image()) ->
+		setContext(model)->
+		children.addAll( types.createTypeNode(model) );
+ 
+create UIContentNode createTypeNode( oaw::Type type, emf::EObject model ):
+	setLabel(type.simpleName()) ->
+	setImage(type.simpleName()+".gif") ->
+	setContext(null)->
+	children.addAll( model.allLocalElements().select(e|type.isInstance(e)).createInstanceNode() );
+
+create UIContentNode createInstanceNode( emf::EObject target ):
+	setLabel(target.localName()) ->
+	setImage(target.image()) ->
+	setContext(target);
+
+
+
+
+	

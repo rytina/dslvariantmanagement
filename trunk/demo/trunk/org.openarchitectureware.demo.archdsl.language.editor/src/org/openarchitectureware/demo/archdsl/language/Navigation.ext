@@ -1,0 +1,10 @@
+import adsl;
+
+extension org::openarchitectureware::demo::archdsl::language::Extensions;
+extension org::openarchitectureware::demo::archdsl::language::GenNavigation reexport;
+/*
+ * overwrite the extensions
+ * ''emf::EObject findDeclaration(String,Object,Object)''
+ * ''List[emf::EObject] findReferences(String,Object,Object)''
+ * from org::openarchitectureware::demo::archdsl::language::GenNavigation.ext to control the construction of the findReferences / findDeclaration actions
+ */

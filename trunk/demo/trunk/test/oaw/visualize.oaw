@@ -1,0 +1,22 @@
+<workflow>
+
+	<property name="file" value="deliverable/tams.adsl"/> 
+	
+	<property name="targetDir" value="../test/dot/"/>
+	
+	<component class="oaw.workflow.common.DirectoryCleaner" 
+		directories="${targetDir}"/>
+	
+	<component file='com/msg/ipot/adsl/language/parser/Parser.oaw'>
+    	<modelFile value='${file}'/>
+    	<outputSlot value='model'/>
+	</component>
+	
+	<cartridge file="model2dotfile.oaw" 
+		targetDir="${targetDir}"
+		topFunctionCallExpression="adsl2dot::top(model)"
+		inheritAll="true"/>
+	
+	
+
+</workflow>

@@ -1,0 +1,144 @@
+import adsl;
+import dot;
+
+extension org::openarchitectureware::util::stdlib::io;
+extension org::openarchitectureware::util::stdlib::naming;
+extension org::openarchitectureware::demo::archdsl::language::Extensions;
+extension dotlib;
+ 
+ 
+Object top(File file):
+	toGraphVizmodel(file); 
+ 
+// create a top level graphvizmodel for the file
+// and add one graph to it (the model can contain
+// several graphs). 
+create dot::graphvizmodel toGraphVizmodel(File file):
+	addGraph( file.toGraph() ); 
+
+// the graph has some name and adds a subgraph
+// statement to it, based on the top level namespace
+cached toGraph(File file):
+	file.mapToGraph() 
+		.setName("examplevis")
+		.addStatements( file.allElements().typeSelect(System).toSubgraph() )
+		.addStatements( file.allElements().typeSelect(Composition).toSubgraph() )
+		.addStatements( file.allElements().typeSelect(Composition).instances.connectToType() )
+ 	; 
+
+cached dot::subgraph toSubgraph( Composition ns ):
+	ns.mapToSubgraph()
+	.setLabel( "<<deliverablesystem>> "+ns.name )
+	.setName( ns.qualifiedName() )
+	.addStatements( ns.instances.toNode() )
+	;
+	
+cached toNode(Instance i):
+	i.mapToNode()
+	.setLabel( i.name ) 
+	.setShape( "box" )
+	.setStyle("filled")
+	.setFillColor("grey")
+	;
+
+cached connectToType( Instance i):
+	mapToDirectedEdge( i, i.type, i )
+		.setColor("green");
+
+	 
+// we then create subgraphs recursively for the nested
+// namespaces. 
+cached dot::subgraph toSubgraph( System ns ):
+	ns.mapToSubgraph()
+	.setLabel( "<<system>> "+ns.name )
+	.setName( ns.qualifiedName() )
+	// recursive call
+	.addStatements( ns.subSystems.toSubgraph() )
+	// a node per component 
+	.addStatements( ns.components.toNode() )
+	// a node per interface 
+	.addStatements( ns.interfaces.toNode() )
+	// a node per complex type
+	.addStatements( ns.datatypes.typeSelect(ComplexType).toNode() )
+	// connect the ports to interfaces
+	.addStatements( ns.components.ports.connectPort() )
+	// connect interfaces to complex types
+	.addStatements( ns.interfaces.connectInterface2Data() )
+	// connect complex types to each other
+	.addStatements( ns.datatypes.typeSelect(ComplexType).conectData2Data() )
+	;
+ 
+	
+// connect a component to an interface via the port 
+cached connectPort( Port p ):
+	// from the port's perspective, connect its owner and
+	// its interface
+	mapToDirectedEdge( p.eContainer, p.interface, p )
+		.setArrowHead("vee")
+		.setStyle( ProvidedPort.isInstance(p) ? "solid" : "dashed" )
+		.setColor( ProvidedPort.isInstance(p) ? "blue" : "red" )
+		.setFontColor(  ProvidedPort.isInstance(p) ? "blue" : "red" ) 
+		.setLabel( p.name );
+
+// connect two data types to each other
+// via the (complex) types of attributes	
+conectData2Data( ComplexType source ):
+	source.attributes.typeref.type.typeSelect(ComplexType).toSet().conectData2Data( source );
+	
+// create a directed edge between the two 
+// complex types
+cached conectData2Data( ComplexType target, ComplexType source ):
+	mapToDirectedEdge( source, target, target.qualifiedName()+""+source.qualifiedName() )
+		.setColor("green");
+		
+// create a node from a complex type
+cached toNode(ComplexType t):
+	t.mapToNode()
+	.setLabel( t.name ) 
+	.setShape( "parallelogram" )
+	;
+
+// create a node from a component
+cached toNode(Component c):
+	c.mapToNode() 
+	.setLabel( c.name )
+	.setShape( "box3d" )
+	.setFillColor( "grey" ) 
+	.setStyle("bold, filled")
+	; 
+
+// create a node from an interface
+cached toNode(Interface i):
+	let n = i.mapToNode(): 	
+	( 
+		n.setLabel( i.name ) ->
+		// records can have several compartments à la UML classes
+		n.setShape( "record" ) ->
+		// if we have messages in the interface, add
+		// those to the second compartment
+		i.interactions.isEmpty ? n.setLabel( i.name ) : n.setLabel( {i.name, i.interactions.stringrep().toString("\\l")} )
+	);
+
+// connect an interface to its complex types
+connectInterface2Data( Interface i ):
+	i.interactions.messages().parameters.typeref.type.typeSelect(ComplexType).toSet().connectInterface2Data( i );
+	
+// draw the actual line for complex type/complex type
+// relationship
+connectInterface2Data( ComplexType t, Interface i ):
+	mapToDirectedEdge( i, t, null )
+		.setArrowHead("normal");
+
+		
+// construct some of the strings to be used in the diagram
+stringrep( MessageInteraction i ):
+	i.name;
+stringrep( OnewayInteraction i ):
+	"oneway: "+i.name+"("+i.message.parameters.stringrep().toString(", ").toString()+")";
+stringrep( RequestReplyInteraction i ):
+		"request/reply: "+i.name+
+		" ("+i.request.parameters.stringrep().toString(", ").toString()+") - "+
+		"("+i.reply.parameters.stringrep().toString(", ").toString()+")";
+stringrep( MessageParameter p ):
+	p.name+": "+p.typeref.type.name;
+		

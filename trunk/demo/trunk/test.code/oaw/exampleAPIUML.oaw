@@ -1,0 +1,10 @@
+<workflow>
+
+	<property name="umlfile" value="exampleModel.uml"/> 
+	
+	<component file="uml2adsl.oaw" umlfile="${umlfile}"/>
+	
+	<component file="apiBackend.oaw" inheritAll="true"/>
+	
+
+</workflow>

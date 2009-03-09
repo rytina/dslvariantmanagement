@@ -1,0 +1,28 @@
+import scanning;
+import adsl;
+
+extension org::openarchitectureware::demo::archdsl::language::GenStyle reexport;
+
+/*
+ * Overwrite 'FontStyle fontstyle(String keyword, Object ctx)' to customize the style of keywords.
+ * Use 'createFontStyle(boolean bold, boolean italic, boolean strikethrough, boolean underline, Color fg, Color bg)' 
+ * and 'createColor(Integer red, Integer green, Integer blue)' as utility extenisons
+ */
+ 
+delayContextSensitiveStyling(): 1000;
+ 
+FontStyle fontstyle(String keyword, Object ctx):
+	switch {
+		case keyword == "system": 
+			createFontStyle( true, false, false, false, blue(), white() )
+		case keyword == "using": 
+			createFontStyle( true, false, false, false, green(), white() )
+		default: null
+	};
+	
+red(): createColor(255,0,0);	
+blue(): createColor(0,0,255);	
+green(): createColor(0,0,220);
+white(): createColor(255,255,255);
+	 
+
