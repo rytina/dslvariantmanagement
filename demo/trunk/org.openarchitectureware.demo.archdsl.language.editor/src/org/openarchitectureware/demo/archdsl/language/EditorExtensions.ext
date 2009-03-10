@@ -37,6 +37,21 @@ label( ComponentConfiguration this ): "config";
 
 label( InstanceConfiguration this ): "config";
 
+////// Feature extensions ///////
+//*****************************//
+
+image( FeatureClause this ): "featureclause.gif";
+image( FeatureModelImport this ): "featuremodelimport.gif";
+
+label( Feature this ): feature;
+label( FeatureAndList this ): "and-chained feature list";
+label( FeatureOrList this ): "or-chained feature list";
+
+
+label( FeatureModelImport this ): "feature model "+uri;
+
+label( FeatureExpression this ): "feature expression";
+label( OrExpression this ): null; //don't create a content node for or expressions
 
 
 
