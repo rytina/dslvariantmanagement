@@ -3,5 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.openarchitectureware.demo.archdsl.java.apigenerator
 Bundle-SymbolicName: org.openarchitectureware.demo.archdsl.java.apigenerator;singleton:=true
 Bundle-Version: 1.0.0
-Require-Bundle: org.openarchitectureware.dependencies,
+Require-Bundle: org.openarchitectureware.var.featureaccess;bundle-version="1.0.0",
+ org.openarchitectureware.dependencies,
  org.openarchitectureware.demo.archdsl.language
