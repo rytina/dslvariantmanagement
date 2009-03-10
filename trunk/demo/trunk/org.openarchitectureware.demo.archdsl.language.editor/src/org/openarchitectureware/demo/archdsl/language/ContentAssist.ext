@@ -1,6 +1,7 @@
 import adsl;
 import codeassist;
 
+extension org::openarchitectureware::var::featureaccess::ext::utils;
 extension org::openarchitectureware::util::stdlib::io;
 extension org::openarchitectureware::demo::archdsl::language::Extensions;
 extension org::openarchitectureware::demo::archdsl::language::EditorExtensions;
@@ -165,4 +166,23 @@ List[Proposal] completeInstanceConfiguration_settings(emf::EObject ctx, String p
 List[Proposal] completeSimpleInstance_configuration(emf::EObject ctx, String prefix) :
 	{newProposal("configuration","config {}","componentconfiguration.gif")};
  
+////// Feature extensions ///////
+//*****************************//
+ 
+completeFeature_feature(emf::EObject ctx, String prefix) :
+	proposeFeatures(ctx, prefix);
+
+List[Proposal] completeFeatureAndList_featureList(emf::EObject ctx, String prefix):
+    proposeFeatures(ctx, prefix);  
+  
+List[Proposal] completeFeatureOrList_featureList(emf::EObject ctx, String prefix):
+    proposeFeatures(ctx, prefix); 
+    
+List[Proposal] completeOperand_isNot(emf::EObject ctx, String prefix) :
+   proposeFeatures(ctx, prefix); //propose feature list instead of keyword "not"      
+
+proposeFeatures(emf::EObject ctx, String prefix) :
+	let features = getAllFeatures(ctx.featureModelUri()): 
+		let filteredFeatures = (prefix != null ? features.select(f|f.startsWith(prefix)) : features) : 
+			filteredFeatures.collect(ff|newProposal( ff, ff, "featureclause.gif") );
 
