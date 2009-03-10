@@ -185,4 +185,9 @@ proposeFeatures(emf::EObject ctx, String prefix) :
 	let features = getAllFeatures(ctx.featureModelUri()): 
 		let filteredFeatures = (prefix != null ? features.select(f|f.startsWith(prefix)) : features) : 
 			filteredFeatures.collect(ff|newProposal( ff, ff, "featureclause.gif") );
+			
+/* proposals for Feature Feature::retained */
+List[Proposal] completeFeature_retained(emf::EObject ctx, String prefix) :
+     { newProposal("retain", "retain", "keyword.gif") }.addAll( proposeFeatures(ctx, prefix) );
 
+    
