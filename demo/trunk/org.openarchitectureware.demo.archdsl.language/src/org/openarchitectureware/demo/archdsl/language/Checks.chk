@@ -107,7 +107,22 @@ context Instance ERROR "not all instantiation-time configuration parameters defi
 	type.configuration.params.select(p|p.valueTime == ValueTimeEnum::INSTANCEDEFINITION).forAll(p|configuration.settings.exists(s|s.param == p));
 	
 
-	
-	
+////// Feature checks ///////
+//*************************//
+
+context FeatureClause ERROR "no feature model imported":
+	featureModelUri() != null;	
+
+context Feature ERROR "feature '"+feature+"' does not exist in feature model":
+	getAllFeatures(featureModelUri()).contains( feature );
+
+context FeatureAndList ERROR "one ore more features in list not found":
+  getAllFeatures(featureModelUri()).containsAll( featureList );
+ 
+context FeatureOrList ERROR "one ore more features in list not found":
+  getAllFeatures(featureModelUri()).containsAll( featureList );  
+
+context Atom ERROR "feature '"+feature+"' does not exist in feature model":
+ 	feature != null ? getAllFeatures(featureModelUri()).contains( feature ) : true;	
 	
 	
