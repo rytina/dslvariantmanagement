@@ -1,6 +1,7 @@
 import adsl;
-
+ 
 extension org::openarchitectureware::demo::archdsl::language::GenExtensions reexport;
+extension org::openarchitectureware::var::featureaccess::ext::utils reexport;
 
 // the id a system is it's qualified name; 
 // the id is used for linking
@@ -135,3 +136,9 @@ literalString( ConfigParamTypeEnum this ):
 		default: "can never happen"
 	};
  
+
+////// Feature extensions ///////
+//*****************************//
+ 
+ String featureModelUri(emf::EObject this):
+	((File)eRootContainer).featureModel.uri;
