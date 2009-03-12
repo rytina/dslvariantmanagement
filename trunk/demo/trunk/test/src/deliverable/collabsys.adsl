@@ -2,16 +2,16 @@ import 'components/logic.adsl'
 import 'components/ui.adsl'
      
 deliverablesystem collabsys { 
-   
-	instance wapUI : MessagingUI;  	//feature Wap-funktionality
-	instance wwwUI : MessagingUI;  	//www functionality
-	instance richUI : MessagingUI;  //rich client functionality
-	instance androidUI : MessagingUI;  //android UI functionality
+   	
+   	/** feature InstantMessaging hinzufügen **/
+	instance wapUI : InstantMessagingUI;  	//feature Wap-funktionality
+	instance wwwUI : InstantMessagingUI;  	//www functionality
+	instance richUI : InstantMessagingUI;  	//rich client functionality
+	instance androidUI : InstantMessagingUI;  //android UI functionality
 	
-	//Wähle den Dispatcher aus: es kann nur genau ein Dispatcher ausgewählt werden!
-	//stelle das im Featuremodell sicher!
-	/** feature InstantMessaging  **/
-	instance dispatcher : InstantMessagingDispatcher  
+
+	/** feature InstantMessaging hinzufügen **/
+	instance dispatcher : InstantMessagingDispatcher  		//android UI functionality
 	
 	/** feature MicroBlogging  **/
 	//instance dispatcher : MicroBloggingDispatcher

@@ -11,8 +11,12 @@ system collabSPL {
 			status : int;
 		}
 				  
-		interface ICommunicationService {
-			oneway updateMessage: ( senderID: int );
+		interface IMicroBloggingService {
+			oneway updateMessage: ( senderID: int ); 
+		}
+		
+		interface IInstantMessagingService {
+			oneway sendMessage: ( senderID: int, receiverID: int ); 
 		}
 		
 		persistencecomponent CollabDB {
@@ -21,7 +25,7 @@ system collabSPL {
 		
 		/**  feature InstantMessaging **/ 
 		blcomponent InstantMessagingDispatcher {
-			provides toMany commPort: ICommunicationService;
+			provides toMany commPort: IInstantMessagingService;
 			config {
 				instancedef p1: text
 				deployment p2: boolean
@@ -30,14 +34,14 @@ system collabSPL {
 		}
 		
 		/** feature MicroBlogging **/
-//		blcomponent MicroBloggingDispatcher {
-//			provides toMany commPort: ICommunicationServices;
-//			config {
-//				instancedef p1: text
-//				deployment p2: boolean
-//				startup p3: numeric
-//			}
-//		}
+		blcomponent MicroBloggingDispatcher {
+			provides toMany commPort: IMicroBloggingService;
+			config {
+				instancedef p1: text
+				deployment p2: boolean
+				startup p3: numeric
+			}
+		}
 	} 
 
 
