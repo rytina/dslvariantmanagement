@@ -3,6 +3,7 @@ system lib {
 	system types {
 		
 		primitive int;
+		
 		primitive string;
 		
 		struct Date {

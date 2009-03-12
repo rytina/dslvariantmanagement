@@ -1,20 +1,22 @@
-import 'deliverable/tams.adsl'
+import 'deliverable/collabsys.adsl'
 
 topology UnserRechenzentrum {
 
-	appserver A1 clustered
-	dbserver DB1
+	appserver AS clustered
+	dbserver callabdeployment
 
 }
 
-deployment D1  
-	deliverablesystem tams
+deployment collabdeployment  
+	deliverablesystem collabsys
 	topology UnserRechenzentrum 
 {
 
-	map A1 {
-		instance a1
-		instance a2
+	map AS {
+		instance wapUI 
+		instance wwwUI 
+		instance richUI 
+		instance androidUI 
 	}
 	
 
