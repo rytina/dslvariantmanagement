@@ -1,0 +1,14 @@
+import 'components/lib.adsl'  
+import 'components/logic.adsl'
+ 
+system collabSPL { 
+	
+  	system ui { 
+  		using collabSPL.logic;
+
+  		uicomponent MessagingUI {
+  			requires commPort : ICommunicationService;
+  		}
+  	}
+
+}

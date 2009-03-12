@@ -1,0 +1,35 @@
+import 'components/logic.adsl'
+import 'components/ui.adsl'
+     
+deliverablesystem collabsys { 
+   
+	instance wapUI : MessagingUI;  	//feature Wap-funktionality
+	instance wwwUI : MessagingUI;  	//www functionality
+	instance richUI : MessagingUI;  //rich client functionality
+	instance androidUI : MessagingUI;  //android UI functionality
+	
+	//Wähle den Dispatcher aus: es kann nur genau ein Dispatcher ausgewählt werden!
+	//stelle das im Featuremodell sicher!
+	/** feature InstantMessaging  **/
+	instance dispatcher : InstantMessagingDispatcher  
+	
+	/** feature MicroBlogging  **/
+	//instance dispatcher : MicroBloggingDispatcher
+	
+	
+	config {
+		p1 = "Hallo: Meine Config"
+	};
+	 
+	 
+	 //Du könntest eventuell im Featuremodell konfigurieren, welche  UI's auf welche ui genommen werden soll
+	 //und auf welchen dispatcher diese UI mappt
+	connect wapUI.commPort to dispatcher.commPort;
+	connect wwwUI.commPort to dispatcher.commPort;
+	connect richUI.commPort to dispatcher.commPort;
+	connect androidUI.commPort to dispatcher.commPort;
+	
+	
+	
+
+}

@@ -1,0 +1,44 @@
+import 'components/lib.adsl'  
+
+system collabSPL {
+
+	system logic {
+		using lib.types;
+		
+		struct UserInfo {
+			username : string;
+			name : string;
+			status : int;
+		}
+				  
+		interface ICommunicationService {
+			oneway updateMessage: ( senderID: int );
+		}
+		
+		persistencecomponent CollabDB {
+
+		}
+		
+		/**  feature InstantMessaging **/ 
+		blcomponent InstantMessagingDispatcher {
+			provides toMany commPort: ICommunicationService;
+			config {
+				instancedef p1: text
+				deployment p2: boolean
+				startup p3: numeric
+			}
+		}
+		
+		/** feature MicroBlogging **/
+//		blcomponent MicroBloggingDispatcher {
+//			provides toMany commPort: ICommunicationServices;
+//			config {
+//				instancedef p1: text
+//				deployment p2: boolean
+//				startup p3: numeric
+//			}
+//		}
+	} 
+
+
+}
