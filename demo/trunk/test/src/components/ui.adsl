@@ -6,8 +6,8 @@ system collabSPL {
   	system ui { 
   		using collabSPL.logic;
 
-  		uicomponent MessagingUI {
-  			requires commPort : ICommunicationService;
+  		uicomponent InstantMessagingUI {
+  			requires commPort : IInstantMessagingService;
   		}
   	}
 

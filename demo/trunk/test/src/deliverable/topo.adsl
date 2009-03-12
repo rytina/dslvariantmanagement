@@ -3,7 +3,7 @@ import 'deliverable/collabsys.adsl'
 topology UnserRechenzentrum {
 
 	appserver AS clustered
-	dbserver callabdeployment
+	dbserver collabdeployment
 
 }
 
