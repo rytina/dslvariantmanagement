@@ -37,11 +37,7 @@ system collabSPL {
 		
 		interface IAudioService feature Audio {
 			rr call: request=(callerID: int, calleeID: int) reply=( callID: int );
-		}
-		
-		interface ITextService feature Text {
-			
-		}
+		}		
 		
 		persistencecomponent CollabDB {
 
