@@ -99,11 +99,6 @@ system collabSPL {
 			}
 		}
 		
-		blcomponent TextService  feature Text {
-			provides textService: ITextService;
-			config {
-			}
-		}
 		
 	} 
 
