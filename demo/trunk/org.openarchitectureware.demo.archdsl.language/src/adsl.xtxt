@@ -130,7 +130,7 @@ RequiredPort:
 // of message interactions (i.e. messages of different 
 // kinds)
 Interface:
-	"interface" name=ID 
+	"interface" name=ID (featureClause=FeatureClause)? 
 	"{"
 		(interactions+=MessageInteraction)*
 	"}"; 
@@ -208,7 +208,7 @@ CollectionTypeRef:
 // a composition is a names collection of 
 // instances and connectors
 Composition:
-	"deliverablesystem" name=ID "{"
+	"deliverablesystem" name=ID (featureClause=FeatureClause)? "{"
 		(instances+=Instance |
 		 connectors+=Connector)*
 	"}";
