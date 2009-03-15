@@ -6,8 +6,9 @@ Bundle-Version: 1.0.0
 Bundle-Activator: net.ample.tests.code.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- net.ample.tests,
  org.openarchitectureware.dependencies,
  org.openarchitectureware.demo.archdsl.java.platform,
- org.openarchitectureware.demo.archdsl.java.apigenerator
+ org.openarchitectureware.demo.archdsl.java.apigenerator,
+ com.ps.consul.eclipse.ecore;bundle-version="3.0.0",
+ org.openarchitectureware.var.tailor;bundle-version="1.0.0"
 Eclipse-LazyStart: true
