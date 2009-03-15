@@ -1,35 +1,61 @@
+featuremodel "platform:/resource/org.openarchitectureware.demo.fm/org.openarchitectureware.demo.fm.xfm.xmi";
+
 import 'components/logic.adsl'
 import 'components/ui.adsl'
      
-deliverablesystem collabsys { 
-   	
-   	/** feature InstantMessaging hinzufügen **/
-	instance wapUI : InstantMessagingUI;  	//feature Wap-funktionality
-	instance wwwUI : InstantMessagingUI;  	//www functionality
-	instance richUI : InstantMessagingUI;  	//rich client functionality
-	instance androidUI : InstantMessagingUI;  //android UI functionality
-	
 
-	/** feature InstantMessaging hinzufügen **/
-	instance dispatcher : InstantMessagingDispatcher  		//android UI functionality
+// Ich habe hier für collabsys mehrere partielle Regionen definiert, um 
+// die feature-spezifischen Elemente übersichtlicher zu gruppieren. 
+// Andernfalls (1 collabsys-Region) würden an jedem Element die
+// features haften und es würde unübersichtlich werden.
+
+
+deliverablesystem collabsys  feature Forum {
+	instance forumUI : ForumUI ;
 	
-	/** feature MicroBlogging  **/
-	//instance dispatcher : MicroBloggingDispatcher
+	instance forumDispatcher : MessageDispatcher
+	config {
+		p1 = "forum dipatcher config"
+	};
+	instance forumService : ForumService;
+	connect forumDispatcher.forumPort to forumService.forumPort;
+	 		 
+	connect forumUI.commPort to forumDispatcher.dispatcher;
+	
+}
 	
 	
+deliverablesystem collabsys feature  MicroBlogging {
+	instance mbUI : MicroBloggingUI ;
+	
+	instance mbDispatcher : MessageDispatcher
+	config {
+		p1 = "MicroBlogging dipatcher config"
+	};
+	instance mbService : MicroBloggingService;
+	connect mbDispatcher.mbPort to mbService.mbPort;
+	 		 
+	connect mbUI.commPort to mbDispatcher.dispatcher;
+}
+
+
+deliverablesystem collabsys feature SynchronousConferencing {
+	instance imUI : InstantMessagingUI; 
+	instance audioCon : AudioService feature Audio;
+	
+	instance imDispatcher : MessageDispatcher	
 	config {
 		p1 = "Hallo: Meine Config"
 	};
-	 
-	 
-	 //Du könntest eventuell im Featuremodell konfigurieren, welche  UI's auf welche ui genommen werden soll
-	 //und auf welchen dispatcher diese UI mappt
-	connect wapUI.commPort to dispatcher.commPort;
-	connect wwwUI.commPort to dispatcher.commPort;
-	connect richUI.commPort to dispatcher.commPort;
-	connect androidUI.commPort to dispatcher.commPort;
+	instance imService : InstantMessagingService;
+	connect imDispatcher.imPort to imService.imPort;
 	
+	instance telCon : TelephoneConnection feature TelephoneIntegration;
+	connect imService.audioConnection to telCon.audioCon;
 	
+	instance voipCon : VOIPConnection feature VoiceOverIP;
+	connect imService.audioConnection to voipCon.audioCon;
 	
+	connect imUI.commPort to imDispatcher.dispatcher;
+}	
 
-}

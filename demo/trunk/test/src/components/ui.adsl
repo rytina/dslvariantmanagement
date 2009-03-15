@@ -7,7 +7,15 @@ system collabSPL {
   		using collabSPL.logic;
 
   		uicomponent InstantMessagingUI {
-  			requires commPort : IInstantMessagingService;
+  			requires commPort : IMessageDispatcher;
+  		}
+  		
+  		uicomponent ForumUI {
+  			requires commPort : IMessageDispatcher;
+  		}
+  		
+  		uicomponent MicroBloggingUI {
+  			requires commPort : IMessageDispatcher;
   		}
   	}
 
