@@ -13,10 +13,9 @@ deployment collabdeployment
 {
 
 	map AS {
-		instance wapUI 
-		instance wwwUI 
-		instance richUI 
-		instance androidUI 
+		instance forumUI
+		instance mbUI
+		instance imUI
 	}
 	
 
