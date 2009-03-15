@@ -1,0 +1,37 @@
+<workflow abstract="true">
+
+	<property name="adslFile"/> 
+	<property name="configModelUri"/>
+	<property name="genPath"/>
+	
+	<bean class="org.eclipse.mwe.emf.StandaloneSetup">
+	    <platformUri value=".."/>
+		<registerGeneratedEPackage value="com.ps.consul.eclipse.ecore.pvmodel.PvmodelPackage" />
+	</bean>
+	
+	<component file="org/openarchitectureWare/var/tailor/model/tailorPV.oaw"
+		architectureModelFile="${adslFile}"
+		configurationModelUri="${configModelUri}"
+		dslPackage="platform:/resource/org.openarchitectureware.demo.archdsl.language/src-gen/org/openarchitectureware/demo/archdsl/language/adsl.ecore"
+		parserCartridge="org/openarchitectureware/demo/archdsl/language/parser/Parser.oaw"
+		constraintFile="org::openarchitectureware::demo::archdsl::language::Checks" />
+		/>
+
+	<component class="oaw.check.CheckComponent">
+	       <metaModel id="mm" class="org.eclipse.m2t.type.emf.EmfRegistryMetaModel"/>
+	       <emfAllChildrenSlot value="theModel"/>
+		   <checkFile value="org::openarchitectureware::demo::archdsl::language::ProductInstanceChecks"/>
+	</component>
+
+	<component id="gen" class="oaw.xpand2.Generator" skipOnErrors="true">
+		<metaModel id="mm" class="org.eclipse.m2t.type.emf.EmfRegistryMetaModel" 
+			useSingleGlobalResourceSet="true"/>
+		<genPath value="${genPath}"/>
+		<expand value="org::openarchitectureware::demo::archdsl::root::root FOR theModel"/>
+		<beautifier class="oaw.xpand2.output.JavaBeautifier"/>
+	</component>  
+		
+	<component class="oaw.workflow.common.DirectoryCleaner" 
+		directories="{configPath}"/>
+
+</workflow> 
