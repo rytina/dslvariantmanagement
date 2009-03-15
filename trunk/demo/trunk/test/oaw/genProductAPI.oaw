@@ -1,0 +1,17 @@
+<workflow>
+
+	<property name="adslFile" 		value="components/logic.adsl"/> 
+	<property name="configModelUri" value="platform:/resource/org.openarchitectureware.demo.fm/orgopenarchitecturewaredemofm/org.openarchitectureware.demo.fm.vdm.xmi"/>
+	<property name="projectName" 	value=""/>
+	<property name="genPath" 		value="src-gen"/>
+
+	
+	<cartridge 
+		file="org/openarchitectureware/demo/archdsl/apiForProduct.oaw"
+		configModelUri="${configModelUri}"
+		adslFile="${adslFile}"
+		genPath="${genPath}"/>
+		
+		
+
+</workflow>
