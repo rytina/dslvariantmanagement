@@ -1,3 +1,5 @@
+featuremodel "platform:/resource/org.openarchitectureware.demo.fm/org.openarchitectureware.demo.fm.xfm.xmi";
+
 import 'components/lib.adsl'  
 
 system collabSPL {
@@ -10,38 +12,99 @@ system collabSPL {
 			name : string;
 			status : int;
 		}
+		
+		interface IMessageDispatcher{
+			rr dispatch : request=( message : string, destinationID: int, conversationID: int ) 
+						  reply=( conversationID : int );
+		}
 				  
-		interface IMicroBloggingService {
-			oneway updateMessage: ( senderID: int ); 
+		interface IMicroBloggingService  feature MicroBlogging { 
+			oneway updateMessage: ( senderID: int , message: string); 
 		}
 		
-		interface IInstantMessagingService {
-			oneway sendMessage: ( senderID: int, receiverID: int ); 
+		interface IInstantMessagingService feature SynchronousConferencing {
+			oneway sendMessage: ( senderID: int, receiverID: int, message: string ); 
+		}
+		
+		interface IForumService feature SynchronousConferencing {
+			oneway updateMessage: ( senderID: int , threadID: int, message: string) ;
+			rr openThread: request=( senderID: int, title: string ) reply=( threadID: int ); 
+		}
+		
+		interface IAudioConnection feature Audio {
+			rr call: request=(callerID: int, calleeID: int) reply=( callID: int );
+		}
+		
+		interface IAudioService feature Audio {
+			rr call: request=(callerID: int, calleeID: int) reply=( callID: int );
+		}
+		
+		interface ITextService feature Text {
+			
 		}
 		
 		persistencecomponent CollabDB {
 
 		}
 		
-		/**  feature InstantMessaging **/ 
-		blcomponent InstantMessagingDispatcher {
-			provides toMany commPort: IInstantMessagingService;
+		blcomponent MessageDispatcher{
+			provides dispatcher : IMessageDispatcher;
+			requires imPort : IInstantMessagingService feature SynchronousConferencing; 
+			requires mbPort: IMicroBloggingService     feature MicroBlogging;
+			requires forumPort: IForumService          feature Forum;
 			config {
 				instancedef p1: text
-				deployment p2: boolean
-				startup p3: numeric
 			}
 		}
 		
-		/** feature MicroBlogging **/
-		blcomponent MicroBloggingDispatcher {
-			provides toMany commPort: IMicroBloggingService;
+		
+		blcomponent InstantMessagingService feature SynchronousConferencing {
+			provides toMany imPort: IInstantMessagingService;
+			requires audioConnection: IAudioService feature Audio; 
 			config {
-				instancedef p1: text
-				deployment p2: boolean
-				startup p3: numeric
 			}
 		}
+		
+		
+		blcomponent MicroBloggingService feature MicroBlogging {
+			provides toMany mbPort: IMicroBloggingService;
+			config {
+			}
+		}
+		
+		
+		blcomponent ForumService  feature Forum {
+			provides toMany forumPort: IForumService;
+			config {
+			}
+		}
+		
+		
+		blcomponent AudioService  feature Audio {
+			provides audioPort: IAudioService;
+			requires audioConnection: IAudioConnection ;
+			config {
+			}
+		}
+		
+		blcomponent TelephoneConnection  feature TelephoneIntegration {
+			provides audioCon: IAudioConnection;
+			config {
+			}
+		}
+		
+		blcomponent VOIPConnection  feature VoiceOverIP {
+			provides audioCon: IAudioConnection;
+			config {
+			}
+		}
+		
+		blcomponent TextService  feature Text {
+			provides textService: ITextService;
+			config {
+			}
+		}
+		
 	} 
 
 
