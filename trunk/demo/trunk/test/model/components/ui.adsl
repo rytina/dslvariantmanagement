@@ -1,0 +1,22 @@
+import 'components/lib.adsl'  
+import 'components/logic.adsl'
+ 
+system collabSPL { 
+	
+  	system ui { 
+  		using collabSPL.logic;
+
+  		uicomponent InstantMessagingUI {
+  			requires rDispatcher : IMessageDispatcher;
+  		}
+  		
+  		uicomponent ForumUI {
+  			requires rDispatcher : IMessageDispatcher;
+  		}
+  		
+  		uicomponent MicroBloggingUI {
+  			requires rDispatcher : IMessageDispatcher;
+  		}
+  	}
+
+}
