@@ -3,8 +3,9 @@
 	<property name="adslFile" 		value="components/logic.adsl"/> 
 	<property name="configModelUri" value="platform:/resource/org.openarchitectureware.demo.fm/orgopenarchitecturewaredemofm/org.openarchitectureware.demo.fm.vdm.xmi"/>
 	<property name="projectName" 	value=""/>
-	<property name="genPath" 		value="src-gen"/>
-
+	<property name="genPath" 		value="generated/gen"/>
+	<property name="configPath" value="generated/configured"/>
+	
 	
 	<cartridge 
 		file="org/openarchitectureware/demo/archdsl/apiForProduct.oaw"
@@ -12,6 +13,14 @@
 		adslFile="${adslFile}"
 		genPath="${genPath}"/>
 		
-		
+		<component class="oaw.workflow.common.DirectoryCleaner" 
+		directories="${configPath}"/>
+	
+	<component class="org.openarchitectureware.var.tailor.code.CoderComponent">
+		<sourcePath value="platform:/resource/com.msg.ipot.codelib/src-variants"/>
+		<genPath value="platform:/resource/${projectName}/${configPath}"/>
+		<configurationModelSlot value="configurationModel"/>
+        <configurationModelWrapperClass value="org.openarchitectureware.var.featureaccess.pv.PVConfigurationModelWrapper"/>
+	</component> 	
 
 </workflow>
