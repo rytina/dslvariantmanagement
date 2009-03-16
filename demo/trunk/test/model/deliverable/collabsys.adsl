@@ -4,11 +4,6 @@ import 'components/logic.adsl'
 import 'components/ui.adsl'
      
 
-// Ich habe hier für collabsys mehrere partielle Regionen definiert, um 
-// die feature-spezifischen Elemente übersichtlicher zu gruppieren. 
-// Andernfalls (1 collabsys-Region) würden an jedem Element die
-// features haften und es würde unübersichtlich werden.
-
 
 deliverablesystem collabsys  feature Forum {
 	instance forumUI : ForumUI ;
@@ -18,9 +13,14 @@ deliverablesystem collabsys  feature Forum {
 		p1 = "forum dipatcher config"
 	};
 	instance forumService : ForumService;
-	connect forumDispatcher.forumPort to forumService.forumPort;
+	
+	//connect ui to dispatcher
+	connect forumUI.rDispatcher to forumDispatcher.pUI;
+	
+	//connect dispatcher to MessagingService
+	connect forumDispatcher.rService to forumService.pDispatcher;
 	 		 
-	connect forumUI.commPort to forumDispatcher.dispatcher;
+	
 	
 }
 	
@@ -33,29 +33,36 @@ deliverablesystem collabsys feature  MicroBlogging {
 		p1 = "MicroBlogging dipatcher config"
 	};
 	instance mbService : MicroBloggingService;
-	connect mbDispatcher.mbPort to mbService.mbPort;
-	 		 
-	connect mbUI.commPort to mbDispatcher.dispatcher;
+	
+	//connect ui to dispatcher
+	connect mbUI.rDispatcher to mbDispatcher.pUI;
+	
+	//connect dispatcher to MessengerService
+ 	connect mbDispatcher.rService to mbService.pDispatcher;
+ 	
+
 }
 
 
 deliverablesystem collabsys feature SynchronousConferencing {
 	instance imUI : InstantMessagingUI; 
-	instance audioCon : AudioService feature Audio;
 	
 	instance imDispatcher : MessageDispatcher	
 	config {
 		p1 = "Hallo: Meine Config"
 	};
 	instance imService : InstantMessagingService;
-	connect imDispatcher.imPort to imService.imPort;
 	
-	instance telCon : TelephoneConnection feature TelephoneIntegration;
-	connect imService.audioConnection to telCon.audioCon;
+	//connect ui to dispatcer
+	connect imUI.rDispatcher to imDispatcher.pUI;
 	
-	instance voipCon : VOIPConnection feature VoiceOverIP;
-	connect imService.audioConnection to voipCon.audioCon;
+	//connect dispatcher to MessengerService
+	connect imDispatcher.rService to imService.pDispatcher;
 	
-	connect imUI.commPort to imDispatcher.dispatcher;
+	instance audio : TelephoneConnection feature TelephoneIntegration;
+	instance audio : VOIPConnection      feature VoiceOverIP;
+	
+	connect imService.audioCon to audio.audioCon;
+	
 }	
 
