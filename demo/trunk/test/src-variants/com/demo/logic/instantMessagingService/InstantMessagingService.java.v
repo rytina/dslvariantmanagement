@@ -23,6 +23,15 @@ public class InstantMessagingService extends InstantMessagingServiceBase {
 		msg.setReceiverID( request.getSourceID() );
 		msg.setSenderID( request.getDestinationID() );
 		
+		//# Security
+		msg.setOpenKey( request.getOpenKey() );
+		//~# Security
+		
+		//# Authentication
+		msg.setOpenKey( request.getOpenKey() );
+		msg.setEncryptedHash( request.getEncryptedHash() );
+		//~# Authentication
+		
 		//delegate message to the sender-method for the instant messenger
 		receiveSendMessage(msg);
 		
@@ -39,17 +48,17 @@ public class InstantMessagingService extends InstantMessagingServiceBase {
 	@Override
 	public IAudioServiceResponse requestDial(IAudioServiceRequest request) {
 		
-		//#TelephoneIntegration
+		//# TelephoneIntegration
 		IPAudioConRequirer audioCon = audioCon();
 		//make TelephoneIntegration stuff
 		return null;
-		//~
+		//~# TelephoneIntegration
 		
-		//#VoiceOverIP
+		//# VoiceOverIP
 		IPAudioConRequirer audioCon = audioCon();
 		//make VoiceOverIP stuff
 		return null;
-		//~
+		//~# VoiceOverIP
 		
 	}
 	
