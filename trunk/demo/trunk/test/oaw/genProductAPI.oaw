@@ -5,7 +5,7 @@
 	<property name="projectName" 	value=""/>
 	<property name="genPath" 		value="generated/gen"/>
 	<property name="configPath" value="generated/configured"/>
-	
+	<property name="projectName" value="test"/>	
 	
 	<cartridge 
 		file="org/openarchitectureware/demo/archdsl/apiForProduct.oaw"
@@ -15,9 +15,10 @@
 		
 		<component class="oaw.workflow.common.DirectoryCleaner" 
 		directories="${configPath}"/>
+		
 	
 	<component class="org.openarchitectureware.var.tailor.code.CoderComponent">
-		<sourcePath value="platform:/resource/com.msg.ipot.codelib/src-variants"/>
+		<sourcePath value="platform:/resource/${projectName}/src-variants"/>
 		<genPath value="platform:/resource/${projectName}/${configPath}"/>
 		<configurationModelSlot value="configurationModel"/>
         <configurationModelWrapperClass value="org.openarchitectureware.var.featureaccess.pv.PVConfigurationModelWrapper"/>
