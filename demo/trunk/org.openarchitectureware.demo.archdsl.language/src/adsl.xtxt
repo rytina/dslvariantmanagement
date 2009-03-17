@@ -156,7 +156,7 @@ Message:
 	
 // and a message parameter has an ID and a type
 MessageParameter:
-	name=ID ":" typeref=AnyTypeRef;	
+	name=ID ":" typeref=AnyTypeRef (featureClause=FeatureClause)?;	
 
 // data types are either primitive or complex	
 DataType:
