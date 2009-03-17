@@ -20,6 +20,11 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>org.openarchitectureware.var.dotvbuilder.dotVBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.pde.PluginNature</nature>
@@ -27,5 +32,6 @@
 		<nature>com.ps.consul.eclipse.core.ConsulNature</nature>
 		<nature>com.ps.consul.eclipse.ui.ecoreexport.AutoExportFMNature</nature>
 		<nature>com.ps.consul.eclipse.ui.ecoreexport.AutoExportSimplifiedVDMNature</nature>
+		<nature>org.openarchitectureware.var.dotvbuilder.dotVNature</nature>
 	</natures>
 </projectDescription>
