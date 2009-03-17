@@ -14,7 +14,12 @@ system collabSPL {
 		}
 		
 		interface IMessageDispatcher{
-			rr dispatch : request=( message : string, sourceID: int, destinationID: int, conversationID: int ) 
+			rr dispatch : request=( message : string, 
+									sourceID: int, 
+									destinationID: int, 
+									conversationID: int,
+									openKey: int feature Security,
+									encryptedHash: int feature Authentication ) 
 						  reply=( conversationID : int );
 		}
 				  
@@ -23,7 +28,11 @@ system collabSPL {
 		}
 		
 		interface IInstantMessagingService feature SynchronousConferencing {
-			oneway sendMessage: ( senderID: int, receiverID: int, message: string ); 
+			oneway sendMessage: ( senderID: int,
+								  receiverID: int,
+								  message: string,
+								  openKey: int feature Security,
+								  encryptedHash: int feature Authentication ); 
 		}
 		
 		interface IForumService feature SynchronousConferencing {
@@ -32,12 +41,18 @@ system collabSPL {
 		}
 		
 		interface IAudioConnection feature Audio {
-			rr establishCon: request=(callerID: int, calleeID: int) reply=( callID: int );
+			rr establishCon: request=(callerID: int,
+									  calleeID: int,
+									  openKey: int feature Security) 
+							 reply=( callID: int );
 			oneway breakCon : ( callID: int );
 		}
 		
 		interface IAudioService feature Audio {
-			rr dial: request=(callerID: int, calleeID: int) reply=( callID: int );
+			rr dial: request=(callerID: int,
+							  calleeID: int,
+							  openKey: int feature Security) 
+					 reply=( callID: int );
 			oneway addToConference : (calleeID: int, callID: int);
 			oneway hangUp : (callID: int);
 			oneway micOff : (callerID: int);
