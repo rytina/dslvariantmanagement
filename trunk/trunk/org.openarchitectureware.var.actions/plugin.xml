@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+<extension
+         point="org.eclipse.ui.popupMenus">
+     <objectContribution
+        id="org.eclipse.ui.examples.readmetool"
+        objectClass="org.eclipse.jdt.core.ICompilationUnit">
+	    <action id="org.eclipse.ui.examples.readmetool.action1"
+	       label="to .v-File"
+	       icon="icons/ctool16/openbrwsr.png"
+	       menubarPath="additions"
+	       helpContextId="org.eclipse.ui.examples.readmetool.open_browser_action_context"
+	       class="vartoolingactions.popup.actions.VarAction"	
+           definitionId="org.eclipse.ui.examples.readmetool.action1"
+	       enablesFor="1">
+	    </action>
+	 </objectContribution>
+</extension>
+</plugin>
