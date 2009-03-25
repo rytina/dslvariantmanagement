@@ -6,7 +6,7 @@ Bundle-Version: 1.0.0
 Bundle-Activator: org.openarchitectureware.var.pv.relbuilderdotv.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- com.ps.consul.eclipse.relationsbuilder;bundle-version="3.0.2",
+ com.ps.consul.eclipse.relationsbuilder,
  org.eclipse.core.resources;bundle-version="3.4.0",
  org.openarchitectureware.var.dotvbuilder;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
