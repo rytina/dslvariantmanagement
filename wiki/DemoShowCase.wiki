@@ -1,5 +1,5 @@
 #labels Phase-Implementation
-#a show case demonstrates .
+#how to define variability in software product lines by using domain specific languages.
 
 In the following a language for describing software product line architectures will be demonstrated, using the example of a product line for collaboration systems. This language for expressing variability, which I call "VarDSL", was developed with the "Xtext Variability Toolset" and is also available in the SVN repository (http://dslvariantmanagement.googlecode.com/svn/trunk/demo/).
 The main benefit of the VarDSL is, that you don't define only a single system with predefined requirements but rather a family of systems with different requirements. All systems in that family are defined in one model which makes it easier to modify, extend, remove or reuse elements from other systems. In addition a central model helps to keep all system architectures in a consistent state. 
