@@ -18,7 +18,7 @@ You can add your ideas or feature requests to this table:
 ||define a oAW-check, that verifies the import statement for feature models (i.e. the imported file must end with ".xfm.xmi")  || ||
 ||When a cross reference points to an element with a feature dependency, at least the same feature dependency must also be defined for that reference. The reference can have additional features concatenated with "or". || ||
 ||When a xtext rule has a grammar part for feature constraints all other rules that refer to this rule must also have a grammar part for feature constraints so you can satisfy the above rule. || ||
-||implement the following oAW-Check for feature dependencies. When there are more variants of the same Element the dependencies of these elements must be mutually exclusive. In this way duplicate elements are prevented after the tailoring process || ||
+||implement the following oAW-Check for feature dependencies. When there are more variants of the same element the dependencies of these elements must be mutually exclusive. In this way duplicate elements are prevented after the tailoring process || ||
 ||Validate the resulting artifacts of all configurations || ||
 
 
