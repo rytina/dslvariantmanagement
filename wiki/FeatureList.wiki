@@ -6,11 +6,11 @@ You can add your ideas or feature requests to this table:
 = Usability =
 || *Feature Description* || *Implementer* ||
 ||Ability to navigate from a feature condition in the source or model code directly to the related feature in the feature model || Andreas ||
-||with a Xtext editor for [.v-files DotVFile] it should be possible to conveniently handle variability in source code || ||
-||as a alternative to [.v-file DotVFile] it should be possible to define variability conditions through annotations directly in java files || ||
-||implement a eclipse action to assign feature dependencies to [.v-file DotVFile] || ||
-||implement a eclipse action to assign feature dependencies to complete regions within [.v-file DotVFile] || ||
-||eclipse action to rename a [.v-file DotVFile] to the original file extension || ||
+||with a Xtext editor for [DotVFile .v-files] it should be possible to conveniently handle variability in source code || ||
+||as a alternative to [DotVFile .v-file] it should be possible to define variability conditions through annotations directly in java files || ||
+||implement a eclipse action to assign feature dependencies to [DotVFile .v-file] || ||
+||implement a eclipse action to assign feature dependencies to complete regions within [DotVFile .v-file] || ||
+||eclipse action to rename a [DotVFile .v-file] to the original file extension || ||
 
 = Testability =
 || *Feature Description* || *Implementer* ||
