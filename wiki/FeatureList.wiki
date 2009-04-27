@@ -12,6 +12,7 @@ You can add your ideas or feature requests to this table:
 ||implement a eclipse action to assign feature dependencies to complete regions within [DotVFile .v-file] || ||
 ||eclipse action to rename a [DotVFile .v-file] to the original file extension || ||
 
+
 = Testability =
 || *Feature Description* || *Implementer* ||
 ||define a oAW-check, that verifies the import statement for feature models (i.e. the imported file must end with ".xfm.xmi")  || ||
@@ -19,6 +20,7 @@ You can add your ideas or feature requests to this table:
 ||When a xtext rule has a grammar part for feature constraints all other rules that refer to this rule must also have a grammar part for feature constraints so you can satisfy the above rule. || ||
 ||implement the following oAW-Check for feature dependencies. When there are more variants of the same Element the dependencies of these elements must be mutually exclusive. In this way duplicate elements are prevented after the tailoring process || ||
 ||Validate the resulting artifacts of all configurations || ||
+
 
 = Visualization =
 || *Feature Description* || *Implementer* ||
