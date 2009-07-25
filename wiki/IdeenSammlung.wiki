@@ -128,7 +128,7 @@ Variability in the model driven software development process can be found at the
 = Links / references =
  * SPLE
   * conferences / papers
-    * [http://www.feasiple.de/public/proceedings-mdple2009.pdf/ conference paper (pdf)] from the [http://www.feasiple.de/workshop_en.html 1st International Workshop on Model-Driven Product Line Engineering in Twente, June 24th, 2009]
+    * [http://www.feasiple.de/public/proceedings-mdple2009.pdf conference paper (pdf)] from the [http://www.feasiple.de/workshop_en.html 1st International Workshop on Model-Driven Product Line Engineering in Twente, June 24th, 2009]
     * [http://www.splc.net/ Software Product Line Conferences (SPLC)]
     * [http://www.vamos-workshop.net Variability Modelling of Software-intensive Systems (VaMoS)]
     * [http://pi.informatik.uni-siegen.de/CVSM09/ Comparison and Versioning of Software Models (CVSM 2009)]
