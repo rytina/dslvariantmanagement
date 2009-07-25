@@ -1,86 +1,167 @@
-#summary Sammlung von Ideen, Notizen, Konzepte und Überlegungen rund um das Thema SPLE.
-#labels Ideen,Phase-Requirements
+#summary collection of notions, hints, concepts and thoughts around the subject software product line engineering (SPLE)
+#labels ideasconceptslinks,Phase-Requirements
 
-= Ebenen der Variantenbildung =
- * Metamodell
-  * unterstützte (Domänen-)Metamodelle: EMF, UML2
-  * Verknüpfung/Integration der Feature-Modelle mit dem Domänen-Metamodell
-   * Modelltransformation des Feature-Modells und des Domänen-Metamodells zu einem gemergten Metamodell?
-   * Referenzierung zwischen den Metamodellen
-   * Featuremodell ist ein Profil
-   * Unterscheidung von Metamodell-unabhängiger Konfiguration und Metamodell-spezifischer Konfiguration (also der Möglichkeit Feature bestimmten Metamodellelementen zuordnen zu können, manche Feature wirken eventuell global oder beeinflussen nur die unteren Ebenen, wie Generierungen)
-  * Auswertung von Constraints: Aktiv-/Deaktiv-Schalten von Metamodell-Elementen/Zweigen des Metamodells
-  * Aspekt der Versionierung/Branchen von Metamodellvarianten
- * Modell
-  * Verknüpfung/Integration der Konfigurations-Modelle mit dem Domänen-Modell              
-   * Modelltransformationen gemäß dem gemergten Metamodell des Konfigurationsmodells und des Domänenmodells zu einem Gesamtmodell
-   * Modellelemente werden profiliert, sofern die Konfiguration sich Modellelementen zuordnen lässt
-   * Integration erfolgt erst im Generator, der das Domänenmodells an Hand des Konfigurationsmodells ausliest/interpretiert
-  * Auswertung von Constraints: Aktiv-/Deaktiv-Schalten von Modell-Elementen/Zweigen des Modells
-  * Aspekt der Versionierung/Branchen von Modellvarianten
- * Generierung
-  * Variation im Workflow
-   * Konfigurationsmodell beeinflusst die Anwendung bestimmter Cardridges, Workflow-Komponenten, Auswahl aspektorientierter Templates und Extensions
-   * Konfigurationsmodell beeinflusst die Konfiguration der angewendeten Cardridges und Workflow-Komponenten
-  * Variation in Template/Extensions
-   * beim Erstellen der Templates
-    * es werden Typen, deren zugehörigen Metamodellelement, von denen sie gemappt worden sind, vom Konfigurationsmodell abgeschaltet worden sind, auch für die Autocompletion nicht angeboten
-    * Strukturierung der Templates und Extensions z.B. für die Unterstützung zusätzlich anzuwendender aspektorientierter Templates und Extensions
-    * wie wird mit dem Versionieren/Branchen von Templates verfahren?
-   * beim Ausführen der Templates
-    * die Ausführung von Teilen der Templates wird vom Selektiertsein von Features abhängig gemacht bzw. es werden unterschiedliche Template-Methoden aufgerufen
-    * Auslesen der Konfiguration
-     * globale Variablen für Globale Modellelement-unspezifische Einstellungen
-     * Auslesen möglicher Modellannotationen
-     * Zuordnung zwischen Features und Modellelementen, ohne Annotationen zu verwenden, z.B. bei komplexer Regellogik, wo bestimmte Modelleigenschaften geprüft werden müssen, um zu entscheiden, ob ein Feature aktiv ist oder nicht
-  * Variation in vom Generierungsprozess vorgesehenen Modell-zu-Modelltransformationen
-   * falls vorgesehen ist, Plattform-spezifische (Zwischen-)Modelle zu bilden, müssen die dann entsprechend der im Konfiguration gewählten Plattform(-eigenschaften) transformiert werden
-   * eventuell ergeben sich durch die Konfigurationen unterschiedliche Mehrfachverkettungen von Modell-zu-Modelltransformationen
-  * Variation in den Checks
-   * durch die Konfiguration wird die Modellsemantik beeinflusst, so dass dann auch die Checks variiert werden müssen (z.B. Wertebereiche, Existensprüfungen)
-   * Checks können auch dazu genutzt werden
-    * Konfigurationsmodelle zu validieren
-    * Domänenmodelle gegen Konfigurationsmodelle zu validieren
- * Code
-  * Tracing der angewendeten Features durch in den Code generierte Annotationen
-  * auch wenn schon auf Generator-Ebene variiert werden kann, kann es sinnvoll sein, im generierten Code trotzdem sowas wie AspectJ einzusetzen, vor allem wenn für bestimmte Feature-Aspekte noch manuell Code ergänzt werden muss
-  * ergeben sich besondere Anforderungen für die Code-Strukturierung (Trennung generierter/manueller/aspektorientierter Code)?
- * Plattform
-  * Bibliotheken usw. sind ja auch variantenabhängig, die vom oAW Workflow eventuell kopiert werden müssen bzw. wenn man Maven einsetzt, wirds dort in die POM geschrieben (wäre dann wieder auf Generierungsebene)
+collection of notions, hints, concepts and thoughts around the subject software product line engineering (SPLE)
 
-= Integration der Produktlinienunterstützung in oAW =      
+Variability in the model driven software development process can be found at the several stages. In the following for each level regarding the possible variability as well as how tooling could be supportive managing that variability is discussed. As this project is dedicated to develop tools expressing variability in Xtext-based DSLs these thoughts will be enriched for that use case in future.
 
- * positive und negative Variablität
-  * negativ:
-   * Konfigurationsmodell wird auf das Wurzelelement des Modells angewandt, wodurch dann z.B. Modellelemente gelöscht werden können, so dass sie nicht mehr für die Verarbeitung im Template auftauchen (Model Tailoring)
-   * für xText gibt es das retain Schlüsselwort, um auf Feature-Informationen an schon gelöschten Elementen zugreifen zu können
-  * positiv:
-   * Model Aspects (noch eher xText spezifisch)
-   * Aspect Templates, Aspect Extensions
-   * pure::variants/xText spezifisch: Indexer, pure:.variants relations view, um Features mit xText-Modellen in Verbindung zu bringen
- * Auslesen von Feature-Modell-Informationen
-  * in oAW 4.3
-   * globale Features (d.h. Modellelement-unspezifisch) (Quelle: Ekkes
-                          Corner http://ekkescorner.wordpress.com/2009/07/17/galileo-preparing-migration-oaw4-oaw5-ple-featureconfig/)
-    * kann mit der Workflow-Komponente org.openarchitectureware.util.featureconfig.text.TextConfigurationReader dem Attribut configFile eine Textdatei übergeben werden, die zeilenweise +featurename und/oder -featurename enthält, + für aktiviertes Feature, - für deaktiviertes Feature
-    * im Workflow: if(cond) oder
-    * im Templates und Extensions dann
-     * «EXTENSION org::openarchitectureware::util::featureconfig::features» 
-     * mit der Abfrage isFeatureSelected("featurename") kann man dann im Template und in den Extensions fallweise verzweigen
-     * org::openarchitectureware::var::featureaccess::ext::utils, um auf das Feature-Modell zuzugreifen
-     * Anbindung an pure::variants
-     * Pläne: Anbinden weiterer Tools
-      * FMP
-      * XFeature
-      * FeatureMapper
-      * Compositional Variability Management (CVM)
- * Code-Ebene
-  * pure::variants spezifisch: mit dem DOTV-Builder und dem Indexer können (ähnlich wie bei AspectJ) Codesnippets an definierten JoinPoints eingewoben werden
- * Visualisierung von Feature-spezifischen Infos
+= Variability at the meta model level =
+ * supported (domain) meta models: EMF, UML2, tool specific formats?
+ * how to integrate/link feature models with the domain meta model (if at all)
+  * by model to model transformation (interweave feature model and domain specific meta model to a new merged model)
+  * by references between feature model and domain specific meta model
+  * the feature model is defined as UML profile to be later applicable to the domain specific model
+ * distinguish between the scope of features 
+  * features that can be associated with elements of the domain meta model(s) (platform independent meta model(s))
+  * features that can be associated with elements of the technical meta model(s) (platform specific meta model(s))
+  * features that 
+ * evaluation of constraints
+  * constraints that may be associated with features, might using properties of the meta model elements to calculate its values
+  * constraints may be able to deactivate meta model elements / parts of the meta model
+ * coping with the versioning / branching of 
+  * feature models
+  * meta model variants
 
-= Links/Referenzen =
- * [http://www.feasiple.de/public/proceedings-mdple2009.pdf/]
- * http://www.feasiple.de/workshop_en.html
- * http://www.mister-wong.de/user/hanwong/softwareproduktlinien/
- * http://dreirad.wiki.sourceforge.net/Seite450
- * http://ekkescorner.wordpress.com/2009/07/17/galileo-preparing-migration-oaw4-oaw5-ple-featureconfig/
+= Variability at the model level =
+ * how to integrate/link feature models with the domain model (if at all)
+  * model to model transformation of domain model and configuration model on basis of the merged or linked meta models (feature model + domain meta model)
+  * applying the feature model as profile to the domain specific model marking model elements to belong to a certain feature as definied in the feature model
+  * the integration only happens later in the model to model / model to text transformation description, where the transformation is processed on basis of the configuration model (model elements left out, choosing different transformation steps and so on)
+ * evaluation of constraints
+  * constraints that may be associated with features, might using properties of the model elements to calculate its values
+  * constraints may be able to deactivate model elements / parts of the model
+ * coping with the versioning / branching of 
+  * feature models
+  * model variants (also in relation with versions of its meta model)
+
+== Variability in model validations ==
+ * the feature selection / configuration may influence the model semantics whose consistence have to preserved by appropriate model checks (constraints that are not expressed in the model) e.g. range of values of on property depending on the value of another property, existence checks and so on
+ * model checks may also be used to
+  * validate configuration models
+  * validate domain models against configuration models
+
+= Variability at the transformation description / generation level =
+== Variability in the transformation / generation workflow ==
+ * the feature configuration may
+  * influence the selection and (order of) application of process steps (e.g. workflow cartridges in openArchitectureWare)
+  * influence the configuration of process steps (changing existing global parameters, used within the process steps)
+  * inject changes to transformation and generation descriptions (e.g. applying aspect oriented templates and extensions in openArchitectureWare)
+
+== Variability in the transformation / generation description ==
+=== Variability when writing the description ===
+ * auto completion support does not not show types whose associated meta model elements where deactivated by the feature configuration model
+ * to support additional aspect oriented transformation descriptions (templates and extensions in case of openArchitectureWare) the base description have to be structured accordingly
+ * find a good way for versioning and branching base and additional descriptions
+
+=== Variability when executing the description ===
+ * The execution of parts of the transformation description depends on the feature selection in the configuration model
+  * some parts will be ony executed if a certain feature is selected
+  * if a certain feature is not selected an alternative transformation is applied (e.g. in openArchitecture a different template method is called)
+  * parameters for transformation descriptions may change
+
+=== How variability information may be provided ===
+ * global parameters for global model independent configurations (e.g. if no platform specific model is used but instead a global parameter decides if the templates for generating the business tier in EJB3 or the templates for generating the tier in Spring are applied)
+ * configuration information is provided as annotation to model elements (e.g. tagged values in an applied UML profile) that can be used when procesing a model element in transformation description 
+ * association between features and model elements without using annotations but complex rule logic, that evaluate certain properties of certain model elements to decide if an feature is applicable
+
+=== Variability in model to model transformations ===
+ * the generation / transformation process may consists of several model to model transformation till eventuell the model to platform transformation is done
+ * the transformation from platform independent to platform specific model is a typical use case
+ * platform specific models transformation may also be staged (just to cope with complexity that would arise when all the transformation would be done at once, also reuse of transformed model between stages for other transformations might be possible)
+ * some feature modeling tools also support stepwise refinement of configuration models so that at every step a new intermediate feature configuration model is created that leaves less choice between feature (narrowing the configuration space)
+ * according the the refinements in the configuration model the model transformations have to be selected and configured, so that in the end different configuration refinements cause diffent model to model transformation chainings 
+
+== Variability at code level ==
+ * tracing of applied features by in the code generated annotations
+ * even if variation is done at transformation / generation level it could be reasonable to separate code artifacts by feature (weaving in feature associated code snippets like [http://www.eclipse.org/aspectj/ AspectJ]). This is especially useful, when feature associated code needs additional manual written code.
+ * the separation of generated and manual written code gains some more complexity when additional the separation by features must be considered
+
+== Variability at platform level ==
+ * actually at this level no variability should occur
+ * programming libraries to use at the platform may depend on the feature configuration, this variability is handled at the generation level 
+ * as there the generation process copies the needed libraries to the platfom or
+ * when using [http://maven.apache.org/ Maven] the configuration of the needed libraries can be generated in the pom.xml
+
+= Integration of product line engineering capabilities in openArchitectureWare =
+== Introduction ==
+ * since of openArchitectureWare 4 there exists some direct and indirect support of product line engineering (PLE) or at least handling of variability at the several stages (meta model, model, transformation, code as discussed tool independent before)
+ * beside the main scope of this project, developing tools for Xtext-based textual DSLs, also the migration of the existing PLE features to the current release openArchitectureWare 5 (the sum of the Eclipse projects [http://www.eclipse.org/modeling/emft/?project=mwe MWE], [http://www.eclipse.org/modeling/m2t/?project=xpand Xpand], [http://www.eclipse.org/modeling/tmf/?project=xtext Xtext] and the several plugin projects) should be enforced
+ * not only the migration of the existing PLE tooling but also (and foremost) the enhancement is our goal
+
+== support of expression positive and negative variability ==
+ * a certain configuration is considered as default, to vary that configuration means to remove elements from or to add new elements to the existing configuration
+ * some of the features that openArchitectureWare provides were discussed in the AMPLE project videos series for which a [http://dreirad.wiki.sourceforge.net/Seite450 short textual transcription] exists
+ * negative variability (model tailoring)
+  * the configuration model is applied to the domain model erases certain model elements (that still preserves a meta model conform model), so that they do not appear anymore when the model is processed by the generator (see [http://dslvariantmanagement.googlecode.com/files/UsersGuide-0.6.pdf Users Guide (pdf)]) from this project
+  * XVar (not documented in the reference documentation of oAW 4.3.1) (see [http://www.voelter.de/data/workshops/MVSPL_GroherVoelter.pdf Expressing Feature-Based Variability in Structural Models (pdf)])
+  * in the xText grammar there is the key word 'retain' introduced to get access to feature information provided ar actually erased model elements
+ * positive variability (model tailoring)
+   * model aspects (model weaving with [http://www.openarchitectureware.org/pub/documentation/4.3.1/html/contents/ch16.html XWeave]
+   * [http://www.openarchitectureware.org/pub/documentation/4.3.1/html/contents/workflow_reference.html#d0e2670 aspect orientation with workflows], [http://www.openarchitectureware.org/pub/documentation/4.3.1/html/contents/core_reference.html#xpand_reference_aspect-oriented_programming_in_xpand aspect oriented programming in Xpand2], [http://www.openarchitectureware.org/pub/documentation/4.3.1/html/contents/core_reference.html#d0e4654 aspect oriented programming in Xtend], see also the [http://www.openarchitectureware.org/pub/documentation/4.3.1/html/contents/core_reference.html#aop_template_introduction examples]
+
+== Retrieving feature model data from feature models (orthogonal variability) ==
+ * global features (i.e. model element independent) 
+  * sources
+    * [http://ekkescorner.wordpress.com/2009/07/17/galileo-preparing-migration-oaw4-oaw5-ple-featureconfig/ Ekkes Corner oAW Migration Guide - oAW PLE feature config]
+    * [http://kthoms.wordpress.com/2009/07/16/oaw-4-migration-with-cartridge-adaption/ Karsten Thom's migration guide (scroll down to the PLE feature headline)])
+  * definition in the workflow
+    * provide the attribute configFile of the workflow component org.openarchitectureware.util.featureconfig.text.TextConfigurationReader with text file, that contains line wise +featurename and/or -featurename
+    * '+' means active feature and '-' non active feature
+  * usage in the workflow
+    * till oAW 4.3.1: <feature isSelected="FEATURENAME">...</feature> 
+    * in MWE 0.7: <if cond="${FEATURENAME}">...</if> (as workaround until this feature is migrated)
+  * usage in templates and extensions
+    * «EXTENSION org::openarchitectureware::util::featureconfig::features» 
+    * with using isFeatureSelected("featurename") it can be switched between different template logic to process
+    * use org::openarchitectureware::var::featureaccess::ext::utils to access the feature model
+ * pure::variants connector
+   * indexer, pure:.variants relations view, to associate features with xText models 
+   * to create feature related code snippets (like AspectJ) use the DOTV builder and the indexer
+   * see [http://dslvariantmanagement.googlecode.com/files/UsersGuide-0.6.pdf Users Guide (pdf)] from this project for further information
+ * future plans: 
+  * writing connectors for further tools (see [Pan Project plan]) (consider also the license of the tools before deciding to write a connector)
+    * FMP (in progress)
+    * XFeature
+    * FeatureMapper
+    * Compositional Variability Management (CVM)
+    * other
+  * visualize feature mapping (maybe with help of the [http://code.google.com/p/emfmodelvisualizer/ EMF Model Visualizer]) 
+
+= Links / references =
+ * SPLE
+  * conferences / papers
+    * [http://www.feasiple.de/public/proceedings-mdple2009.pdf/ conference paper (pdf)] from the [http://www.feasiple.de/workshop_en.html 1st International Workshop on Model-Driven Product Line Engineering in Twente, June 24th, 2009]
+    * [http://www.splc.net/ Software Product Line Conferences (SPLC)]
+    * [http://www.vamos-workshop.net Variability Modelling of Software-intensive Systems (VaMoS)]
+    * [http://pi.informatik.uni-siegen.de/CVSM09/ Comparison and Versioning of Software Models (CVSM 2009)]
+    * [http://wikiserver.sse.cs.tu-bs.de/mise09/index.php/Main_Page Workshop on Modeling in Software Engineering (MiSE 2009)]
+  * tools 
+    * [https://sourceforge.net/projects/fmp/ FMP] (licensed under EPL)
+    * [http://www.pnp-software.com/XFeature/ XFeature]? (licensed under GPL)
+    * [http://www.featuremapper.org/ FeatureMapper]? (licensed under LGPL 3.0)
+    * [http://www.cvm-framework.org/index.html Compositional Variability Management (CVM)] (not released yet)
+    * [http://wwwiti.cs.uni-magdeburg.de/iti_db/research/featureide/ FeatureIDE] (licensed under GPL)
+    * [http://www.infosun.fim.uni-passau.de/cl/staff/apel/#projekte FeatureIDE, FeatureHouse, FeatureC++], see also [http://wwwiti.cs.uni-magdeburg.de/~ckaestne/JOT09_OverviewFOSD.pdf An Overview of Feature-Oriented Software Development (pdf)]
+  * [http://www.mister-wong.de/user/hanwong/softwareproduktlinien/ Link collection to software product lines]
+ * aspect orientation
+  * [http://www.eclipse.org/aspectj/ AspectJ]
+  * [http://www.aosd-europe.net AOSD-Europe Project]
+ * openArchitectureWare 5
+  * general links
+    * [http://www.eclipse.org/modeling/emft/?project=mwe MWE], 
+    * [http://www.eclipse.org/modeling/m2t/?project=xpand Xpand], 
+    * [http://www.eclipse.org/modeling/tmf/?project=xtext Xtext]
+  * PLE and aspect orientation
+    * [http://dreirad.wiki.sourceforge.net/Seite450 short textual transcript of aspect orientation and PLE support in oAW 4.2]
+    * [http://dslvariantmanagement.googlecode.com/files/UsersGuide-0.6.pdf Users Guide (pdf)]) from this project
+  * variability at model level
+    * [http://www.voelter.de/data/workshops/MVSPL_GroherVoelter.pdf Expressing Feature-Based Variability in Structural Models (pdf)] (XVar)
+    * [http://www.openarchitectureware.org/pub/documentation/4.3.1/html/contents/ch16.html XWeave]
+  * aspect orientation at generator level
+    * [http://www.openarchitectureware.org/pub/documentation/4.3.1/html/contents/workflow_reference.html#d0e2670 aspect orientation with workflows]
+    * [http://www.openarchitectureware.org/pub/documentation/4.3.1/html/contents/core_reference.html#xpand_reference_aspect-oriented_programming_in_xpand aspect oriented programming in Xpand2]
+    * [http://www.openarchitectureware.org/pub/documentation/4.3.1/html/contents/core_reference.html#d0e4654 aspect oriented programming in Xtend]
+    * [http://www.openarchitectureware.org/pub/documentation/4.3.1/html/contents/core_reference.html#aop_template_introduction examples]
+  * migration guides concerning PLE
+    * [http://ekkescorner.wordpress.com/2009/07/17/galileo-preparing-migration-oaw4-oaw5-ple-featureconfig/ Ekkes Corner's oAW Migration Guide for PLE FeatureConfig]
+    * [http://kthoms.wordpress.com/2009/07/16/oaw-4-migration-with-cartridge-adaption/ Karsten Thom's migration guide (scroll down to the PLE feature headline)])
