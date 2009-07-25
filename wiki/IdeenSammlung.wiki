@@ -1,7 +1,86 @@
+#summary Sammlung von Ideen, Notizen, Konzepte und Überlegungen rund um das Thema SPLE.
 #labels Ideen,Phase-Requirements
-#Sammlung von Ideen und Überlegungen rund um das Thema SPLE.
 
-= Ideen =
+= Ebenen der Variantenbildung =
+ * Metamodell
+  * unterstützte (Domänen-)Metamodelle: EMF, UML2
+  * Verknüpfung/Integration der Feature-Modelle mit dem Domänen-Metamodell
+   * Modelltransformation des Feature-Modells und des Domänen-Metamodells zu einem gemergten Metamodell?
+   * Referenzierung zwischen den Metamodellen
+   * Featuremodell ist ein Profil
+   * Unterscheidung von Metamodell-unabhängiger Konfiguration und Metamodell-spezifischer Konfiguration (also der Möglichkeit Feature bestimmten Metamodellelementen zuordnen zu können, manche Feature wirken eventuell global oder beeinflussen nur die unteren Ebenen, wie Generierungen)
+  * Auswertung von Constraints: Aktiv-/Deaktiv-Schalten von Metamodell-Elementen/Zweigen des Metamodells
+  * Aspekt der Versionierung/Branchen von Metamodellvarianten
+ * Modell
+  * Verknüpfung/Integration der Konfigurations-Modelle mit dem Domänen-Modell              
+   * Modelltransformationen gemäß dem gemergten Metamodell des Konfigurationsmodells und des Domänenmodells zu einem Gesamtmodell
+   * Modellelemente werden profiliert, sofern die Konfiguration sich Modellelementen zuordnen lässt
+   * Integration erfolgt erst im Generator, der das Domänenmodells an Hand des Konfigurationsmodells ausliest/interpretiert
+  * Auswertung von Constraints: Aktiv-/Deaktiv-Schalten von Modell-Elementen/Zweigen des Modells
+  * Aspekt der Versionierung/Branchen von Modellvarianten
+ * Generierung
+  * Variation im Workflow
+   * Konfigurationsmodell beeinflusst die Anwendung bestimmter Cardridges, Workflow-Komponenten, Auswahl aspektorientierter Templates und Extensions
+   * Konfigurationsmodell beeinflusst die Konfiguration der angewendeten Cardridges und Workflow-Komponenten
+  * Variation in Template/Extensions
+   * beim Erstellen der Templates
+    * es werden Typen, deren zugehörigen Metamodellelement, von denen sie gemappt worden sind, vom Konfigurationsmodell abgeschaltet worden sind, auch für die Autocompletion nicht angeboten
+    * Strukturierung der Templates und Extensions z.B. für die Unterstützung zusätzlich anzuwendender aspektorientierter Templates und Extensions
+    * wie wird mit dem Versionieren/Branchen von Templates verfahren?
+   * beim Ausführen der Templates
+    * die Ausführung von Teilen der Templates wird vom Selektiertsein von Features abhängig gemacht bzw. es werden unterschiedliche Template-Methoden aufgerufen
+    * Auslesen der Konfiguration
+     * globale Variablen für Globale Modellelement-unspezifische Einstellungen
+     * Auslesen möglicher Modellannotationen
+     * Zuordnung zwischen Features und Modellelementen, ohne Annotationen zu verwenden, z.B. bei komplexer Regellogik, wo bestimmte Modelleigenschaften geprüft werden müssen, um zu entscheiden, ob ein Feature aktiv ist oder nicht
+  * Variation in vom Generierungsprozess vorgesehenen Modell-zu-Modelltransformationen
+   * falls vorgesehen ist, Plattform-spezifische (Zwischen-)Modelle zu bilden, müssen die dann entsprechend der im Konfiguration gewählten Plattform(-eigenschaften) transformiert werden
+   * eventuell ergeben sich durch die Konfigurationen unterschiedliche Mehrfachverkettungen von Modell-zu-Modelltransformationen
+  * Variation in den Checks
+   * durch die Konfiguration wird die Modellsemantik beeinflusst, so dass dann auch die Checks variiert werden müssen (z.B. Wertebereiche, Existensprüfungen)
+   * Checks können auch dazu genutzt werden
+    * Konfigurationsmodelle zu validieren
+    * Domänenmodelle gegen Konfigurationsmodelle zu validieren
+ * Code
+  * Tracing der angewendeten Features durch in den Code generierte Annotationen
+  * auch wenn schon auf Generator-Ebene variiert werden kann, kann es sinnvoll sein, im generierten Code trotzdem sowas wie AspectJ einzusetzen, vor allem wenn für bestimmte Feature-Aspekte noch manuell Code ergänzt werden muss
+  * ergeben sich besondere Anforderungen für die Code-Strukturierung (Trennung generierter/manueller/aspektorientierter Code)?
+ * Plattform
+  * Bibliotheken usw. sind ja auch variantenabhängig, die vom oAW Workflow eventuell kopiert werden müssen bzw. wenn man Maven einsetzt, wirds dort in die POM geschrieben (wäre dann wieder auf Generierungsebene)
 
-*Test
-**Test2
+= Integration der Produktlinienunterstützung in oAW =      
+
+ * positive und negative Variablität
+  * negativ:
+   * Konfigurationsmodell wird auf das Wurzelelement des Modells angewandt, wodurch dann z.B. Modellelemente gelöscht werden können, so dass sie nicht mehr für die Verarbeitung im Template auftauchen (Model Tailoring)
+   * für xText gibt es das retain Schlüsselwort, um auf Feature-Informationen an schon gelöschten Elementen zugreifen zu können
+  * positiv:
+   * Model Aspects (noch eher xText spezifisch)
+   * Aspect Templates, Aspect Extensions
+   * pure::variants/xText spezifisch: Indexer, pure:.variants relations view, um Features mit xText-Modellen in Verbindung zu bringen
+ * Auslesen von Feature-Modell-Informationen
+  * in oAW 4.3
+   * globale Features (d.h. Modellelement-unspezifisch) (Quelle: Ekkes
+                          Corner http://ekkescorner.wordpress.com/2009/07/17/galileo-preparing-migration-oaw4-oaw5-ple-featureconfig/)
+    * kann mit der Workflow-Komponente org.openarchitectureware.util.featureconfig.text.TextConfigurationReader dem Attribut configFile eine Textdatei übergeben werden, die zeilenweise +featurename und/oder -featurename enthält, + für aktiviertes Feature, - für deaktiviertes Feature
+    * im Workflow: if(cond) oder
+    * im Templates und Extensions dann
+     * «EXTENSION org::openarchitectureware::util::featureconfig::features» 
+     * mit der Abfrage isFeatureSelected("featurename") kann man dann im Template und in den Extensions fallweise verzweigen
+     * org::openarchitectureware::var::featureaccess::ext::utils, um auf das Feature-Modell zuzugreifen
+     * Anbindung an pure::variants
+     * Pläne: Anbinden weiterer Tools
+      * FMP
+      * XFeature
+      * FeatureMapper
+      * Compositional Variability Management (CVM)
+ * Code-Ebene
+  * pure::variants spezifisch: mit dem DOTV-Builder und dem Indexer können (ähnlich wie bei AspectJ) Codesnippets an definierten JoinPoints eingewoben werden
+ * Visualisierung von Feature-spezifischen Infos
+
+= Links/Referenzen =
+ * [http://www.feasiple.de/public/proceedings-mdple2009.pdf/]
+ * http://www.feasiple.de/workshop_en.html
+ * http://www.mister-wong.de/user/hanwong/softwareproduktlinien/
+ * http://dreirad.wiki.sourceforge.net/Seite450
+ * http://ekkescorner.wordpress.com/2009/07/17/galileo-preparing-migration-oaw4-oaw5-ple-featureconfig/
