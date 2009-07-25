@@ -1,0 +1,10 @@
+#labels Plan,Phase-Requirements
+#Planung der nächsten Schritte.
+
+= Plan =
+ * Migration des Variailitäts-Tooling nach oAW 5 
+ * Anbinden weiterer FM-Tools
+  * FMP
+  * XFeature
+  * FeatureMapper?
+  * Compositional Variability Management (CVM) 
