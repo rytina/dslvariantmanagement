@@ -1,5 +1,5 @@
 #summary collection of notions, hints, concepts and thoughts around the subject software product line engineering (SPLE)
-#labels ideasconceptslinks,Phase-Requirements
+#labels ideas,Phase-Requirements,concepts,links
 
 Variability in the model driven software development process can be found at the several stages. In the following for each level regarding the possible variability as well as how tooling could be supportive managing that variability is discussed. As this project is dedicated to develop tools expressing variability in Xtext-based DSLs these thoughts will be enriched for that use case in future.
 
