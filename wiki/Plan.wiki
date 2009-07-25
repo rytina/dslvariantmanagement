@@ -1,10 +1,11 @@
-#summary Planung der nächsten Schritte.
+#summary Planning of the next steps
 #labels Plan,Phase-Requirements
 
-= Plan =
- * Migration des Variailitäts-Tooling nach oAW 5 
- * Anbinden weiterer FM-Tools
-  * FMP
-  * XFeature
-  * FeatureMapper?
-  * Compositional Variability Management (CVM) 
+= Roadmap =
+ * variability tooling migration to oAW 5 
+ * implementation of further feature modeling tools, as there are
+  * [https://sourceforge.net/projects/fmp/ FMP] (licensed under EPL)
+  * [http://www.pnp-software.com/XFeature/ XFeature]? (licensed under GPL)
+  * [http://www.featuremapper.org/ FeatureMapper]? (licensed under LGPL 3.0)
+  * [http://www.cvm-framework.org/index.html Compositional Variability Management (CVM)] (not released yet)
+  * [http://wwwiti.cs.uni-magdeburg.de/iti_db/research/featureide/ FeatureIDE] (licensed under GPL)
