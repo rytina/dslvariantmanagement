@@ -1,5 +1,5 @@
 #labels Ideen,Phase-Requirements
-#Sammlung von Ideen und Überlegungen rund um das Thema SPLE  
+#Sammlung von Ideen und Überlegungen rund um das Thema SPLE.
 
 = Ideen =
 
