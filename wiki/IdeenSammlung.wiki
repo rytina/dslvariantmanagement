@@ -117,10 +117,10 @@ Variability in the model driven software development process can be found at the
    * to create feature related code snippets (like AspectJ) use the DOTV builder and the indexer
    * see [http://dslvariantmanagement.googlecode.com/files/UsersGuide-0.6.pdf Users Guide (pdf)] from this project for further information
  * future plans: 
-  * writing connectors for further tools (see [Pan Project plan]) (consider also the license of the tools before deciding to write a connector)
+  * writing connectors for further tools (see [http://code.google.com/p/dslvariantmanagement/wiki/Plan Project plan]) (consider also the license of the tools before deciding to write a connector)
     * FMP (in progress)
     * XFeature
-    * FeatureMapper
+    * Feature Mapper
     * Compositional Variability Management (CVM)
     * other
   * visualize feature mapping (maybe with help of the [http://code.google.com/p/emfmodelvisualizer/ EMF Model Visualizer]) 
