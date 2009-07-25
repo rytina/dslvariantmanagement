@@ -1,5 +1,5 @@
+#summary Planung der nächsten Schritte.
 #labels Plan,Phase-Requirements
-#Planung der nächsten Schritte.
 
 = Plan =
  * Migration des Variailitäts-Tooling nach oAW 5 
