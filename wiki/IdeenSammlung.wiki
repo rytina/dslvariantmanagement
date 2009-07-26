@@ -140,6 +140,7 @@ Variability in the model driven software development process can be found at the
     * [http://www.cvm-framework.org/index.html Compositional Variability Management (CVM)] (not released yet)
     * [http://wwwiti.cs.uni-magdeburg.de/iti_db/research/featureide/ FeatureIDE] (licensed under GPL)
     * [http://www.infosun.fim.uni-passau.de/cl/staff/apel/#projekte FeatureIDE, FeatureHouse, FeatureC++], see also [http://wwwiti.cs.uni-magdeburg.de/~ckaestne/JOT09_OverviewFOSD.pdf An Overview of Feature-Oriented Software Development (pdf)]
+    * [http://ample.holos.pt/pageview.aspx?pageid=20&langid=1 Link collection at AMPLE - tools that support variability]
   * [http://www.mister-wong.de/user/hanwong/softwareproduktlinien/ Link collection to software product lines]
  * aspect orientation
   * [http://www.eclipse.org/aspectj/ AspectJ]
