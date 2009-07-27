@@ -95,7 +95,10 @@ Variability in the model driven software development process can be found at the
   * in the xText grammar there is the key word 'retain' introduced to get access to feature information provided ar actually erased model elements
  * positive variability (model tailoring)
    * model aspects (model weaving with [http://www.openarchitectureware.org/pub/documentation/4.3.1/html/contents/ch16.html XWeave]
-   * [http://www.openarchitectureware.org/pub/documentation/4.3.1/html/contents/workflow_reference.html#d0e2670 aspect orientation with workflows], [http://www.openarchitectureware.org/pub/documentation/4.3.1/html/contents/core_reference.html#xpand_reference_aspect-oriented_programming_in_xpand aspect oriented programming in Xpand2], [http://www.openarchitectureware.org/pub/documentation/4.3.1/html/contents/core_reference.html#d0e4654 aspect oriented programming in Xtend], see also the [http://www.openarchitectureware.org/pub/documentation/4.3.1/html/contents/core_reference.html#aop_template_introduction examples]
+   * [http://www.openarchitectureware.org/pub/documentation/4.3.1/html/contents/workflow_reference.html#d0e2670 aspect orientation with workflows]
+   * [http://www.openarchitectureware.org/pub/documentation/4.3.1/html/contents/core_reference.html#xpand_reference_aspect-oriented_programming_in_xpand aspect oriented programming in Xpand2]
+   * [http://www.openarchitectureware.org/pub/documentation/4.3.1/html/contents/core_reference.html#d0e4654 aspect oriented programming in Xtend]
+   * [http://www.openarchitectureware.org/pub/documentation/4.3.1/html/contents/core_reference.html#aop_template_introduction examples]
 
 == Retrieving feature model data from feature models (orthogonal variability) ==
  * global features (i.e. model element independent) 
@@ -134,9 +137,10 @@ Variability in the model driven software development process can be found at the
     * [http://pi.informatik.uni-siegen.de/CVSM09/ Comparison and Versioning of Software Models (CVSM 2009)]
     * [http://wikiserver.sse.cs.tu-bs.de/mise09/index.php/Main_Page Workshop on Modeling in Software Engineering (MiSE 2009)]
   * articles
+    * [http://wwwiti.cs.uni-magdeburg.de/~ckaestne/JOT09_OverviewFOSD.pdf An Overview of Feature-Oriented Software Development (pdf)]
     * [http://www.htw-aalen.de/img/downloads/studienarbeiten/228_2008-Diplomarbeit-Rytina.pdf Variabilität in der Domänen-Objekt-Modellierung für Software-Produktlinien (deutsch, pdf) (hey, this is the thesis of Andy, one of the committers of this project :)]
     * [http://www.stefan-marr.de/pages/feature-diagramme-und-variabilitat/ Feature-Diagramme und Variabilität (deutsch)]
-    * [http://www.izito.de/?&where=web_izito_de&target=web_izito_de&vid=l94223218249I1248606650&dzn=web_izito_de_zones&mpg=1&asid=1600514675&query=On%20the%20Relationship%20between%20Feature%20Models%20and%20Ontologies On the Relationship between Feature Models and Ontologies (pdf)]
+    * [http://www.cs.utexas.edu/~chpkim/chpkim-masc-thesis.pdf On the Relationship between Feature Models and Ontologies (pdf)]
     * [http://www.swen.uwaterloo.ca/~kczarnec/feature_models_as_viewes_on_ontology_splc06.pdf Feature Models are Views on Ontologies (pdf)]
     * [http://productlines.wordpress.com/ Procuct lines blog]
       * [http://productlines.wordpress.com/2008/07/21/feature-models-and-features-whats-this/ Feature Models and Features – What’s this?]
@@ -145,6 +149,9 @@ Variability in the model driven software development process can be found at the
     * [http://www.voelter.de/data/pub/VoelterGroher_SPLEwithAOandMDD.pdf Product Line Implementation using Aspect-Oriented and Model-Driven Software Development (pdf)]
     * [http://www.jot.fm/issues/issue_2008_11/column1/index.html Agile Software Product Lines, Deconstructed]
     * [http://www.objectteams.org/publications/Diplom_Marko_Feistkorn.pdf Abbildung von produktlinienorientierten Featurediagrammen auf aspektorientierte Implementierungsmodule (pdf)]
+    * [http://en.wikipedia.org/wiki/Feature_Oriented_Programming Feature Oriented Programming (Wikipedia)]
+    * [http://de.wikipedia.org/wiki/Produktlinienentwicklung_(Software) Produktlinienentwicklung (Software) (German Wikipedia article)]
+    * [http://de.wikipedia.org/wiki/Produktlinie_(Software) Produktlinie (Software) (German Wikipedia article)]
   * tools 
     * [https://sourceforge.net/projects/fmp/ FMP] (licensed under EPL)
     * [http://gsd.uwaterloo.ca/category/projects/ecorefmp/ Ecore.fmp] (no release found, but metamodel could recontructed from the article below)
@@ -154,7 +161,7 @@ Variability in the model driven software development process can be found at the
     * [http://www.featuremapper.org/ FeatureMapper]? (licensed under LGPL 3.0)
     * [http://www.cvm-framework.org/index.html Compositional Variability Management (CVM)] (not released yet)
     * [http://wwwiti.cs.uni-magdeburg.de/iti_db/research/featureide/ FeatureIDE] (licensed under GPL)
-    * [http://www.infosun.fim.uni-passau.de/cl/staff/apel/#projekte FeatureIDE, FeatureHouse, FeatureC++], see also [http://wwwiti.cs.uni-magdeburg.de/~ckaestne/JOT09_OverviewFOSD.pdf An Overview of Feature-Oriented Software Development (pdf)]
+    * [http://www.infosun.fim.uni-passau.de/cl/staff/apel/#projekte FeatureIDE, CIDE, FeatureHouse, FeatureC++], see also [http://wwwiti.cs.uni-magdeburg.de/~ckaestne/JOT09_OverviewFOSD.pdf An Overview of Feature-Oriented Software Development (pdf)]
     * [http://ample.holos.pt/pageview.aspx?pageid=20&langid=1 Link collection at AMPLE - tools that support variability]
   * [http://www.mister-wong.de/user/hanwong/softwareproduktlinien/ Link collection to software product lines]
  * aspect orientation
