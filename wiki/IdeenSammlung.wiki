@@ -8,8 +8,9 @@ Variability in the model driven software development process can be found at the
  * how to integrate/link feature models with the domain meta model (if at all)
   * by model to model transformation (interweave feature model and domain specific meta model to a new merged model)
   * by references between feature model and domain specific meta model
+  * by having a dedicated link model that draws connections between feature model and domain specific meta model
   * the feature model is defined as UML profile to be later applicable to the domain specific model
- * distinguish between the scope of features 
+* distinguish between the scope of features 
   * features that can be associated with elements of the domain meta model(s) (platform independent meta model(s))
   * features that can be associated with elements of the technical meta model(s) (platform specific meta model(s))
   * features that 
