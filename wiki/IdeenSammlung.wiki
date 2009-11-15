@@ -113,12 +113,27 @@ In the meanwhile there is is a new proposed open source project under the Eclips
     * provide the attribute configFile of the workflow component org.openarchitectureware.util.featureconfig.text.TextConfigurationReader with text file, that contains line wise +featurename and/or -featurename
     * '+' means active feature and '-' non active feature
   * usage in the workflow
-    * till oAW 4.3.1: <feature isSelected="FEATURENAME">...</feature> 
-    * in MWE 0.7: <if cond="${FEATURENAME}">...</if> (as workaround until this feature is migrated)
+    * till oAW 4.3.1: 
+{{{
+<feature isSelected="FEATURENAME">...</feature> 
+}}}
+    * in MWE 0.7 (as workaround until this feature is migrated): 
+{{{
+<if cond="${FEATURENAME}">...</if>
+}}} 
   * usage in templates and extensions
-    * «EXTENSION org::openarchitectureware::util::featureconfig::features» 
-    * with using isFeatureSelected("featurename") it can be switched between different template logic to process
-    * use org::openarchitectureware::var::featureaccess::ext::utils to access the feature model
+    * define the extension
+{{{
+«EXTENSION org::openarchitectureware::util::featureconfig::features» 
+}}}
+    * it can be switched between different template logic to process with using 
+{{{
+isFeatureSelected("featurename") 
+}}}
+    * to access the feature model you have to define the extension 
+{{{
+org::openarchitectureware::var::featureaccess::ext::utils 
+}}}
  * pure::variants connector
    * indexer, pure:.variants relations view, to associate features with xText models 
    * to create feature related code snippets (like AspectJ) use the DOTV builder and the indexer
