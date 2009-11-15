@@ -4,7 +4,7 @@
 = Introduction =
 Variability in the model driven software development process can be found at the several stages. In the following for each level regarding the possible variability as well as how tooling could be supportive managing that variability is discussed. As this project is dedicated to develop tools expressing variability in Xtext-based DSLs these thoughts will be enriched for that use case in future.
 
-In the meanwhile there is is a new proposed open source project under the Eclipse Modeling Framework Technology Project (EMFT), called *[http://www.eclipse.org/proposals/feature-model/ EMF Feature Model]*. The intent is to provide a uniform representation for variability information for tools based on the Eclipse Modeling Framework. This will allow easy and consistent access to variability-related information, such as variation points and variant decisions, in DSLs, M2M transformations, and other contexts where variability information is produced or consumed. You are invited to comment on and/or join the project. Please send all feedback to the [http://www.eclipse.org/newsportal/thread.php?group=eclipse.technology.emft EMFT newsgroup]. 
+In the meanwhile there is is a new proposed open source project under the Eclipse Modeling Framework Technology Project (EMFT), called *[http://www.eclipse.org/proposals/feature-model/ EMF Feature Model]*. The intent is to provide a uniform representation for variability information for tools based on the Eclipse Modeling Framework. This will allow easy and consistent access to variability-related information, such as variation points and variant decisions, in DSLs, M2M transformations, and other contexts where variability information is produced or consumed. You are invited to comment on and/or join the project. Please send all feedback to the [http://www.eclipse.org/newsportal/thread.php?group=eclipse.technology.emft EMFT newsgroup]. *Update:* The project has been approved. See the [http://www.eclipse.org/proposals/feature-model/emffm%20creation%20review.pdf Creation review (pdf)] that states the next steps (roadmap).
 
 = Variability at the meta model level =
  * supported (domain) meta models: EMF, UML2, tool specific formats?
@@ -133,34 +133,59 @@ In the meanwhile there is is a new proposed open source project under the Eclips
   * visualize feature mapping (maybe with help of the [http://code.google.com/p/emfmodelvisualizer/ EMF Model Visualizer]) 
 
 = Links / references =
+ * Related projects: Aspect orientation in DSLs
+  * in the [http://en.wikipedia.org/wiki/AUTOSAR AUTOSAR] domain 
+   * [http://www.slideshare.net/sebastianbenz/artext-driving-developments-with-xtext ARText - Driving Developments with Xtext]: ARText, a textual language for AUTOSAR, is available for free for those registered at [http://www.artop.org/ AUTOSAR Tool Platform (Artop)]
+   * [http://axbench.isst.fraunhofer.de/ axBench]: [http://axbench.isst.fraunhofer.de/?page_id=82 axLang] enables the specification of [http://axbench.isst.fraunhofer.de/?page_id=324 textual feature models]
+  * [http://code.google.com/p/emf-customizer/ EMF Customizer] is a model (Ecore based) customization/styling/refining CSS like textual DSL (Domain Specific Language) targeting MDSD tool chains end users.
+ * Domain specific languages
+   * articles
+    * [http://dsl09.blogspot.com/ Blog to the conference Domain Specific Languages ('09)] containing resources to the hold presentations
+   * tools
+    * [http://www.cis.uab.edu/softcom/DDF/ Domain-Specific Language (DSL) Testing Studio]: assistance for debugging and testing a program written in a DSL
+     * [http://students.cis.uab.edu/wuh/ddf/publications.html Publications], referencing e.g. an article about AspectG, introducing aspect orientation in a grammar to be able to insert debug information (Debugging Aspect)
+     * [http://dsl09.blogspot.com/2009/07/unit-testing-dsls.html Unit Testing DSLs], containing also some information about AspectG, a domain-specific aspect language for language grammars written in ANTLR, at page 26 of the pdf linked by this site
+    * [http://labraj.uni-mb.si/lisa/ LISA]: compiler-compiler, or a system that generates automatically a compiler/interpreter from formal attribute grammar-based language specifications.
+     * [http://www.di.uminho.pt/~gepl/VisualLISA/ VisualLISA] is a visual programming environment for Attribute Grammar specifications. See also the [http://www.ipb.pt/~mjoao/researchindex.html researcher's site]
+     * AspectLISA
+      * [http://www.cis.uab.edu/gray/pubs/iet-dsal-2008.pdf Domain-Speciﬁc Aspect Languages for Modularizing Crosscutting Concerns in Grammars (pdf)]
+      * [http://marcel.uni-mb.si/lisa/publications/AspectLISA-ITI2006.pdf Specifying languages using aspect-oriented approach: AspectLISA (pdf)] 
+      * [http://wiki.di.uminho.pt/twiki/pub/Research/Voda/WebHome/Rebernak-ENTCS.pdf AspectLISA: an aspect-oriented compiler construction system based on attribute grammars (pdf)]
  * SPLE
   * conferences / papers
-    * [http://www.feasiple.de/public/proceedings-mdple2009.pdf conference paper (pdf)] from the [http://www.feasiple.de/workshop_en.html 1st International Workshop on Model-Driven Product Line Engineering in Twente, June 24th, 2009]
-    * [http://www.splc.net/ Software Product Line Conferences (SPLC)]
-    * [http://www.lero.ie/maple2009/ 1st International Workshop on Model-driven Approaches in Software Product Line Engineering (MAPLE 2009)]
-    * [http://www.vamos-workshop.net Variability Modelling of Software-intensive Systems (VaMoS)]
-    * [http://www.practicalproductlines.org/ppl2009/ Practical Product Lines 2009]
-    * [http://pi.informatik.uni-siegen.de/CVSM09/ Comparison and Versioning of Software Models (CVSM 2009)]
-    * [http://wikiserver.sse.cs.tu-bs.de/mise09/index.php/Main_Page Workshop on Modeling in Software Engineering (MiSE 2009)]
+   * [http://www.feasiple.de/public/proceedings-mdple2009.pdf conference paper (pdf)] from the [http://www.feasiple.de/workshop_en.html 1st International Workshop on Model-Driven Product Line Engineering in Twente, June 24th, 2009]
+   * [http://www.splc.net/ Software Product Line Conferences (SPLC)]
+   * [http://www.lero.ie/maple2009/ 1st International Workshop on Model-driven Approaches in Software Product Line Engineering (MAPLE 2009)]
+   * [http://www.vamos-workshop.net Variability Modelling of Software-intensive Systems (VaMoS)]
+   * [http://www.practicalproductlines.org/ppl2009/ Practical Product Lines 2009]
+   * [http://pi.informatik.uni-siegen.de/CVSM09/ Comparison and Versioning of Software Models (CVSM 2009)]
+   * [http://wikiserver.sse.cs.tu-bs.de/mise09/index.php/Main_Page Workshop on Modeling in Software Engineering (MiSE 2009)]
+   * [http://www.hope.cs.rice.edu/twiki/bin/view/Gpce/WebHome International Conference on Generative Programming and Component Engineering]   
+   * [http://www.se2010.upb.de/workshops.html#PIK2010 Produktlinien im Kontext: Technologie, Prozesse, Business und Organisation (PIK2010)] (workshop about product lines at the conference Software Engineering 2010)
   * articles
-    * [http://wwwiti.cs.uni-magdeburg.de/~ckaestne/JOT09_OverviewFOSD.pdf An Overview of Feature-Oriented Software Development (pdf)]
-    * [http://www.htw-aalen.de/img/downloads/studienarbeiten/228_2008-Diplomarbeit-Rytina.pdf Variabilität in der Domänen-Objekt-Modellierung für Software-Produktlinien (German, pdf) (hey, this is the thesis of Andy, one of the committers of this project :)]
-    * [http://www.stefan-marr.de/pages/feature-diagramme-und-variabilitat/ Feature-Diagramme und Variabilität (deutsch)]
-    * [http://www.cs.utexas.edu/~chpkim/chpkim-masc-thesis.pdf On the Relationship between Feature Models and Ontologies (pdf)]
-    * [http://www.swen.uwaterloo.ca/~kczarnec/feature_models_as_viewes_on_ontology_splc06.pdf Feature Models are Views on Ontologies (pdf)]
-    * [http://productlines.wordpress.com/ Procuct lines blog]
-      * [http://productlines.wordpress.com/2008/07/21/feature-models-and-features-whats-this/ Feature Models and Features – What’s this?]
-    * [http://www.pure-systems.com/fileadmin/downloads/pure-variants/tutorials/SPLWithFeatureModelling.pdf Software Product Line Engineering with Feature Models (pdf)]
-    * [http://www.voelter.de/data/presentations/variantmgt.pdf Variabilities - Representing Variability In Software Systems (pdf)]
-    * [http://www.voelter.de/data/articles/MDSDAndVariants.pdf Variantenmanagement im  Kontext von MDSD (pdf, deutsch)]
-    * [http://www.voelter.de/data/pub/VoelterGroher_SPLEwithAOandMDD.pdf Product Line Implementation using Aspect-Oriented and Model-Driven Software Development (pdf)]
-    * [http://www.voelter.de/data/presentations/MDD-PLE_SPLC-PRINT.pdf Using domain specific languages for product line engineering (pdf) (this presentation refers also to this project)]
-    * [http://2009.pik-konf.de/docs/PIK2009_Ekine.pdf A Model-driven Product Line Approach For HMI Development (pdf)]
-    * [http://www.jot.fm/issues/issue_2008_11/column1/index.html Agile Software Product Lines, Deconstructed]
-    * [http://www.objectteams.org/publications/Diplom_Marko_Feistkorn.pdf Abbildung von produktlinienorientierten Featurediagrammen auf aspektorientierte Implementierungsmodule (pdf)]
-    * [http://en.wikipedia.org/wiki/Feature_Oriented_Programming Feature Oriented Programming (Wikipedia)]
-    * [http://de.wikipedia.org/wiki/Produktlinienentwicklung_(Software) Produktlinienentwicklung (Software) (German Wikipedia article)]
-    * [http://de.wikipedia.org/wiki/Produktlinie_(Software) Produktlinie (Software) (German Wikipedia article)]
+   * [http://wwwiti.cs.uni-magdeburg.de/~ckaestne/JOT09_OverviewFOSD.pdf An Overview of Feature-Oriented Software Development (pdf)]
+   * [http://www.htw-aalen.de/img/downloads/studienarbeiten/228_2008-Diplomarbeit-Rytina.pdf Variabilität in der Domänen-Objekt-Modellierung für Software-Produktlinien (German, pdf) (hey, this is the thesis of Andy, one of the committers of this project :)]
+   * [http://www.stefan-marr.de/pages/feature-diagramme-und-variabilitat/ Feature-Diagramme und Variabilität (deutsch)]
+   * [http://www.cs.utexas.edu/~chpkim/chpkim-masc-thesis.pdf On the Relationship between Feature Models and Ontologies (pdf)]
+   * [http://www.swen.uwaterloo.ca/~kczarnec/feature_models_as_viewes_on_ontology_splc06.pdf Feature Models are Views on Ontologies (pdf)]
+   * [http://productlines.wordpress.com/ Procuct lines blog]
+     * [http://productlines.wordpress.com/2008/07/21/feature-models-and-features-whats-this/ Feature Models and Features – What’s this?]
+   * [http://www.pure-systems.com/fileadmin/downloads/pure-variants/tutorials/SPLWithFeatureModelling.pdf Software Product Line Engineering with Feature Models (pdf)]
+   * [http://www.voelter.de/data/presentations/variantmgt.pdf Variabilities - Representing Variability In Software Systems (pdf)]
+   * [http://www.voelter.de/data/articles/MDSDAndVariants.pdf Variantenmanagement im  Kontext von MDSD (pdf, deutsch)]
+   * [http://www.voelter.de/data/pub/VoelterGroher_SPLEwithAOandMDD.pdf Product Line Implementation using Aspect-Oriented and Model-Driven Software Development (pdf)]
+   * [http://www.voelter.de/data/presentations/MDD-PLE_SPLC-PRINT.pdf Using domain specific languages for product line engineering (pdf) (this presentation refers also to this project)]
+   * [http://www.slideshare.net/schogglad/modeldriven-development-in-the-context-of-software-product-lines Model-Driven Development in the context of Software Product Lines]
+   * [http://www.jot.fm/issues/issue_2009_09/column6/index.html Best Practices for DSLs and Model-Driven Development]
+   * [http://2009.pik-konf.de/docs/PIK2009_Ekine.pdf A Model-driven Product Line Approach For HMI Development (pdf)]
+   * [http://www.jot.fm/issues/issue_2008_11/column1/index.html Agile Software Product Lines, Deconstructed]
+   * [http://www.objectteams.org/publications/Diplom_Marko_Feistkorn.pdf Abbildung von produktlinienorientierten Featurediagrammen auf aspektorientierte Implementierungsmodule (pdf)]
+   * [http://en.wikipedia.org/wiki/Feature_Oriented_Programming Feature Oriented Programming (Wikipedia)]
+   * [http://de.wikipedia.org/wiki/Produktlinienentwicklung_(Software) Produktlinienentwicklung (Software) (German Wikipedia article)]
+   * [http://de.wikipedia.org/wiki/Produktlinie_(Software) Produktlinie (Software) (German Wikipedia article)]
+   * [http://www.springerlink.com/content/wvm4hv8r78117785/ A model-driven traceability framework for software product lines]
+   * [http://www.featuredrivendevelopment.com/ FeatureDrivenDevelopment.com]: place for all to discuss Feature Driven Development (FDD), ask questions, learn more about it, and discuss their own experiences and their own FDD-inspired approaches.
+   * [http://www.janbosch.com/Jan_Bosch/Product_lines.html Jan Bosch about Software Product Lines]
   * tools 
     * [http://www.eclipse.org/proposals/feature-model/ Eclipse project proposal for a new EMF feature model]
     * [https://sourceforge.net/projects/fmp/ FMP] (licensed under EPL)
@@ -170,7 +195,16 @@ In the meanwhile there is is a new proposed open source project under the Eclips
     * [http://www.pnp-software.com/XFeature/ XFeature]? (licensed under GPL)
     * [http://www.featuremapper.org/ FeatureMapper]? (licensed under LGPL 3.0)
     * [http://www.cvm-framework.org/index.html Compositional Variability Management (CVM)] (not released yet)
-    * [http://www.fosd.de/ Feature-Oriented Software Development Research], see also [http://www.infosun.fim.uni-passau.de/cl/staff/apel/#projekte hier] and [http://wwwiti.cs.uni-magdeburg.de/~ckaestne/JOT09_OverviewFOSD.pdf An Overview of Feature-Oriented Software Development (pdf)]
+     * [http://www.eecs.tu-berlin.de/fileadmin/f4/TechReports/2009/tr-2009-16.pdf Technical Report (pdf)]: describes the grammar and its concept for a textual feature modeling language with some special features, prominently the entity concept
+      * feature models as well (partly preconfigured) configuration models are encapsulated by entities
+      * entities may instanciate feature models contained in itself or from another entity (resulting in a configuration model)
+      * an entity may reference configuration models from other entities
+      * an entity can contain a configuration model semantic link definition that defines the propagates of the (de-)selection of features in other configuration models in dependence of the selection in the current configuration model (so the configuration models do not need to know each other)
+      * an entity exposes only certain configuration abilities to other entities and encapsulates the knowledge used to partly pre configure the contained configuration model
+      * configurations of feature models can be chained
+      * advantage: higher reusability as there is no more one global feature and configuration model
+     * [http://www.cvm-framework.org/tutorial/index.html Tutorial] providing a quick overview of the core functionality of CVM without going into great detail. It also shows how the different parts of CVM - the model editor, diagram editor and the VSL editor - fit together. 
+    * [http://www.fosd.de/ Feature-Oriented Software Development Research], see also [http://www.infosun.fim.uni-passau.de/cl/staff/apel/#projekte here] and [http://wwwiti.cs.uni-magdeburg.de/~ckaestne/JOT09_OverviewFOSD.pdf An Overview of Feature-Oriented Software Development (pdf)]
       * [http://wwwiti.cs.uni-magdeburg.de/iti_db/research/featureide/ FeatureIDE] (licensed under GPL)
       * [http://www.infosun.fim.uni-passau.de/cl/staff/apel/FH/ FeatureHouse]
       * [http://wwwiti.cs.uni-magdeburg.de/iti_db/forschung/fop/featurec/ FeatureC++]
@@ -178,10 +212,16 @@ In the meanwhile there is is a new proposed open source project under the Eclips
       * [http://modalis.polytech.unice.fr/softwares/hfm An Homogeneous Feature-based Approach] (is based on the FeatureIDE)
     * [http://www.pure-systems.com/Products.products.0.html pure::variants], see also [http://productlines.wordpress.com/ this blog] and this [[http://www.pure-systems.com/fileadmin/downloads/pure-variants/tutorials/SPLWithFeatureModelling.pdf article (pdf)]]
     * [http://ample.holos.pt/pageview.aspx?pageid=20&langid=1 Link collection at AMPLE - tools that support variability]
-  * [http://www.offis.de/projekte/e/244/if-mode.php Forschungsprojekt Interoperabilität und Feature-Tracing für Werkzeugketten in der modellgetriebenen Entwicklung (IF-ModE)], siehe auch [http://www.d-s-t-g.com/neu/pages/pagesger/common/news_nletter_nl2009_nr61_e61t1_frmset.htm hier]
+   * [http://www.isa.us.es/fama/ FAMA Tool Suite]: Framework for automated analyses of feature models integrating some of the most commonly used logic representations and solvers proposed in the literature
+    * [http://code.google.com/p/famats/ FAMA Tool Suite at Google Code]
+    * [http://www.lsi.us.es/~dbc/en/?Research Researcher Site] containing various publications about the FAMA tool suite
+  * research projects
+   * [http://www.offis.de/projekte/e/244/if-mode.php Forschungsprojekt Interoperabilität und Feature-Tracing für Werkzeugketten in der modellgetriebenen Entwicklung (IF-ModE)], see also [http://www.d-s-t-g.com/neu/pages/pagesger/common/news_nletter_nl2009_nr61_e61t1_frmset.htm here]
+   * [http://veia.isst.fraunhofer.de/ Verteilte Entwicklung und Integration von Automotive-Produktlinien (VEIA)]: [http://veia.isst.fraunhofer.de/index.php?option=com_content&task=view&id=16&Itemid=35 Publications]
   * [http://www.mister-wong.de/user/hanwong/softwareproduktlinien/ Link collection to software product lines]
  * aspect orientation
   * [http://www.eclipse.org/aspectj/ AspectJ]
+   * [http://www.eclipse.org/ajdt/EclipseCon2006/ Hands-on Programming with AspectJ]
   * [http://www.aosd-europe.net AOSD-Europe Project]
   * [http://www.infoq.com/articles/aspects-of-domain-model-mgmt Aspects of Domain Model Management]
   * [http://www.ibm.com/developerworks/views/java/libraryview.jsp?search_by=AOP@work: AOP@Work article series] 
