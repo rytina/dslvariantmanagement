@@ -1,5 +1,5 @@
+#summary Questions & Answers about dslvariantmanagement.
 #labels FAQ
- #Questions & Answers about dslvariantmanagement.
 
 = FAQ =
 For which xtext version is the the dslvariantmanagement compatible?
