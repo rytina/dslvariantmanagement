@@ -3,7 +3,7 @@ The main benefit of the VarDSL is, that you don't define only a single system wi
 
 To demonstrate the VarDSL, we defined a sample model for a product line of collaboration systems. The following picture shows the feature model of this example product line.
 
-![http://dslvariantmanagement.googlecode.com/svn/trunk/demo/trunk/dev_wiki/images/CollabFM_v3.jpg](http://dslvariantmanagement.googlecode.com/svn/trunk/demo/trunk/dev_wiki/images/CollabFM_v3.jpg)
+![https://raw.githubusercontent.com/rytina/dslvariantmanagement/master/demo/trunk/dev_wiki/images/CollabFM_v3.jpg]
 
 Different collaboration systems can be derived from this sample model by simply selecting features from a feature model and without touching the code. In this way, we can derive several products with different functionality, such as instant messaging or forum functionality. Access management functionality can be added if there should be a need for more user roles. Additionally the data (audio, video and text) that will be sent through the collaboration system can be encrypted. This is particularly advisable if the messages are sent over an unsecured communication channel. A central document repository can be used to share knowledge among team members.
 
@@ -46,7 +46,7 @@ The business logic component "MessageDispatcher" is the proxy between the presen
 
 To make the relationship between the components clear, the following uml component diagram gives an overview of the components overall structure.
 
-![http://dslvariantmanagement.googlecode.com/svn/trunk/demo/trunk/dev_wiki/images/components_v1.jpg](http://dslvariantmanagement.googlecode.com/svn/trunk/demo/trunk/dev_wiki/images/components_v1.jpg)
+![https://raw.githubusercontent.com/rytina/dslvariantmanagement/master/demo/trunk/dev_wiki/images/components_v1.jpg]
 
 The three blue components are representing the user interfaces for the several messengers. These components are connected through the "MessageDispatcher" with the related services. But so far no decision has been made on which component is to be picked and how to connect them together to derive a concrete product. In other words: the variation points are not bound to concrete variants. The variation points that are visible in the above figure are the required ports and the variants are represented by the provided ports. For instance one variation point of the component "InstantMessagingService" is the required port "audioCon". The variants which can be bound to the variation point are the provided ports of "VOIPConnection" and "TelephoneConnection". In this way it is possible to choose between different implementations (i.e. audio connections).
 
